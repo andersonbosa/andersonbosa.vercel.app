@@ -1,15 +1,15 @@
 import { Theme } from './contexts/ThemeContext'
 
 type TogglerThemeOptions = {
-  light: Theme;
-  dark: Theme;
-};
+  light: Theme
+  dark: Theme
+}
 
-type PickerThemeOptions = Theme[];
+type PickerThemeOptions = Theme[]
 
 
 export type IAppConfiguration = {
-  [key: string]: any;
+  [key: string]: any
 
   features: {
     superButton: {
@@ -20,17 +20,24 @@ export type IAppConfiguration = {
   integrations?: {
     google?: {
       analytics?: {
-        id: string;
+        id: string
       }
     }
   }
 
+  security: {
+    cors?: {
+      origin?: string
+      credentials?: boolean
+    }
+  }
+
   themes: {
-    type: 'toggler' | 'picker';
-    initialMode: 'light' | 'dark';
-    options: 'toggler' extends IAppConfiguration['themes']['type'] ? TogglerThemeOptions : PickerThemeOptions;
-  };
-};
+    type: 'toggler' | 'picker'
+    initialMode: 'light' | 'dark'
+    options: 'toggler' extends IAppConfiguration['themes']['type'] ? TogglerThemeOptions : PickerThemeOptions
+  }
+}
 
 
 const appConfiguration: IAppConfiguration = {
@@ -46,6 +53,12 @@ const appConfiguration: IAppConfiguration = {
         id: process.env.GoogleAnalyticsID || 'G-VEBF97CRFK'
       }
     }
+  },
+
+  security: {
+    cors: {
+      origin: process.env.ALLOWED_ORIGINS ?? '*'
+    },
   },
 
   themes: {

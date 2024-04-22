@@ -1,13 +1,15 @@
 'use client'
 
+
 import { HTMLAttributes } from 'react'
+
 
 interface AtomProps extends HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode
-  className?: string
+  htmlAttributes?: Partial<React.HTMLAttributes<any>>
 }
 
-function Atom({
+export function Atom ({
   children,
   className,
   ...htmlAttributes
@@ -15,11 +17,9 @@ function Atom({
 }: AtomProps): React.JSX.Element {
   return (
     <>
-      <div className={className} {...htmlAttributes} >
+      <div {...htmlAttributes} >
         {children}
       </div>
     </>
   )
 }
-
-export default Atom
