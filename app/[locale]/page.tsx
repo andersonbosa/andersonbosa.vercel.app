@@ -4,7 +4,7 @@ import Navbar from '@/components/molecules/Navbar'
 import AboutMe from '@/components/organisms/AboutMe'
 import ContactMe from '@/components/organisms/ContactMe'
 import Hero from '@/components/organisms/Hero'
-import MyExperiences from '@/components/organisms/MyExperiences'
+// import MyExperiences from '@/components/organisms/MyExperiences'
 
 // import dynamic from 'next/dynamic'
 // const Hero = dynamic(() => import('@/components/organisms/Hero'), { ssr: false })

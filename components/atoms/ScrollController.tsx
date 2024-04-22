@@ -2,14 +2,14 @@
 
 import { ArrowDown, ArrowUpToLine } from 'lucide-react'
 import { useTranslations } from 'next-intl'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import ToolTip from '../theme/ToolTip'
 
 
 interface ScrollControllerProps {
 }
 
-function ScrollController({ }: ScrollControllerProps): React.JSX.Element {
+function ScrollController ({ }: ScrollControllerProps): React.JSX.Element {
   const t = useTranslations('ScrollController')
 
   const [isVisible, setIsVisible] = useState(false)
@@ -28,17 +28,29 @@ function ScrollController({ }: ScrollControllerProps): React.JSX.Element {
     })
   }
 
-  // const observerRef: IntersectionObserver | any = useRef(null)
-
-  const scrollToIntersectionedSection = (entries: any[]) => {
-    entries.forEach((entry: any) => {
-      if (entry.isIntersecting) {
-        console.log('target id', entry.target.id)
-        console.log('isIntersecting', entry.isIntersecting)
-        document.getElementById(entry.target.id)?.scrollIntoView({ behavior: 'smooth' })
+  useEffect(
+    () => {
+      // Function to verify that the page was rolled down
+      const handleScroll = () => {
+        // Height in pixels to consider that the page was rolled down
+        const threshold = window.innerHeight - 128
+        if (window.scrollY > threshold) {
+          setIsVisible(true)
+        } else {
+          setIsVisible(false)
+        }
       }
-    })
-  }
+
+      // Adds a scroll event listener when the component is assembled
+      window.addEventListener('scroll', handleScroll)
+
+      // Removes the scroll event listener when the component is dismantled
+      return () => {
+        window.removeEventListener('scroll', handleScroll)
+      }
+    },
+    []
+  )
 
   return (
     <>
