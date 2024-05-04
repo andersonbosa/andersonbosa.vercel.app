@@ -1,3 +1,4 @@
+import { GithubRepo } from '@/lib/types/global'
 
 
 export const titleCase = (str: string): string => {
@@ -8,7 +9,7 @@ export const titleCase = (str: string): string => {
     .join(' ')
 }
 
-export function updateUrlLocale(url: string, newLocale: string): string {
+export function updateUrlLocale (url: string, newLocale: string): string {
   const localeRegex = /^\/([a-z]{2}-[a-z]{2})\//
   const match = url.match(localeRegex)
 
@@ -56,3 +57,13 @@ export function updateUrlLocale(url: string, newLocale: string): string {
 //     }
 //   }
 // }
+
+export const mapToGithubRepo = (apiItem: any): GithubRepo => ({
+  name: apiItem.name,
+  description: apiItem.description,
+  topics: apiItem.topics,
+  stargazers_count: apiItem.stargazers_count,
+  homepage: apiItem.homepage,
+  language: apiItem.language,
+  html_url: apiItem.html_url
+})

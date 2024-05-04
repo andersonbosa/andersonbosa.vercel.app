@@ -10,14 +10,14 @@ interface SectionProps extends HTMLAttributes<HTMLDivElement> {
 function Section({
   children,
   className,
-  ...htmlAttributes
+  ...parentAttributes
 }: SectionProps): React.JSX.Element {
   return (
     <>
       <div
         data-id="section"
         className={`md:min-h-screen -- w-full max-w-[40rem] md:max-w-full md:min-w-screen -- p-8 -- flex items-center justify-center content-center -- ${className}`}
-        {...htmlAttributes}
+        {...parentAttributes}
       >
         {children}
       </div>

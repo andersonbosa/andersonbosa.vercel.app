@@ -157,7 +157,6 @@ export const TECHNOLOGIES: any = {
     },
   ],
   security: [
-
     {
       slug: 'burp-suite',
       label: 'BurpSuite',
@@ -186,12 +185,12 @@ export const TECHNOLOGIES: any = {
 }
 
 interface IPageSectionsID {
-  hero:string
-  aboutMe: string
-  contacts: string
+  [key:string]:string
 }
+
 export const PageSectionsID: IPageSectionsID = {
-  hero: 'Hero-ba75da00-5b1a-48d8-986b-06c3ae223400',
-  aboutMe: 'AboutMe-1ee047e6-5e45-480e-acf8-65d044d8bc76',
-  contacts: 'Contacts-4d95a2a1-5cd7-45dd-8653-2a28dbc86bd1'
+  hero: 'heroheader',
+  aboutMe: 'aboutme',
+  contacts: 'contacts',
+  projects: 'projects',
 }

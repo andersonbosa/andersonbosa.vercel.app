@@ -25,18 +25,22 @@ export function Table ({
             {/* head */}
             <thead>
               <tr>
-                {headers.map((header, index) => (
-                  <th key={index}>{header}</th>
-                ))}
+                {
+                  headers.length > 0 && headers?.map(
+                    (header, index) => (
+                      <th key={index}>{header}</th>
+                    )
+                  )
+                }
               </tr>
             </thead>
             <tbody>
               {/* rows */}
               {
-                items.map((item, index) => (
+                items.length > 0 && items.map((item, index) => (
                   <tr key={index}>
                     {
-                      item.map(
+                      item?.map(
                         (data: TipoMid, dataIndex: Key | number) => (
                           <td key={dataIndex}>{data}</td>
                         )

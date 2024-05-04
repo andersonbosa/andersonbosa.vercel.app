@@ -27,9 +27,9 @@ function AboutMe(props: AboutMeProps): React.JSX.Element {
 
   const recentTechnologies = [
     'JavaScript', 'Python', 'Ruby',
-    'Node.js', 'TypeScript', 'React',
+    'Node.js', 'TypeScript', 'React', 'Vue',
     'Docker', 'Terraform', 'BASH', 'Linux',
-    'BurpSuite', 'ASPM Platforms'
+    'BurpSuite'
   ]
 
   return (
