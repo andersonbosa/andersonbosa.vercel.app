@@ -26,7 +26,6 @@ export function Projects ({
       })
   }, [])
 
-
   return (
     <>
       <Section
