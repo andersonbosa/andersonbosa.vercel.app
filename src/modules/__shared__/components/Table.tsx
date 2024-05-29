@@ -12,7 +12,8 @@ interface Column {
   id: string
   label: string
   minWidth?: number
-  align?: 'right'
+  align?: 'right' | 'left' | 'center' | 'inherit' | 'justify' | undefined
+  notSortable?: boolean
 }
 
 interface GenericTableProps {
@@ -24,13 +25,15 @@ interface GenericTableProps {
   showPageNumbers?: boolean
 }
 
+const DEFAULT_ROWS_PER_PAGE_OPTIONS = [16, 32, 64]
+
 const GenericTable: React.FC<GenericTableProps> = ({
   columns,
   data,
   pagination = true,
-  rowsPerPageOptions = [5, 10, 25],
-  defaultRowsPerPage = 5,
   showPageNumbers = true,
+  rowsPerPageOptions = DEFAULT_ROWS_PER_PAGE_OPTIONS,
+  defaultRowsPerPage = DEFAULT_ROWS_PER_PAGE_OPTIONS[0],
 }) => {
   const [order, setOrder] = useState<'asc' | 'desc'>('asc')
   const [orderBy, setOrderBy] = useState<string>('')
@@ -108,8 +111,9 @@ const GenericTable: React.FC<GenericTableProps> = ({
                     active={orderBy === column.id}
                     direction={orderBy === column.id ? order : 'asc'}
                     onClick={() => handleRequestSort(column.id)}
+                    disabled={column?.notSortable}
                   >
-                    {column.label}
+                    {column?.label || column?.id}
                   </TableSortLabel>
                 </TableCell>
               ))}
@@ -131,11 +135,11 @@ const GenericTable: React.FC<GenericTableProps> = ({
       {pagination && (
         <TablePagination
           component="div"
-          rowsPerPageOptions={rowsPerPageOptions}
           count={sortedData.length}
-          rowsPerPage={rowsPerPage}
           page={page}
           onPageChange={handleChangePage}
+          rowsPerPage={rowsPerPage}
+          rowsPerPageOptions={rowsPerPageOptions}
           onRowsPerPageChange={handleChangeRowsPerPage}
           showFirstButton={showPageNumbers}
           showLastButton={showPageNumbers}

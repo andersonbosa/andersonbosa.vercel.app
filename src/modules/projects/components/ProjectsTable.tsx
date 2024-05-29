@@ -13,7 +13,13 @@ export const ProjectsTable: React.FC = () => {
   const onComponentMount = async () => {
     const githubRepositories = await GithubClient.getUserRepositories('andersonbosa')
     setTableData(githubRepositories)
-    console.log(` =================$${new Date().toISOString()}================== githubRepositories`, githubRepositories)
+
+    setTableColumns([
+      { id: 'stargazers_count', label: '⭐' },
+      { id: 'name', label: 'Repository name' },
+      { id: 'description', label: 'Description', notSortable: true },
+      { id: 'language', label: 'Language' },
+    ])
   }
 
   useEffect(
@@ -31,7 +37,6 @@ export const ProjectsTable: React.FC = () => {
       <GenericTable
         columns={tableColumns}
         data={tableData}
-        defaultRowsPerPage={8}
         rowsPerPageOptions={[8, 32, 64, 128]}
         showPageNumbers={true}
         pagination={true}
