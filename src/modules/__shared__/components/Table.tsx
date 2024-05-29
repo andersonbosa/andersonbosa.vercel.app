@@ -7,6 +7,7 @@ import {
 } from '@mui/material'
 import { Search } from '@mui/icons-material'
 import { motion } from 'framer-motion'
+import page from '@/app/page'
 
 interface Column {
   id: string
@@ -39,7 +40,7 @@ const GenericTable: React.FC<GenericTableProps> = ({
   const [orderBy, setOrderBy] = useState<string>('')
   const [searchValue, setSearchValue] = useState<string>('')
   const [page, setPage] = useState<number>(0)
-  const [rowsPerPage, setRowsPerPage] = useState<number>(defaultRowsPerPage)
+  const [rowsPerPage, setRowsPerPage] = useState<number>(defaultRowsPerPage || rowsPerPageOptions[0])
 
   const handleRequestSort = (property: string) => {
     const isAsc = orderBy === property && order === 'asc'
