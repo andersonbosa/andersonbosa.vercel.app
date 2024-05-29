@@ -34,13 +34,13 @@ const GenericTable: React.FC<GenericTableProps> = ({
   pagination = true,
   showPageNumbers = true,
   rowsPerPageOptions = DEFAULT_ROWS_PER_PAGE_OPTIONS,
-  defaultRowsPerPage = DEFAULT_ROWS_PER_PAGE_OPTIONS[0],
+  // defaultRowsPerPage = DEFAULT_ROWS_PER_PAGE_OPTIONS[0],
 }) => {
   const [order, setOrder] = useState<'asc' | 'desc'>('asc')
   const [orderBy, setOrderBy] = useState<string>('')
   const [searchValue, setSearchValue] = useState<string>('')
   const [page, setPage] = useState<number>(0)
-  const [rowsPerPage, setRowsPerPage] = useState<number>(defaultRowsPerPage || rowsPerPageOptions[0])
+  const [rowsPerPage, setRowsPerPage] = useState<number>(rowsPerPageOptions[0])
 
   const handleRequestSort = (property: string) => {
     const isAsc = orderBy === property && order === 'asc'
