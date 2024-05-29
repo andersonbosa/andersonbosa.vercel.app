@@ -4,66 +4,27 @@ import { Box } from '@mui/material'
 import { useEffect, useState } from 'react'
 
 import { GenericTable } from '@/modules/__shared__/components/Table'
-
+import { GithubClient } from '@/modules/__shared__/services/github-client.service'
 
 export const ProjectsTable: React.FC = () => {
   const [tableColumns, setTableColumns] = useState<any[]>([])
   const [tableData, setTableData] = useState<any[]>([])
 
+  const onComponentMount = async () => {
+    const githubRepositories = await GithubClient.getUserRepositories('andersonbosa')
+    setTableData(githubRepositories)
+    console.log(` =================$${new Date().toISOString()}================== githubRepositories`, githubRepositories)
+  }
 
-  useEffect(() => {
-
-    setTableColumns([
-      { id: 'name', label: 'Name' },
-      { id: 'age', label: 'Age' },
-      { id: 'job', label: 'Job' },
-    ])
-
-    setTableData([
-      { name: 'John Doe', age: 28, job: 'Accounts' },
-      { name: 'Jane Smith', age: 34, job: 'Operations' },
-      { name: 'Alice Johnson', age: 24, job: 'Creative' },
-      { name: 'Christopher Schneider', age: 21, job: 'Data' },
-      { name: 'Maurice Padilla', age: 23, job: 'Applications' },
-      { name: 'Manuel West', age: 33, job: 'Functionality' },
-      { name: 'John Doe', age: 28, job: 'Accounts' },
-      { name: 'Jane Smith', age: 34, job: 'Operations' },
-      { name: 'Alice Johnson', age: 24, job: 'Creative' },
-      { name: 'Christopher Schneider', age: 21, job: 'Data' },
-      { name: 'Maurice Padilla', age: 23, job: 'Applications' },
-      { name: 'Manuel West', age: 33, job: 'Functionality' },
-      { name: 'John Doe', age: 28, job: 'Accounts' },
-      { name: 'Jane Smith', age: 34, job: 'Operations' },
-      { name: 'Alice Johnson', age: 24, job: 'Creative' },
-      { name: 'Christopher Schneider', age: 21, job: 'Data' },
-      { name: 'Maurice Padilla', age: 23, job: 'Applications' },
-      { name: 'Manuel West', age: 33, job: 'Functionality' },
-      { name: 'John Doe', age: 28, job: 'Accounts' },
-      { name: 'Jane Smith', age: 34, job: 'Operations' },
-      { name: 'Alice Johnson', age: 24, job: 'Creative' },
-      { name: 'Christopher Schneider', age: 21, job: 'Data' },
-      { name: 'Maurice Padilla', age: 23, job: 'Applications' },
-      { name: 'Manuel West', age: 33, job: 'Functionality' },
-      { name: 'John Doe', age: 28, job: 'Accounts' },
-      { name: 'Jane Smith', age: 34, job: 'Operations' },
-      { name: 'Alice Johnson', age: 24, job: 'Creative' },
-      { name: 'Christopher Schneider', age: 21, job: 'Data' },
-      { name: 'Maurice Padilla', age: 23, job: 'Applications' },
-      { name: 'Manuel West', age: 33, job: 'Functionality' },
-      { name: 'John Doe', age: 28, job: 'Accounts' },
-      { name: 'Jane Smith', age: 34, job: 'Operations' },
-      { name: 'Alice Johnson', age: 24, job: 'Creative' },
-      { name: 'Christopher Schneider', age: 21, job: 'Data' },
-      { name: 'Maurice Padilla', age: 23, job: 'Applications' },
-      { name: 'Manuel West', age: 33, job: 'Functionality' },
-      { name: 'John Doe', age: 28, job: 'Accounts' },
-      { name: 'Jane Smith', age: 34, job: 'Operations' },
-      { name: 'Alice Johnson', age: 24, job: 'Creative' },
-      { name: 'Christopher Schneider', age: 21, job: 'Data' },
-      { name: 'Maurice Padilla', age: 23, job: 'Applications' },
-      { name: 'Manuel West', age: 33, job: 'Functionality' },
-    ])
-  }, [])
+  useEffect(
+    () => {
+      onComponentMount()
+      return () => {
+        console.log('ProjectsTable unmounted')
+      }
+    },
+    []
+  )
 
   return (
     <Box>
@@ -71,7 +32,7 @@ export const ProjectsTable: React.FC = () => {
         columns={tableColumns}
         data={tableData}
         defaultRowsPerPage={8}
-        rowsPerPageOptions={[8,32,64,128]}
+        rowsPerPageOptions={[8, 32, 64, 128]}
         showPageNumbers={true}
         pagination={true}
       />
