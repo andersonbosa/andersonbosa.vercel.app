@@ -23,7 +23,7 @@ export default function IndexPage () {
       <Hero />
       <AboutMe />
       <ContactMe />
-      <Projects />
+      {/* <Projects /> */}
       {/* <MyExperiences /> */}
       <ScrollController />
       <Footer />
