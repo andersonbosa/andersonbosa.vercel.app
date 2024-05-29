@@ -67,7 +67,14 @@ export const ProjectsTable: React.FC = () => {
 
   return (
     <Box>
-      <GenericTable columns={tableColumns} data={tableData} />
+      <GenericTable
+        columns={tableColumns}
+        data={tableData}
+        defaultRowsPerPage={8}
+        rowsPerPageOptions={[8,32,64,128]}
+        showPageNumbers={true}
+        pagination={true}
+      />
     </Box>
   )
 }

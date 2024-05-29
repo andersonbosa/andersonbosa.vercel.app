@@ -1,37 +1,43 @@
 'use client'
 
+
+
 import React, { useState } from 'react'
 import {
-  Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TableSortLabel, Paper, TextField, IconButton
+  Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TableSortLabel, Paper, TextField, IconButton, TablePagination, TablePaginationProps,
 } from '@mui/material'
 import { Search } from '@mui/icons-material'
 import { motion } from 'framer-motion'
 
-
-interface ISearchOptions {
-  searchLabel?: string
-  searchPlaceholder?: string
-}
-
-interface IColumn {
+interface Column {
   id: string
   label: string
   minWidth?: number
   align?: 'right'
 }
 
-interface IGenericTableProps {
-  columns: IColumn[]
+interface GenericTableProps {
+  columns: Column[]
   data: any[]
-  searchOptions?: ISearchOptions
+  pagination?: boolean
+  rowsPerPageOptions?: number[]
+  defaultRowsPerPage?: number
+  showPageNumbers?: boolean
 }
 
-/* TODO melhorar legibilidade */
-/* REVIEW faz sentido separar em componentes menores? consultar danilo e vitor */
-const GenericTable: React.FC<IGenericTableProps> = (props) => {
+const GenericTable: React.FC<GenericTableProps> = ({
+  columns,
+  data,
+  pagination = true,
+  rowsPerPageOptions = [5, 10, 25],
+  defaultRowsPerPage = 5,
+  showPageNumbers = true,
+}) => {
   const [order, setOrder] = useState<'asc' | 'desc'>('asc')
   const [orderBy, setOrderBy] = useState<string>('')
   const [searchValue, setSearchValue] = useState<string>('')
+  const [page, setPage] = useState<number>(0)
+  const [rowsPerPage, setRowsPerPage] = useState<number>(defaultRowsPerPage)
 
   const handleRequestSort = (property: string) => {
     const isAsc = orderBy === property && order === 'asc'
@@ -43,8 +49,17 @@ const GenericTable: React.FC<IGenericTableProps> = (props) => {
     setSearchValue(event.target.value)
   }
 
-  const filteredData = props.data.filter(row =>
-    props.columns.some(column =>
+  const handleChangePage = (event: unknown, newPage: number) => {
+    setPage(newPage)
+  }
+
+  const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setRowsPerPage(parseInt(event.target.value, 10))
+    setPage(0)
+  }
+
+  const filteredData = data.filter(row =>
+    columns.some(column =>
       String(row[column.id]).toLowerCase().includes(searchValue.toLowerCase())
     )
   )
@@ -59,21 +74,20 @@ const GenericTable: React.FC<IGenericTableProps> = (props) => {
     return 0
   })
 
+  const paginatedData = pagination ? sortedData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage) : sortedData
+
   return (
     <Paper>
       <TextField
         variant="outlined"
-        label={props?.searchOptions?.searchLabel ?? 'Search'}
+        label="Search"
         value={searchValue}
         onChange={handleSearchChange}
         InputProps={{
-          /**
-           * Bruxaria encontrada em:
-           * @see {link} https://stackoverflow.com/questions/63047684/material-ui-select-menu-with-end-adornment
-           * @see {link} https://mui.com/material-ui/api/input-adornment/
-           */
           endAdornment: (
-            <IconButton> <Search /> </IconButton>
+            <IconButton>
+              <Search />
+            </IconButton>
           )
         }}
         style={{ margin: 16 }}
@@ -82,7 +96,7 @@ const GenericTable: React.FC<IGenericTableProps> = (props) => {
         <Table stickyHeader>
           <TableHead>
             <TableRow>
-              {props.columns.map(column => (
+              {columns.map(column => (
                 <TableCell
                   key={column.id}
                   align={column.align}
@@ -100,9 +114,9 @@ const GenericTable: React.FC<IGenericTableProps> = (props) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {sortedData.map((row, index) => (
+            {paginatedData.map((row, index) => (
               <TableRow hover role="checkbox" tabIndex={-1} key={index}>
-                {props.columns.map(column => (
+                {columns.map(column => (
                   <TableCell key={column.id} align={column.align}>
                     {row[column.id]}
                   </TableCell>
@@ -112,10 +126,23 @@ const GenericTable: React.FC<IGenericTableProps> = (props) => {
           </TableBody>
         </Table>
       </TableContainer>
+      {pagination && (
+        <TablePagination
+          component="div"
+          rowsPerPageOptions={rowsPerPageOptions}
+          count={sortedData.length}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onPageChange={handleChangePage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+          showFirstButton={showPageNumbers}
+          showLastButton={showPageNumbers}
+        />
+      )}
     </Paper>
   )
 }
 
-export {
-  GenericTable
-}
+
+
+export { GenericTable }
