@@ -1,6 +1,7 @@
 'use client'
 
 import { Box } from '@mui/material'
+import { ProjectsPage } from '../../projects/pages/Projects'
 
 
 export const HomePage: React.FC = () => {
@@ -9,7 +10,7 @@ export const HomePage: React.FC = () => {
       <Box>hero</Box>
       <Box>contacts</Box>
       <Box>
-        projects
+        <ProjectsPage />
       </Box>
       <Box>skills</Box>
       <Box>footer</Box>
