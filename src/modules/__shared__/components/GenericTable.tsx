@@ -154,11 +154,12 @@ const GenericTable: React.FC<IGenericTableProps> = ({
         value={searchValue}
         onChange={handleSearchChange}
         InputProps={{
-          endAdornment: (
-            <IconButton>
-              <Search />
-            </IconButton>
-          )
+          /**
+           * referência dessa bruxaria:
+           * @see {link} https://mui.com/material-ui/api/input-adornment/
+           * @see {link} https://stackoverflow.com/questions/63047684/material-ui-select-menu-with-end-adornment
+           */
+          endAdornment: (<IconButton> <Search /> </IconButton>)
         }}
         style={{ margin: 16 }}
       />
