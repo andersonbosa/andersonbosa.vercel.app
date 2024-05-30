@@ -34,22 +34,22 @@ export interface IPaginationOptions {
 
 export interface IGenericTableOptionsProps {
   pagination?: boolean
-  IPaginationOptions?: IPaginationOptions
+  pagiationOptions?: IPaginationOptions
   onSearchChange?: (searchValue: string) => void
   onSortChange?: (orderBy: string, order: SortDirectionType) => void
   onPageChange?: (page: number, rowsPerPage: number) => void
 }
 
 export interface IGenericTableProps {
-  columns: IGenericTableColumn[]
   data: any[]
+  columns: IGenericTableColumn[]
   options?: IGenericTableOptionsProps
 }
 
 const ROWS_PER_PAGE_OPTIONS = [8, 16, 32, 64]
 const defaultOptions: IGenericTableOptionsProps = {
   pagination: true,
-  IPaginationOptions: {
+  pagiationOptions: {
     rowsPerPageOptions: ROWS_PER_PAGE_OPTIONS,
     defaultRowsPerPage: ROWS_PER_PAGE_OPTIONS[0],
     showPageNumbers: true,
@@ -66,7 +66,7 @@ const GenericTable: React.FC<IGenericTableProps> = ({
 
   const {
     pagination,
-    IPaginationOptions,
+    pagiationOptions,
     onSearchChange,
     onSortChange,
     onPageChange,
@@ -75,11 +75,10 @@ const GenericTable: React.FC<IGenericTableProps> = ({
   const [searchValue, setSearchValue] = useState<string>('')
 
   const [page, setPage] = useState<number>(0)
-  const [rowsPerPage, setRowsPerPage] = useState<number>(IPaginationOptions?.defaultRowsPerPage || 5)
+  const [rowsPerPage, setRowsPerPage] = useState<number>(pagiationOptions?.defaultRowsPerPage || 5)
 
 
   const initialSortColumn = columns.find(column => column.options?.defaultSortOrder)
-  console.log(` =======$${new Date().toISOString()}======= initialSortColumn`, initialSortColumn)
   const [order, setOrder] = useState<SortDirectionType>(initialSortColumn?.options?.defaultSortOrder || 'asc')
   const [orderBy, setOrderBy] = useState<string>(initialSortColumn?.id || '')
 
@@ -203,15 +202,15 @@ const GenericTable: React.FC<IGenericTableProps> = ({
       </TableContainer>
       {pagination && (
         <TablePagination
-          rowsPerPageOptions={IPaginationOptions?.rowsPerPageOptions || [5, 10, 25]}
           component="div"
           count={sortedData.length}
+          rowsPerPageOptions={pagiationOptions?.rowsPerPageOptions || ROWS_PER_PAGE_OPTIONS}
           rowsPerPage={rowsPerPage}
           page={page}
+          showFirstButton={pagiationOptions?.showPageNumbers}
+          showLastButton={pagiationOptions?.showPageNumbers}
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
-          showFirstButton={IPaginationOptions?.showPageNumbers}
-          showLastButton={IPaginationOptions?.showPageNumbers}
         />
       )}
     </Paper>
