@@ -1,3 +1,5 @@
+'use client'
+
 interface IGetUserRepositoriesOutput {
   id: number
   full_name: string
@@ -25,7 +27,6 @@ interface IGetUserRepositoriesOutput {
   forks_count: number
   updated_at: string
   created_at: string
-
 }
 
 export class GithubClient {
