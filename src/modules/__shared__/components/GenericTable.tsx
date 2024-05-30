@@ -14,49 +14,49 @@ import { motion } from 'framer-motion'
 import React, { useEffect, useMemo, useState } from 'react'
 
 
-export type SortDirection = 'asc' | 'desc'
+export type SortDirectionType = 'asc' | 'desc'
 
-export interface GenericTableColumn {
+export interface IGenericTableColumn {
   id: string
   label: string
   options?: {
     align?: 'right' | 'left' | 'center' | 'justify' | 'inherit'
     notSortable?: boolean
-    defaultSortOrder?: SortDirection
+    defaultSortOrder?: SortDirectionType
   }
 }
 
-export interface PaginationOptions {
+export interface IPaginationOptions {
   rowsPerPageOptions?: number[]
   defaultRowsPerPage?: number
   showPageNumbers?: boolean
 }
 
-export interface GenericTableOptionsProps {
+export interface IGenericTableOptionsProps {
   pagination?: boolean
-  paginationOptions?: PaginationOptions
+  IPaginationOptions?: IPaginationOptions
   onSearchChange?: (searchValue: string) => void
-  onSortChange?: (orderBy: string, order: SortDirection) => void
+  onSortChange?: (orderBy: string, order: SortDirectionType) => void
   onPageChange?: (page: number, rowsPerPage: number) => void
 }
 
-export interface GenericTableProps {
-  columns: GenericTableColumn[]
+export interface IGenericTableProps {
+  columns: IGenericTableColumn[]
   data: any[]
-  options?: GenericTableOptionsProps
+  options?: IGenericTableOptionsProps
 }
 
 const ROWS_PER_PAGE_OPTIONS = [8, 16, 32, 64]
-const defaultOptions: GenericTableOptionsProps = {
+const defaultOptions: IGenericTableOptionsProps = {
   pagination: true,
-  paginationOptions: {
+  IPaginationOptions: {
     rowsPerPageOptions: ROWS_PER_PAGE_OPTIONS,
     defaultRowsPerPage: ROWS_PER_PAGE_OPTIONS[0],
     showPageNumbers: true,
   },
 }
 
-const GenericTable: React.FC<GenericTableProps> = ({
+const GenericTable: React.FC<IGenericTableProps> = ({
   columns,
   data,
   options = {},
@@ -66,7 +66,7 @@ const GenericTable: React.FC<GenericTableProps> = ({
 
   const {
     pagination,
-    paginationOptions,
+    IPaginationOptions,
     onSearchChange,
     onSortChange,
     onPageChange,
@@ -75,12 +75,12 @@ const GenericTable: React.FC<GenericTableProps> = ({
   const [searchValue, setSearchValue] = useState<string>('')
 
   const [page, setPage] = useState<number>(0)
-  const [rowsPerPage, setRowsPerPage] = useState<number>(paginationOptions?.defaultRowsPerPage || 5)
+  const [rowsPerPage, setRowsPerPage] = useState<number>(IPaginationOptions?.defaultRowsPerPage || 5)
 
 
   const initialSortColumn = columns.find(column => column.options?.defaultSortOrder)
   console.log(` =======$${new Date().toISOString()}======= initialSortColumn`, initialSortColumn)
-  const [order, setOrder] = useState<SortDirection>(initialSortColumn?.options?.defaultSortOrder || 'asc')
+  const [order, setOrder] = useState<SortDirectionType>(initialSortColumn?.options?.defaultSortOrder || 'asc')
   const [orderBy, setOrderBy] = useState<string>(initialSortColumn?.id || '')
 
 
@@ -203,15 +203,15 @@ const GenericTable: React.FC<GenericTableProps> = ({
       </TableContainer>
       {pagination && (
         <TablePagination
-          rowsPerPageOptions={paginationOptions?.rowsPerPageOptions || [5, 10, 25]}
+          rowsPerPageOptions={IPaginationOptions?.rowsPerPageOptions || [5, 10, 25]}
           component="div"
           count={sortedData.length}
           rowsPerPage={rowsPerPage}
           page={page}
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
-          showFirstButton={paginationOptions?.showPageNumbers}
-          showLastButton={paginationOptions?.showPageNumbers}
+          showFirstButton={IPaginationOptions?.showPageNumbers}
+          showLastButton={IPaginationOptions?.showPageNumbers}
         />
       )}
     </Paper>

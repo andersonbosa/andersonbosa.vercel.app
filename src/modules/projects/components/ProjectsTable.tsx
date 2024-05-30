@@ -3,7 +3,7 @@
 import { Box } from '@mui/material'
 import { useEffect, useState } from 'react'
 
-import { GenericTable, GenericTableColumn } from '@/modules/__shared__/components/GenericTable'
+import { GenericTable, IGenericTableColumn } from '@/modules/__shared__/components/GenericTable'
 import { GithubClient } from '@/modules/__shared__/services/github-client.service'
 
 export const ProjectsTable: React.FC = () => {
@@ -17,7 +17,7 @@ export const ProjectsTable: React.FC = () => {
         .filter(repo => repo.description)
     )
 
-    const cols: GenericTableColumn[] = [
+    const cols: IGenericTableColumn[] = [
       { id: 'stargazers_count', label: '⭐', options: { defaultSortOrder: 'asc' } },
       { id: 'name', label: 'Repository name' },
       // { id: 'description', label: 'Description', options: { notSortable: true } },
