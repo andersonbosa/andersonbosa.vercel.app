@@ -3,28 +3,45 @@
 import { Box } from '@mui/material'
 import { useEffect, useState } from 'react'
 
-import { GenericTable } from '@/modules/__shared__/components/Table'
+import { GenericTable, GenericTableColumn } from '@/modules/__shared__/components/GenericTable'
 import { GithubClient } from '@/modules/__shared__/services/github-client.service'
 
 export const ProjectsTable: React.FC = () => {
-  const [tableColumns, setTableColumns] = useState<any[]>([])
-  const [tableData, setTableData] = useState<any[]>([])
+  const [columns, setColumns] = useState<any[]>([])
+  const [data, setData] = useState<any[]>([])
 
-  const onComponentMount = async () => {
+  const loadDataOnComponentMount = async () => {
     const githubRepositories = await GithubClient.getUserRepositories('andersonbosa')
-    setTableData(githubRepositories)
+    setData(
+      githubRepositories
+        .filter(repo => repo.description)
+    )
 
-    setTableColumns([
-      { id: 'stargazers_count', label: '⭐' },
+    const cols: GenericTableColumn[] = [
+      { id: 'stargazers_count', label: '⭐', options: { defaultSortOrder: 'asc' } },
       { id: 'name', label: 'Repository name' },
-      { id: 'description', label: 'Description', notSortable: true },
+      // { id: 'description', label: 'Description', options: { notSortable: true } },
       { id: 'language', label: 'Language' },
-    ])
+    ]
+    setColumns(cols)
   }
+
+  const handleSearchChange = (searchValue: string) => {
+    console.log('Search changed to:', searchValue)
+  }
+
+  const handleSortChange = (orderBy: string, order: 'asc' | 'desc') => {
+    console.log('Sort changed:', { orderBy, order })
+  }
+
+  const handlePageChange = (page: number, rowsPerPage: number) => {
+    console.log('Page changed:', { page, rowsPerPage })
+  }
+
 
   useEffect(
     () => {
-      onComponentMount()
+      loadDataOnComponentMount()
       return () => {
         console.log('ProjectsTable unmounted')
       }
@@ -35,11 +52,13 @@ export const ProjectsTable: React.FC = () => {
   return (
     <Box>
       <GenericTable
-        columns={tableColumns}
-        data={tableData}
-        rowsPerPageOptions={[8, 32, 64, 128]}
-        showPageNumbers={true}
-        pagination={true}
+        columns={columns}
+        data={data}
+        options={{
+          onSearchChange: handleSearchChange,
+          onSortChange: handleSortChange,
+          onPageChange: handlePageChange,
+        }}
       />
     </Box>
   )
