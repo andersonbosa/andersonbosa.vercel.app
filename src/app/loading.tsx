@@ -1,11 +1,10 @@
 import { Box, CircularProgress } from '@mui/material'
 
-const Loading: React.FC = () => {
+
+export default function Loading (): React.ReactNode {
   return (
     <Box>
       <CircularProgress />
     </Box>
   )
 }
-
-export default Loading
