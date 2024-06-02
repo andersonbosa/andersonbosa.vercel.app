@@ -13,6 +13,7 @@ import {
 import { motion } from 'framer-motion'
 import React, { useEffect, useMemo, useState } from 'react'
 
+import { TablePaginationProps } from '@mui/material/TablePagination'
 
 export type SortDirectionType = 'asc' | 'desc'
 
@@ -27,13 +28,13 @@ export interface IGenericTableColumn {
 }
 
 export interface IPaginationOptions {
+  enabled?: boolean
   rowsPerPageOptions?: number[]
   defaultRowsPerPage?: number
   showPageNumbers?: boolean
 }
 
 export interface IGenericTableOptionsProps {
-  pagination?: boolean
   pagiationOptions?: IPaginationOptions
   onSearchChange?: (searchValue: string) => void
   onSortChange?: (orderBy: string, order: SortDirectionType) => void
@@ -48,7 +49,6 @@ export interface IGenericTableProps {
 
 const ROWS_PER_PAGE_OPTIONS = [8, 16, 32, 64]
 const defaultOptions: IGenericTableOptionsProps = {
-  pagination: true,
   pagiationOptions: {
     rowsPerPageOptions: ROWS_PER_PAGE_OPTIONS,
     defaultRowsPerPage: ROWS_PER_PAGE_OPTIONS[0],
@@ -65,7 +65,6 @@ const GenericTable: React.FC<IGenericTableProps> = ({
   const mergedOptions = Object.assign(defaultOptions, options)
 
   const {
-    pagination,
     pagiationOptions,
     onSearchChange,
     onSortChange,
@@ -144,7 +143,7 @@ const GenericTable: React.FC<IGenericTableProps> = ({
     return 0
   })
 
-  const paginatedData = pagination ? sortedData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage) : sortedData
+  const paginatedData = pagiationOptions?.enabled ? sortedData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage) : sortedData
 
   return (
     <Paper>
@@ -201,12 +200,14 @@ const GenericTable: React.FC<IGenericTableProps> = ({
           </TableBody>
         </Table>
       </TableContainer>
-      {pagination && (
+      {pagiationOptions?.enabled && (
         <TablePagination
           component="div"
           count={sortedData.length}
           rowsPerPageOptions={pagiationOptions?.rowsPerPageOptions || ROWS_PER_PAGE_OPTIONS}
           rowsPerPage={rowsPerPage}
+          labelRowsPerPage
+
           page={page}
           showFirstButton={pagiationOptions?.showPageNumbers}
           showLastButton={pagiationOptions?.showPageNumbers}

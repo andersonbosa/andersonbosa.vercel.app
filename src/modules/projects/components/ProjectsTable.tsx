@@ -55,6 +55,9 @@ export const ProjectsTable: React.FC = () => {
         columns={columns}
         data={data}
         options={{
+          pagiationOptions: {
+            
+          },
           onSearchChange: handleSearchChange,
           onSortChange: handleSortChange,
           onPageChange: handlePageChange,

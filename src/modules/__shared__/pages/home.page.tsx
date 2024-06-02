@@ -9,7 +9,7 @@ export const HomePage: React.FC = () => {
     <>
       <Box>hero</Box>
       <Box>contacts</Box>
-      <Box>
+      <Box sx={{ border: '1px solid black' }}>
         <ProjectsPage />
       </Box>
       <Box>skills</Box>
