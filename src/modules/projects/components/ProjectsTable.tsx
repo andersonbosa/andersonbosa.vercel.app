@@ -12,10 +12,7 @@ export const ProjectsTable: React.FC = () => {
 
   const loadDataOnComponentMount = async () => {
     const githubRepositories = await GithubClient.getUserRepositories('andersonbosa')
-    setData(
-      githubRepositories
-        .filter(repo => repo.description)
-    )
+    setData(githubRepositories.filter(repo => repo.description))
 
     const cols: IGenericTableColumn[] = [
       { id: 'stargazers_count', label: '⭐', options: { defaultSortOrder: 'asc' } },
@@ -54,7 +51,7 @@ export const ProjectsTable: React.FC = () => {
         columns={columns}
         data={data}
         options={{
-        
+
           onSearchChange: handleSearchChange,
           onSortChange: handleSortChange,
           onPageChange: handlePageChange,
