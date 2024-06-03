@@ -90,6 +90,14 @@ const GenericTable: React.FC<IGenericTableProps> = ({
   )
 
   useEffect(() => {
+    const initialSortColumn = columns.find(column => column.options?.defaultSortOrder)
+    if (initialSortColumn?.options?.defaultSortOrder) {
+      setOrder(initialSortColumn.options?.defaultSortOrder)
+      setOrderBy(initialSortColumn.id)
+    }
+  }, [initialSortColumn])
+
+  useEffect(() => {
     debouncedSearchChange(searchValue)
   }, [searchValue, debouncedSearchChange])
 

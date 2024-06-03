@@ -15,7 +15,7 @@ export const ProjectsTable: React.FC = () => {
     setData(githubRepositories.filter(repo => repo.description))
 
     const cols: IGenericTableColumn[] = [
-      { id: 'stargazers_count', label: '⭐', options: { defaultSortOrder: 'asc' } },
+      { id: 'stargazers_count', label: '⭐', options: { defaultSortOrder: 'desc' } },
       { id: 'name', label: 'Repository name' },
       { id: 'language', label: 'Language' },
     ]
@@ -51,7 +51,6 @@ export const ProjectsTable: React.FC = () => {
         columns={columns}
         data={data}
         options={{
-
           onSearchChange: handleSearchChange,
           onSortChange: handleSortChange,
           onPageChange: handlePageChange,
