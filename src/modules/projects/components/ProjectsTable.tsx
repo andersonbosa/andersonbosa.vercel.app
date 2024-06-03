@@ -1,6 +1,6 @@
 'use client'
 
-import { Box } from '@mui/material'
+import Box from '@mui/material/Box'
 import { useEffect, useState } from 'react'
 
 import { GenericTable, IGenericTableColumn } from '@/modules/__shared__/components/GenericTable'
@@ -20,7 +20,6 @@ export const ProjectsTable: React.FC = () => {
     const cols: IGenericTableColumn[] = [
       { id: 'stargazers_count', label: '⭐', options: { defaultSortOrder: 'asc' } },
       { id: 'name', label: 'Repository name' },
-      // { id: 'description', label: 'Description', options: { notSortable: true } },
       { id: 'language', label: 'Language' },
     ]
     setColumns(cols)
@@ -55,9 +54,7 @@ export const ProjectsTable: React.FC = () => {
         columns={columns}
         data={data}
         options={{
-          pagiationOptions: {
-            
-          },
+        
           onSearchChange: handleSearchChange,
           onSortChange: handleSortChange,
           onPageChange: handlePageChange,
