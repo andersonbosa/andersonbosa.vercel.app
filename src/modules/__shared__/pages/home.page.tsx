@@ -1,19 +1,23 @@
 'use client'
 
-import { Box } from '@mui/material'
+import { Box, Typography } from '@mui/material'
 import { ProjectsPage } from '../../projects/pages/Projects'
 
 
 export const HomePage: React.FC = () => {
   return (
-    <>
-      <Box>hero</Box>
-      <Box>contacts</Box>
-      <Box sx={{ border: '1px solid black' }}>
+    <Box>
+      <Box>
+        {/* hero */}
+      </Box>
+      <Box>
+        <Typography variant='h5'>Contacts</Typography>
+      </Box>
+      <Box>
         <ProjectsPage />
       </Box>
       <Box>skills</Box>
       <Box>footer</Box>
-    </>
+    </Box>
   )
 }
