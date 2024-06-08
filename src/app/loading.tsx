@@ -1,5 +1,5 @@
-import { Box, CircularProgress } from '@mui/material'
 
+import { Box, CircularProgress } from '@mui/material'
 
 export default function Loading (): React.ReactNode {
   return (

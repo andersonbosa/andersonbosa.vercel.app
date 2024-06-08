@@ -1,25 +1,27 @@
 'use client'
 
-import { Box, Typography } from '@mui/material'
-import { ProjectsPage } from '../../projects/pages/Projects'
-
+import { Box } from '@mui/material'
+import { Suspense } from 'react'
 
 export const HomePage: React.FC = () => {
   return (
     <Box>
       <Box id="hero-header">
-        <p>Hello, friend.</p>
-        <p><span>i&apos;m</span><h1>Anderson Bosa.</h1></p>
-        <p><h3>I build secure digital experiences!</h3></p>
-        <p>Passionate about technology and hacking, software engineer
-          since 2019.</p>
+        <Suspense fallback={<p>Loading feed...</p>}>
+          <div className='hero-header-wrapper'>
+            <div className='hero-header-content'>
+              <p className="content1"> Hello, friend.</p>
+              <p className="content2">
+                {/* FIXME quando o componente é montado o "iam" se mexe  */}
+                <span className='iam'> i&apos;m </span> <h1>Anderson Bosa.</h1>
+              </p>
+              <p className="content3"> <h3>I build secure digital experiences!</h3></p>
+              <p className="content4"> Passionate about technology and hacking, software engineer
+                since 2019.</p>
+            </div>
+          </div>
+        </Suspense>
       </Box>
-
-      {/* 
-      <Box>
-        <Typography variant='h5'>Contacts</Typography>
-      </Box>
-       */}
     </Box>
   )
 }
