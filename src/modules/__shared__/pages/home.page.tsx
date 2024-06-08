@@ -10,7 +10,7 @@ export const HomePage: React.FC = () => {
   const [isFakeLoading, setIsFakeLoading] = useState(true)
 
   const installFakeLoading = () => {
-    const timer = setTimeout(() => { setIsFakeLoading(false) }, 20000)
+    const timer = setTimeout(() => { setIsFakeLoading(false) }, 1230)
     return () => clearTimeout(timer)
   }
 
