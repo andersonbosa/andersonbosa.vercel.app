@@ -7,7 +7,7 @@ build:
 	docker build --file $(DOCKER_FILE) -t $(DOCKER_IMAGE_NAME) ../.
 
 run:
-	docker run -d -p $(CONTAINER_PORT):$(CONTAINER_PORT)  --name $(DOCKER_CONTAINER_NAME) $(DOCKER_IMAGE_NAME)
+	docker run --rm -p $(CONTAINER_PORT):$(CONTAINER_PORT) --name $(DOCKER_CONTAINER_NAME) $(DOCKER_IMAGE_NAME)
 
 stop:
 	docker stop $(DOCKER_CONTAINER_NAME)
@@ -18,5 +18,6 @@ remove:
 clean:
 	docker rmi $(DOCKER_IMAGE_NAME)
 
+dev: build run
 
-.PHONY: build run stop remove clean all
+.PHONY: build run stop remove clean dev

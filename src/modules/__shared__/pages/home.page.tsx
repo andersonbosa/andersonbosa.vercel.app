@@ -1,13 +1,14 @@
 'use client'
 
-import { Box, Container } from '@mui/material'
+import { Box,  Container } from '@mui/material'
 import { HeroHeader } from '../components/hero-header'
 import { Sidebar } from '../components/sidebar'
 import { useEffect, useState } from 'react'
 import Loading from '@/app/loading'
+import { Background } from '../components/background'
 
 export const HomePage: React.FC = () => {
-  const [isFakeLoading, setIsFakeLoading] = useState(true)
+  const [isFakeLoading, setIsFakeLoading] = useState(false)
 
   const installFakeLoading = () => {
     const timer = setTimeout(() => { setIsFakeLoading(false) }, 1230)
@@ -16,8 +17,9 @@ export const HomePage: React.FC = () => {
 
   useEffect(installFakeLoading, [])
 
-  return isFakeLoading ? <Loading /> : (
+  const Home = () => (
     <Box>
+      <Background />
       <Sidebar />
 
       <Container>
@@ -26,4 +28,6 @@ export const HomePage: React.FC = () => {
 
     </Box>
   )
+
+  return isFakeLoading ? <Loading /> : <Home />
 }
