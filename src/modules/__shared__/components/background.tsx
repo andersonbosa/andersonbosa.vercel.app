@@ -26,7 +26,7 @@ export const Background = () => {
   )
 
   const particlesLoaded = async (container?: Container): Promise<void> => {
-    console.log(container)
+    // console.log(container)
   }
 
   const mainColor = '#ff8952'
@@ -36,7 +36,7 @@ export const Background = () => {
    * @see {link} You can find sample configurations here - https://github.com/tsparticles/tsparticles/tree/main/utils/configs/src
    */
   const rawOpts: ISourceOptions = {
-    // fpsLimit: 120,
+    fpsLimit: 120,
     detectRetina: true,
     interactivity: {
       events: {

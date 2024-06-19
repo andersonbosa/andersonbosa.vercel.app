@@ -16,7 +16,8 @@ export function HeroHeader (props: IHeroHeaderProps) {
             <p className="content1"> Hello, friend.</p>
             <p className="content2">
               {/* FIXME quando o componente é montado o "iam" se mexe  */}
-              <span className='iam'> i&apos;m </span> <h1>Anderson Bosa.</h1>
+              <span className='iam'> i&apos;m </span>
+              <h1>Anderson Bosa.</h1>
             </p>
             <p className="content3"> <h3>I build secure digital experiences!</h3></p>
             <p className="content4"> Passionate about technology and hacking, software engineer

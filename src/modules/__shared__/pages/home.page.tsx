@@ -1,11 +1,11 @@
 'use client'
 
-import { Box,  Container } from '@mui/material'
-import { HeroHeader } from '../components/hero-header'
-import { Sidebar } from '../components/sidebar'
-import { useEffect, useState } from 'react'
 import Loading from '@/app/loading'
+import { Box, Container } from '@mui/material'
+import { useEffect, useState } from 'react'
 import { Background } from '../components/background'
+import { HeroHeader } from '../components/hero-header'
+import { Menu } from '../components/menu'
 
 export const HomePage: React.FC = () => {
   const [isFakeLoading, setIsFakeLoading] = useState(false)
@@ -20,7 +20,10 @@ export const HomePage: React.FC = () => {
   const Home = () => (
     <Box>
       <Background />
-      <Sidebar />
+      <Menu
+        onLanguageChange={() => { }}
+        onThemeToggle={() => { }}
+      />
 
       <Container>
         <HeroHeader />
