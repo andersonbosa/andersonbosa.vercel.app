@@ -28,7 +28,7 @@ export const Background = () => {
   const particlesLoaded = async (container?: Container): Promise<void> => {
     console.log(container)
   }
-  
+
   /**
    * @see {link} Find all configuration options here. - https://particles.js.org/docs/interfaces/tsParticles_Engine.Options_Interfaces_IOptions.IOptions.html
    * @see {link} You can find sample configurations here - https://github.com/tsparticles/tsparticles/tree/main/utils/configs/src
@@ -41,20 +41,18 @@ export const Background = () => {
         onHover: {
           enable: true,
           mode: 'grab',
-          parallax: {
-            enable: true,
-            smooth: 10,
-            force: 15,
-          },
+          // parallax: {
+          //   enable: true,
+          //   smooth: 10,
+          //   force: 15,
+          // },
         },
       },
       modes: {
         grab: {
-          distance: 30,
-
+          distance: 150,
           line_linked: {
             opacity: 0.075,
-
           },
         },
       },
@@ -67,7 +65,7 @@ export const Background = () => {
         color: '#ff8952',
         distance: 150,
         enable: true,
-        opacity: 0.075,
+        opacity: 0.2,
         width: 1,
       },
       collisions: {
@@ -79,7 +77,6 @@ export const Background = () => {
         outModes: {
           default: OutMode.out,
         },
-
         random: false,
         speed: 1,
         straight: false,
@@ -87,8 +84,8 @@ export const Background = () => {
       number: {
         density: {
           enable: true,
-          width: 800,
-          height: 800,
+          width: 1024,
+          height: 1024,
         },
         value: 100,
       },
