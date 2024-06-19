@@ -29,6 +29,8 @@ export const Background = () => {
     console.log(container)
   }
 
+  const mainColor = '#ff8952'
+
   /**
    * @see {link} Find all configuration options here. - https://particles.js.org/docs/interfaces/tsParticles_Engine.Options_Interfaces_IOptions.IOptions.html
    * @see {link} You can find sample configurations here - https://github.com/tsparticles/tsparticles/tree/main/utils/configs/src
@@ -59,10 +61,10 @@ export const Background = () => {
     },
     particles: {
       color: {
-        value: '#ff8952',
+        value: mainColor,
       },
       links: {
-        color: '#ff8952',
+        color: mainColor,
         distance: 150,
         enable: true,
         opacity: 0.2,
