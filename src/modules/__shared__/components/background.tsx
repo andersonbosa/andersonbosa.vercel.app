@@ -41,16 +41,16 @@ export const Background = () => {
         onHover: {
           enable: true,
           mode: 'grab',
-          // parallax: {
-          //   enable: true,
-          //   smooth: 10,
-          //   force: 15,
-          // },
+          parallax: {
+            enable: true,
+            smooth: 10,
+            force: 50,
+          },
         },
       },
       modes: {
         grab: {
-          distance: 150,
+          distance: 120,
           line_linked: {
             opacity: 0.075,
           },
