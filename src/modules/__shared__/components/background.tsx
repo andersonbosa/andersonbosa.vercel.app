@@ -89,7 +89,7 @@ export const Background = () => {
           width: 1024,
           height: 1024,
         },
-        value: 100,
+        value: 150,
       },
       opacity: {
         value: 0.075,

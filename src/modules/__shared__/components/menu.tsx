@@ -1,27 +1,28 @@
 'use client'
 
 
-import React, { useState } from 'react'
-import {
-  AppBar,
-  Toolbar,
-  IconButton,
-  Typography,
-  Button,
-  Drawer,
-  List,
-  ListItem,
-  ListItemText,
-  Menu as MuiMenu,
-  MenuItem,
-  useTheme,
-  useMediaQuery,
-  Box,
-} from '@mui/material'
-import MenuIcon from '@mui/icons-material/Menu'
 import Brightness4Icon from '@mui/icons-material/Brightness4'
 import Brightness7Icon from '@mui/icons-material/Brightness7'
 import LanguageIcon from '@mui/icons-material/Language'
+import MenuIcon from '@mui/icons-material/Menu'
+import {
+  AppBar,
+  Box,
+  Button,
+  Drawer,
+  IconButton,
+  List,
+  ListItemButton,
+  ListItemText,
+  MenuItem,
+  Menu as MuiMenu,
+  Toolbar,
+  Typography,
+  useMediaQuery,
+  useTheme
+} from '@mui/material'
+import React, { useState } from 'react'
+import { theme } from '../theme/default'
 
 export interface MenuProps {
   onThemeToggle: () => void
@@ -57,71 +58,93 @@ export const Menu: React.FC<MenuProps> = ({ onThemeToggle, onLanguageChange }) =
     { id: 'contacts', label: 'Contacts' },
   ]
 
-  const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
-      <Typography variant="h6" sx={{ my: 2 }}>
-        Menu
-      </Typography>
-      <List>
+  const mobileDrawer = (
+    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center', width: '65%' }}>
+      <List >
         {navItems.map((item) => (
-          <ListItem button key={item.id} component="a" href={`#${item.id}`}>
+          <ListItemButton key={item.id} component="a" href={`#${item.id}`}>
             <ListItemText primary={item.label} />
-          </ListItem>
+          </ListItemButton>
         ))}
-        <ListItem button onClick={onThemeToggle}>
-          <ListItemText primary="Toggle Theme" />
-        </ListItem>
-        <ListItem button onClick={handleMenuClick}>
-          <ListItemText primary="Change Language" />
-        </ListItem>
       </List>
     </Box>
   )
 
-  return (
-    <Box>
-      <AppBar position="static">
-        <Toolbar>
-          {isMobile ? (
-            <>
-              <IconButton
-                edge="start"
-                color="inherit"
-                aria-label="menu"
-                onClick={handleDrawerToggle}
-              >
-                <MenuIcon />
-              </IconButton>
-              <Drawer anchor="left" open={drawerOpen} onClose={handleDrawerToggle}>
-                {drawer}
-              </Drawer>
-            </>
-          ) : (
-            <>
-              <Typography variant="h6" sx={{ flexGrow: 1 }}>
-                Navigation
-              </Typography>
-              {navItems.map((item) => (
-                <Button key={item.id} color="inherit" href={`#${item.id}`}>
-                  {item.label}
-                </Button>
-              ))}
-              <IconButton color="inherit" onClick={onThemeToggle}>
-                {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
-              </IconButton>
-              <IconButton color="inherit" onClick={handleMenuClick}>
-                <LanguageIcon />
-              </IconButton>
-            </>
-          )}
-        </Toolbar>
-      </AppBar>
-      <MuiMenu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleMenuClose}>
-        <MenuItem onClick={() => handleLanguageChange('en')}>English</MenuItem>
-        <MenuItem onClick={() => handleLanguageChange('pt')}>Portuguese</MenuItem>
-        {/* Adicione mais opções de idioma conforme necessário */}
-      </MuiMenu>
+  const MobileMenu = () => (
+    <Box data-id='mobile_menu'>
+      <IconButton
+        edge="start"
+        color="inherit"
+        aria-label="menu"
+        onClick={handleDrawerToggle}
+      >
+        <MenuIcon />
+      </IconButton>
+      <Drawer anchor="left" open={drawerOpen} onClose={handleDrawerToggle} PaperProps={{ sx: { width: '65%' } }} >
+        {mobileDrawer}
+      </Drawer>
     </Box>
+  )
+
+  const DesktopMenu = () => (
+    (
+      <Box data-id='desktop_menu' sx={{
+        display: 'flex',
+        width: '100%',
+        justifyContent: 'space-between'
+      }}>
+        <Box data-id='menu_navigations'>
+          {
+            navItems.map((item) => (
+              <Button key={item.id} color="inherit" href={`#${item.id}`}>
+                {item.label}
+              </Button>
+            ))
+          }
+        </Box>
+        <Box data-id='menu_functions'>
+          <IconButton color="inherit" onClick={onThemeToggle}>
+            {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+          </IconButton>
+          {/* 
+            <IconButton color="inherit" onClick={handleMenuClick}>
+              <LanguageIcon />
+            </IconButton>
+          */}
+        </Box>
+      </Box>
+    )
+  )
+
+  const ChooseLanguageMenu = () => (
+    <MuiMenu
+      anchorEl={anchorEl}
+      open={Boolean(anchorEl)}
+      onClose={handleMenuClose}
+    >
+      <MenuItem onClick={() => handleLanguageChange('en')}>English</MenuItem>
+      <MenuItem onClick={() => handleLanguageChange('pt')}>Portuguese</MenuItem>
+    </MuiMenu>
+  )
+
+  return (
+    <Box >
+      <AppBar
+        data-id='appbar'
+        position="static"
+        color='transparent' enableColorOnDark
+        sx={{
+          backgroundImage: 'none',
+          boxShadow: 'none',
+          borderColor: 'rgba(117, 108, 96, 0.3)',
+          backdropFilter: 'blur(8px)',
+        }}
+      >
+        <Toolbar> {isMobile ? <MobileMenu /> : <DesktopMenu />} </Toolbar>
+      </AppBar >
+
+      {/* <ChooseLanguageMenu /> */}
+    </Box >
   )
 }
 
