@@ -3,15 +3,12 @@
 import { Box, CircularProgress } from '@mui/material'
 import { Suspense } from 'react'
 
-
-
-
 export interface IHeroHeaderProps {
 }
 
 export function HeroHeader (props: IHeroHeaderProps) {
   return (
-    <Box id="hero-header">
+    <Box id="hero-header" >
       <Suspense fallback={<CircularProgress />}>
         <div className='hero-header-wrapper'>
           <div className='hero-header-content'>

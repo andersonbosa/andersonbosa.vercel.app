@@ -104,3 +104,47 @@ body {
     text-align: left;
   }
 }
+
+@media (max-width: 767px) {
+
+  /* ipad mini */
+  #hero-header {
+    width: 100%;
+    height: 100%;
+    display: inline-flex;
+    justify-content: center;
+    pointer-events: none;
+
+    &>div {
+      max-width: 512px;
+    }
+
+    .hero-header-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      width: 100%;
+    }
+
+    .hero-header-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      align-items: center;
+    }
+
+    & h1 {
+      font-size: 2.2rem;
+    }
+
+    & h3 {
+      font-size: 1.2rem;
+    }
+
+    .content4 {
+      text-align: center;
+    }
+  }
+}
