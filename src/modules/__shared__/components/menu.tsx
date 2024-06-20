@@ -131,7 +131,7 @@ export const Menu: React.FC<MenuProps> = ({ onThemeToggle, onLanguageChange }) =
     <Box >
       <AppBar
         data-id='appbar'
-        position="static"
+        // position="static"
         color='transparent' enableColorOnDark
         sx={{
           backgroundImage: 'none',
