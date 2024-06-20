@@ -1,14 +1,18 @@
 'use client'
 
 import Loading from '@/app/loading'
-import { Box, Container } from '@mui/material'
+import { Box, Container, ThemeProvider } from '@mui/material'
 import { useEffect, useState } from 'react'
 import { Background } from '../components/background'
 import { HeroHeader } from '../components/hero-header'
 import { Menu } from '../components/menu'
+import { theme as lightTheme } from '../theme/default'
+import { theme as darkTheme } from '../theme/dark'
+import CssBaseline from '@mui/material/CssBaseline'
 
 export const HomePage: React.FC = () => {
   const [isFakeLoading, setIsFakeLoading] = useState(false)
+  const [themx, setThemx] = useState<any>(lightTheme)
 
   const installFakeLoading = () => {
     const timer = setTimeout(() => { setIsFakeLoading(false) }, 1230)
@@ -22,7 +26,10 @@ export const HomePage: React.FC = () => {
       <Background />
       <Menu
         onLanguageChange={() => { }}
-        onThemeToggle={() => { }}
+        onThemeToggle={() => {
+          console.log(themx)
+          setThemx(themx === lightTheme ? darkTheme : lightTheme)
+         }}
       />
 
       <Container>
@@ -32,5 +39,11 @@ export const HomePage: React.FC = () => {
     </Box>
   )
 
-  return isFakeLoading ? <Loading /> : <Home />
+
+  return (
+    <ThemeProvider theme={themx}>
+      <CssBaseline />
+      {isFakeLoading ? <Loading /> : <Home />}
+    </ThemeProvider>
+  )
 }

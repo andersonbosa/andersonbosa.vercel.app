@@ -17,7 +17,7 @@ body {
   font-size: var(--font-size-base);
   background-color: var(--bg-color-base);
 }
-
+/* 
 .gradient {
   background: linear-gradient(90deg, #8F00FF, #FF00B8);
   background-size: 400% 400%;
@@ -36,7 +36,7 @@ body {
   100% {
     background-position: 0% 50%;
   }
-}
+} */
 
 #hero-header {
   width: 100%;
@@ -45,7 +45,7 @@ body {
   justify-content: center;
   pointer-events: none;
 
-  &>div {
+  div {
     max-width: 512px;
   }
 
@@ -68,15 +68,16 @@ body {
   .iam {
     font-style: italic;
     text-decoration: underline;
+    margin-top: 16px;
   }
 
-  & h1 {
+  h1 {
     color: #D8804E;
     font-size: 3.2rem;
     font-weight: 900;
   }
 
-  & h3 {
+  h3 {
     font-size: 2rem;
     font-weight: 700;
 
@@ -88,7 +89,9 @@ body {
     /* -webkit-text-fill-color: transparent; */
   }
 
-  .content1 {}
+  .content1 {
+    margin-left: 16px;
+  }
 
   .content2 {
     display: flex;
@@ -135,12 +138,20 @@ body {
       align-items: center;
     }
 
-    & h1 {
+    h1 {
       font-size: 2.2rem;
     }
 
-    & h3 {
+    h3 {
       font-size: 1.2rem;
+    }
+
+    .iam {
+      margin-top: 0px;
+    }
+
+    .content1 {
+      margin-left: 0px;
     }
 
     .content4 {
@@ -148,3 +159,6 @@ body {
     }
   }
 }
+
+
+/* div, p, span, h1, h2, h3, h4 { border: 1px solid rgba(255, 0, 0, 0.5); } */
