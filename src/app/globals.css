@@ -4,21 +4,16 @@
 
 :root {
   --font-size-base: 18px;
-  --bg-color-base: #CFCFCF;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg-color-base: #363636;
-  }
+  --bg-color-base: #ebebeb;
 }
 
 body {
   width: 100vw;
   height: 100vh;
   font-size: var(--font-size-base);
-  background-color: var(--bg-color-base);
+  /* background-color: var(--bg-color-base); */
 }
+
 /* 
 .gradient {
   background: linear-gradient(90deg, #8F00FF, #FF00B8);

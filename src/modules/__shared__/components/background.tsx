@@ -1,6 +1,6 @@
 'use client'
 
-import { Box } from '@mui/material'
+import { Box, useTheme } from '@mui/material'
 import { useEffect, useMemo, useState } from 'react'
 
 import {
@@ -14,6 +14,8 @@ import { loadFull } from 'tsparticles'
 
 export const Background = () => {
   const [init, setInit] = useState(false)
+
+
 
   useEffect(
     () => {
@@ -38,6 +40,12 @@ export const Background = () => {
   const rawOpts: ISourceOptions = {
     fpsLimit: 120,
     detectRetina: true,
+    background: {
+      color: useTheme().palette.mode === 'dark' ? '#363636' : '#ebebeb',
+    },
+    fullScreen: {
+      enable: true,
+    },
     interactivity: {
       events: {
         onHover: {

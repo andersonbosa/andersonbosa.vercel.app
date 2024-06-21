@@ -27,7 +27,6 @@ export const HomePage: React.FC = () => {
       <Menu
         onLanguageChange={() => { }}
         onThemeToggle={() => {
-          console.log(themeMode)
           setThemeMode(themeMode === lightTheme ? darkTheme : lightTheme)
         }}
       />
