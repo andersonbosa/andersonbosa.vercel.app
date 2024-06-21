@@ -27,11 +27,11 @@ export const Background = () => {
     []
   )
 
-  const particlesLoaded = async (container?: Container): Promise<void> => {
-    // console.log(container)
-  }
+  const particlesLoaded = async (container?: Container): Promise<void> => { }
 
-  const mainColor = '#ff8952'
+  const linksColor = '#ff8952'
+  const lightBackgroundColor = '#ebebeb'
+  const darkBackgroundColor = '#363636'
 
   /**
    * @see {link} Find all configuration options here. - https://particles.js.org/docs/interfaces/tsParticles_Engine.Options_Interfaces_IOptions.IOptions.html
@@ -41,7 +41,7 @@ export const Background = () => {
     fpsLimit: 120,
     detectRetina: true,
     background: {
-      color: useTheme().palette.mode === 'dark' ? '#363636' : '#ebebeb',
+      color: useTheme().palette.mode === 'dark' ? darkBackgroundColor : lightBackgroundColor,
     },
     fullScreen: {
       enable: true,
@@ -69,13 +69,13 @@ export const Background = () => {
     },
     particles: {
       color: {
-        value: mainColor,
+        value: linksColor,
       },
       links: {
-        color: mainColor,
+        color: linksColor,
         distance: 150,
         enable: true,
-        opacity: 0.2,
+        opacity: 0.15,
         width: 1,
       },
       collisions: {
