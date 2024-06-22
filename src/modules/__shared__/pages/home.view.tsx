@@ -16,6 +16,7 @@ import { theme as lightTheme } from '../theme/default'
 
 const configs = {
   themes: {
+    default: darkTheme,
     light: lightTheme,
     dark: darkTheme,
   }
@@ -23,12 +24,14 @@ const configs = {
 
 export const HomeView: React.FC = () => {
   const [isFakeLoading, setIsFakeLoading] = useState(false)
-  const [themeMode, setThemeMode] = useState<Theme>(lightTheme)
+  const [currentThemeMode, setCurrentThemeMode] = useState<Theme>(configs.themes.default)
 
   const handleLanguageChange = () => { }
 
   const handleThemeChange = () => {
-    setThemeMode(themeMode.palette.mode === 'light' ? configs.themes.dark : configs.themes.light)
+    setCurrentThemeMode(
+      currentThemeMode.palette.mode === 'light' ? configs.themes.dark : configs.themes.light
+    )
   }
 
   const Home = () => (
@@ -44,7 +47,7 @@ export const HomeView: React.FC = () => {
   const installPreferedColorScheme = () => {
     const mediaQuery = window?.matchMedia('(prefers-color-scheme: dark)')
     const handleColorSchemeChange = (event: MediaQueryListEvent) => {
-      setThemeMode(event.matches ? configs.themes.dark : configs.themes.light)
+      setCurrentThemeMode(event.matches ? configs.themes.dark : configs.themes.light)
     }
 
     mediaQuery.addEventListener('change', handleColorSchemeChange)
@@ -61,7 +64,7 @@ export const HomeView: React.FC = () => {
   useEffect(installFakeLoading, [])
 
   return (
-    <ThemeProvider theme={themeMode}>
+    <ThemeProvider theme={currentThemeMode}>
       <CssBaseline />
       {isFakeLoading ? <Loading /> : <Home />}
     </ThemeProvider>
