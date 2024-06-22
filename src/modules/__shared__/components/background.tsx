@@ -112,7 +112,7 @@ export const Background = () => {
   }
 
   const options: ISourceOptions = useMemo(
-    () => (rawOpts), [],
+    () => (rawOpts), [rawOpts],
   )
 
   if (init) {
