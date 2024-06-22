@@ -46,9 +46,15 @@ export const HomeView: React.FC = () => {
 
   const installPreferedColorScheme = () => {
     const mediaQuery = window?.matchMedia('(prefers-color-scheme: dark)')
+
     const handleColorSchemeChange = (event: MediaQueryListEvent) => {
-      setCurrentThemeMode(event.matches ? configs.themes.dark : configs.themes.light)
+      console.log(` $${new Date().toISOString()} ========================handleColorSchemeChange`,)
+      setCurrentThemeMode(
+        event.matches ? configs.themes.dark : configs.themes.light
+      )
     }
+
+    handleColorSchemeChange(mediaQuery as any)
 
     mediaQuery.addEventListener('change', handleColorSchemeChange)
     return () => { mediaQuery.removeEventListener('change', handleColorSchemeChange) }
