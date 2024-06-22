@@ -1,5 +1,8 @@
 import "./globals.css"
 
+import '@/modules/__shared__/@helpers/mui-class-name-setup'
+
+
 import type { Metadata } from "next"
 import { Roboto } from "next/font/google"
 
