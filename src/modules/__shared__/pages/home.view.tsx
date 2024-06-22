@@ -5,12 +5,12 @@ import { Box, Container, ThemeProvider, useTheme } from '@mui/material'
 import { useEffect, useMemo, useState } from 'react'
 import { Background } from '../components/background'
 import { HeroHeader } from '../components/hero-header/hero-header'
-import { Menu } from '../components/menu'
+import { Menu } from '../components/menu/menu'
 import { theme as lightTheme } from '../theme/default'
 import { theme as darkTheme } from '../theme/dark'
 import CssBaseline from '@mui/material/CssBaseline'
 
-export const HomePage: React.FC = () => {
+export const HomeView: React.FC = () => {
   const [isFakeLoading, setIsFakeLoading] = useState(false)
   const [themeMode, setThemeMode] = useState<any>(darkTheme)
 
