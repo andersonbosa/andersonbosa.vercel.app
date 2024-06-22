@@ -1,17 +1,27 @@
 .menu {
+  .navItem {
+
+    &:hover {
+      font-weight: bold;
+    }
+  }
+
   .desktopMenu {
     display: flex;
     width: 100%;
     justify-content: space-between;
 
-    .section1 {}
+    & .section1 {
+      display: flex;
+      gap: 4px;
+    }
 
-    .section2 {}
+    /* & .section2 {} */
   }
 
   .mobileMenu {
-    .section1 {}
+    /* & .section1 {} */
 
-    .section2 {}
+    /* & .section2 {} */
   }
 }

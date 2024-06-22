@@ -81,8 +81,8 @@ export const Menu: React.FC<MenuProps> = ({ onThemeToggle, onLanguageChange }) =
   // )
 
   const mobileDrawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center', width: '65%' }}>
-      <List >
+    <Box onClick={handleDrawerToggle}>
+      <List>
         {navItems.map((item) => (
           <ListItemButton key={item.id} component="a" href={`#${item.id}`}>
             <ListItemText primary={item.label} />
@@ -94,7 +94,7 @@ export const Menu: React.FC<MenuProps> = ({ onThemeToggle, onLanguageChange }) =
 
   const MobileMenu = () => (
     <Box className={styles.mobileMenu}>
-      <Box>
+      <Box className={styles.section1}>
         <IconButton
           edge="start"
           color="inherit"
@@ -117,10 +117,10 @@ export const Menu: React.FC<MenuProps> = ({ onThemeToggle, onLanguageChange }) =
   const DesktopMenu = () => (
     (
       <Box className={styles.desktopMenu} >
-        <Box className='section1'>
+        <Box className={styles.section1}>
           {
             navItems.map((item) => (
-              <Button key={item.id} color="inherit" href={`#${item.id}`}>
+              <Button key={item.id} color="inherit" href={`#${item.id}`} className={styles.navItem}>
                 {item.label}
               </Button>
             ))
