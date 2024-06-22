@@ -2,8 +2,6 @@
 
 import { useEffect, useState } from 'react'
 
-
-
 import Loading from '@/app/loading'
 import { Box, Container, Theme, ThemeProvider } from '@mui/material'
 import CssBaseline from '@mui/material/CssBaseline'
@@ -14,7 +12,6 @@ import { Menu } from '../components/menu/menu'
 
 import { theme as darkTheme } from '../theme/dark'
 import { theme as lightTheme } from '../theme/default'
-import { useSystemTheme } from '../hooks/use-system-theme.hook'
 
 
 const configs = {
