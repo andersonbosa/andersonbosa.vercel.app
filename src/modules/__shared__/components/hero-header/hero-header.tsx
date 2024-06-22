@@ -10,8 +10,8 @@ export interface IHeroHeaderProps {
 export function HeroHeader (props: IHeroHeaderProps) {
   return (
     <Box id="hero-header" className={styles.heroHeader} >
-      <div className={styles.heroHeaderWrapper}>
-        <div className={styles.heroHeaderContent}>
+      <div className={styles.wrapper}>
+        <div className={styles.subWrapper}>
           <p className={styles.content1}> Hello, friend.</p>
           <div className={styles.content2}>
             <span className={styles.iam}> i&apos;m </span>

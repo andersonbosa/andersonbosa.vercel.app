@@ -6,7 +6,7 @@
   pointer-events: none;
 
 
-  .heroHeaderWrapper {
+  .wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -15,7 +15,7 @@
     max-width: 512px;
   }
 
-  .heroHeaderContent {
+  .subWrapper {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -79,7 +79,7 @@
       max-width: 512px;
     }
 
-    .heroHeaderWrapper {
+    .wrapper {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -87,7 +87,7 @@
       width: 100%;
     }
 
-    .heroHeaderContent {
+    .subWrapper {
       display: flex;
       flex-direction: column;
       justify-content: center;
