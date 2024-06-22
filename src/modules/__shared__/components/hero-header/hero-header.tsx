@@ -14,7 +14,6 @@ export function HeroHeader (props: IHeroHeaderProps) {
         <div className={styles.heroHeaderContent}>
           <p className={styles.content1}> Hello, friend.</p>
           <div className={styles.content2}>
-            {/* FIXME quando o componente é montado o "iam" se mexe  */}
             <span className={styles.iam}> i&apos;m </span>
             <h1>Anderson Bosa.</h1>
           </div>
