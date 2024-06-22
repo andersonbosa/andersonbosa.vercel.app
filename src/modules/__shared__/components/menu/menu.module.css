@@ -1,0 +1,17 @@
+.menu {
+  .desktopMenu {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+
+    .section1 {}
+
+    .section2 {}
+  }
+
+  .mobileMenu {
+    .section1 {}
+
+    .section2 {}
+  }
+}

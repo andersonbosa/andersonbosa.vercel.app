@@ -1,9 +1,9 @@
 'use client'
 
+import styles from './menu.module.css'
 
 import Brightness4Icon from '@mui/icons-material/Brightness4'
 import Brightness7Icon from '@mui/icons-material/Brightness7'
-import LanguageIcon from '@mui/icons-material/Language'
 import MenuIcon from '@mui/icons-material/Menu'
 import {
   AppBar,
@@ -17,12 +17,10 @@ import {
   MenuItem,
   Menu as MuiMenu,
   Toolbar,
-  Typography,
   useMediaQuery,
   useTheme
 } from '@mui/material'
 import React, { useState } from 'react'
-import { theme } from '../theme/default'
 
 export interface MenuProps {
   onThemeToggle: () => void
@@ -39,7 +37,7 @@ export const Menu: React.FC<MenuProps> = ({ onThemeToggle, onLanguageChange }) =
     setDrawerOpen(!drawerOpen)
   }
 
-  const handleMenuClick = (event: React.MouseEvent<HTMLElement>) => {
+  const handleLanguageMenuClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget)
   }
 
@@ -47,16 +45,40 @@ export const Menu: React.FC<MenuProps> = ({ onThemeToggle, onLanguageChange }) =
     setAnchorEl(null)
   }
 
-  const handleLanguageChange = (language: string) => {
-    onLanguageChange(language)
-    handleMenuClose()
-  }
+  // const handleLanguageChange = (language: string) => {
+  //   onLanguageChange(language)
+  //   handleMenuClose()
+  // }
 
   const navItems = [
     { id: 'about', label: 'About' },
     { id: 'projects', label: 'Projects' },
     { id: 'contacts', label: 'Contacts' },
   ]
+
+
+  const ToggleThemeButton = () => (
+    <IconButton color="inherit" onClick={onThemeToggle}>
+      {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+    </IconButton>
+  )
+
+  // const PickLanguageButton = () => (
+  //   <IconButton color="inherit" onClick={handleLanguageMenuClick}>
+  //     <LanguageIcon />
+  //   </IconButton>
+  // )
+
+  // const ChooseLanguageMenu = () => (
+  //   <MuiMenu
+  //     anchorEl={anchorEl}
+  //     open={Boolean(anchorEl)}
+  //     onClose={handleMenuClose}
+  //   >
+  //     <MenuItem onClick={() => handleLanguageChange('en')}>English</MenuItem>
+  //     <MenuItem onClick={() => handleLanguageChange('pt')}>Portuguese</MenuItem>
+  //   </MuiMenu>
+  // )
 
   const mobileDrawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center', width: '65%' }}>
@@ -71,29 +93,31 @@ export const Menu: React.FC<MenuProps> = ({ onThemeToggle, onLanguageChange }) =
   )
 
   const MobileMenu = () => (
-    <Box data-id='mobile_menu'>
-      <IconButton
-        edge="start"
-        color="inherit"
-        aria-label="menu"
-        onClick={handleDrawerToggle}
-      >
-        <MenuIcon />
-      </IconButton>
+    <Box className={styles.mobileMenu}>
+      <Box>
+        <IconButton
+          edge="start"
+          color="inherit"
+          aria-label="menu"
+          onClick={handleDrawerToggle}
+        >
+          <MenuIcon />
+        </IconButton>
+
+        <ToggleThemeButton />
+      </Box>
+
       <Drawer anchor="left" open={drawerOpen} onClose={handleDrawerToggle} PaperProps={{ sx: { width: '65%' } }} >
         {mobileDrawer}
       </Drawer>
     </Box>
   )
 
+
   const DesktopMenu = () => (
     (
-      <Box data-id='desktop_menu' sx={{
-        display: 'flex',
-        width: '100%',
-        justifyContent: 'space-between'
-      }}>
-        <Box data-id='menu_navigations'>
+      <Box className={styles.desktopMenu} >
+        <Box className='section1'>
           {
             navItems.map((item) => (
               <Button key={item.id} color="inherit" href={`#${item.id}`}>
@@ -102,36 +126,17 @@ export const Menu: React.FC<MenuProps> = ({ onThemeToggle, onLanguageChange }) =
             ))
           }
         </Box>
-        <Box data-id='menu_functions'>
-          <IconButton color="inherit" onClick={onThemeToggle}>
-            {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
-          </IconButton>
-          {/* 
-            <IconButton color="inherit" onClick={handleMenuClick}>
-              <LanguageIcon />
-            </IconButton>
-          */}
+        <Box className='section2'>
+          <ToggleThemeButton />
         </Box>
       </Box>
     )
   )
 
-  const ChooseLanguageMenu = () => (
-    <MuiMenu
-      anchorEl={anchorEl}
-      open={Boolean(anchorEl)}
-      onClose={handleMenuClose}
-    >
-      <MenuItem onClick={() => handleLanguageChange('en')}>English</MenuItem>
-      <MenuItem onClick={() => handleLanguageChange('pt')}>Portuguese</MenuItem>
-    </MuiMenu>
-  )
-
   return (
-    <Box >
+    <Box className={styles.menu}>
       <AppBar
         data-id='appbar'
-        // position="static"
         color='transparent' enableColorOnDark
         sx={{
           backgroundImage: 'none',
@@ -142,8 +147,6 @@ export const Menu: React.FC<MenuProps> = ({ onThemeToggle, onLanguageChange }) =
       >
         <Toolbar> {isMobile ? <MobileMenu /> : <DesktopMenu />} </Toolbar>
       </AppBar >
-
-      {/* <ChooseLanguageMenu /> */}
     </Box >
   )
 }
