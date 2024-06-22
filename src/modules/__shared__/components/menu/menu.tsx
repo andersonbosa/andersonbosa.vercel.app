@@ -14,8 +14,6 @@ import {
   List,
   ListItemButton,
   ListItemText,
-  MenuItem,
-  Menu as MuiMenu,
   Toolbar,
   useMediaQuery,
   useTheme
