@@ -5,14 +5,11 @@
     background-position: 0% 50%;
   }
 
-  50% {
-    background-position: 100% 50%;
-  }
-
   100% {
-    background-position: 0% 50%;
+    background-position: 200% 50%;
   }
 }
+
 
 .heroHeader {
   height: 100%;
@@ -54,9 +51,9 @@
     font-size: 2rem;
     font-weight: 700;
 
-    background: linear-gradient(90deg, #ae00ff, #2ea8ff);
-    background-size: 400% 400%;
-    animation: gradientAnimation 5s ease infinite;
+    background: linear-gradient(90deg, #ae00ff, #2ea8ff, #ae00ff);
+    background-size: 200% 200%;
+    animation: gradientAnimation 3s linear infinite;
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -115,7 +112,7 @@
     }
 
     h3 {
-      font-size: 1.2rem;
+      font-size: 1.5rem;
     }
 
     .iam {
