@@ -16,7 +16,7 @@
     "@tsparticles/react": "^3.0.0",
     "axios": "^1.7.2",
     "framer-motion": "^11.2.6",
-    "next": "14.2.3",
+    "next": "^14.2.4",
     "react": "^18",
     "react-dom": "^18",
     "tsparticles": "^3.4.0"
@@ -27,7 +27,8 @@
     "@types/react-dom": "^18",
     "eslint": "^8",
     "eslint-config-next": "14.2.3",
-    "postcss": "^8",
+    "postcss": "^8.4.38",
+    "postcss-nesting": "^12.1.5",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   }
