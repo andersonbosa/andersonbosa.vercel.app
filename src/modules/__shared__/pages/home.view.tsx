@@ -48,7 +48,6 @@ export const HomeView: React.FC = () => {
     const mediaQuery = window?.matchMedia('(prefers-color-scheme: dark)')
 
     const handleColorSchemeChange = (event: MediaQueryListEvent) => {
-      console.log(` $${new Date().toISOString()} ========================handleColorSchemeChange`,)
       setCurrentThemeMode(
         event.matches ? configs.themes.dark : configs.themes.light
       )
@@ -66,7 +65,6 @@ export const HomeView: React.FC = () => {
   }
 
   useEffect(installPreferedColorScheme, [])
-
   useEffect(installFakeLoading, [])
 
   return (
