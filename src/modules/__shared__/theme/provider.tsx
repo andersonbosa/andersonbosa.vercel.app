@@ -1,13 +1,27 @@
-import * as React from 'react'
+'use client'
+
 import { CommonStyles } from '@/modules/__shared__/theme/common'
 import { CssBaseline, Theme, ThemeProvider } from '@mui/material'
+import { FunctionComponent, ReactNode, useEffect } from 'react'
+
 
 interface IMuiThemeProviderProps {
-  children: React.ReactNode
+  children: ReactNode
   theme: Theme
 }
 
-export const MuiThemeProvider: React.FunctionComponent<IMuiThemeProviderProps> = (props) => {
+export const MuiThemeProvider: FunctionComponent<IMuiThemeProviderProps> = (props) => {
+
+  const listenThemeChangeToHandleScrollTheme = () => {
+    const className = props.theme.palette.mode === 'light' ? 'light-scrollbar' : 'dark-scrollbar'
+    document.body.classList.add(className)
+    return () => {
+      document.body.classList.remove(className)
+    }
+  }
+
+  useEffect(listenThemeChangeToHandleScrollTheme, [props.theme])
+
   return (
     <ThemeProvider theme={props.theme}>
       <CssBaseline />
