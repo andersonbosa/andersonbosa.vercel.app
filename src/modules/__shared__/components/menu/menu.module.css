@@ -14,17 +14,18 @@
     & .section1 {
       display: flex;
       gap: 4px;
-      background-color: rgba(0, 0, 255, 0.363),;
+      background-color: rgba(0, 0, 255, 0.363), ;
     }
 
     & .section2 {}
   }
 
   .mobileMenu {
+    width: 100%;
+
     & .section1 {
-      background-color: rgba(255, 0, 0, 0.384);
       display: flex;
-      
+      justify-content: space-between;
     }
 
     & .section2 {}

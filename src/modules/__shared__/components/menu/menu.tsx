@@ -90,19 +90,25 @@ export const Menu: React.FC<MenuProps> = ({ onThemeToggle, onLanguageChange }) =
     </Box>
   )
 
+  const DrawerToggleButton = () => (
+    <IconButton
+      edge="start"
+      color="inherit"
+      aria-label="menu"
+      onClick={handleDrawerToggle}
+    >
+      <MenuIcon />
+    </IconButton>
+  )
+
   const MobileMenu = () => (
     <Box className={styles.mobileMenu}>
       <Box className={styles.section1}>
-        <IconButton
-          edge="start"
-          color="inherit"
-          aria-label="menu"
-          onClick={handleDrawerToggle}
-        >
-          <MenuIcon />
-        </IconButton>
+        <DrawerToggleButton />
 
-        <ToggleThemeButton />
+        <Box>
+          <ToggleThemeButton />
+        </Box>
       </Box>
 
       <Drawer anchor="left" open={drawerOpen} onClose={handleDrawerToggle} PaperProps={{ sx: { width: '65%' } }} >
@@ -110,7 +116,6 @@ export const Menu: React.FC<MenuProps> = ({ onThemeToggle, onLanguageChange }) =
       </Drawer>
     </Box>
   )
-
 
   const DesktopMenu = () => (
     (
