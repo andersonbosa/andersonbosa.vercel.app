@@ -26,22 +26,24 @@ export interface MenuProps {
 }
 
 export const Menu: React.FC<MenuProps> = ({ onThemeToggle, onLanguageChange }) => {
-  const [drawerOpen, setDrawerOpen] = useState(false)
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
+
+  const [drawerOpen, setDrawerOpen] = useState(false)
+  // const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
+
 
   const handleDrawerToggle = () => {
     setDrawerOpen(!drawerOpen)
   }
 
-  const handleLanguageMenuClick = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget)
-  }
+  // const handleLanguageMenuClick = (event: React.MouseEvent<HTMLElement>) => {
+  //   setAnchorEl(event.currentTarget)
+  // }
 
-  const handleMenuClose = () => {
-    setAnchorEl(null)
-  }
+  // const handleMenuClose = () => {
+  //   setAnchorEl(null)
+  // }
 
   // const handleLanguageChange = (language: string) => {
   //   onLanguageChange(language)

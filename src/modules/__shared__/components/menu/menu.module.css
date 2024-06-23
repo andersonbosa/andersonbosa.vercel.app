@@ -14,7 +14,6 @@
     & .section1 {
       display: flex;
       gap: 4px;
-      background-color: rgba(0, 0, 255, 0.363), ;
     }
 
     & .section2 {}

@@ -37,7 +37,9 @@ export const HomeView: React.FC = () => {
   const Home = () => (
     <Box>
       <Background />
+
       <Menu onLanguageChange={handleLanguageChange} onThemeToggle={handleThemeChange} />
+      
       <Container>
         <HeroHeader />
       </Container>
