@@ -10,7 +10,9 @@ export const metadata: Metadata = {
   description: 'I build secure digital experiences! Passionate about technology and hacking, software engineer since 2019'
 }
 
-export default function RootLayout ({ children, }: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout (
+  { children, }: Readonly<{ children: React.ReactNode }>
+) {
   return (
     <html lang="en_US">
       <body className={fontImported.className}>

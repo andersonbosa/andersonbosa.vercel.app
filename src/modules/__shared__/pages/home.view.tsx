@@ -3,16 +3,16 @@
 import { useEffect, useState } from 'react'
 
 import Loading from '@/app/loading'
-import { Box, Container, Theme, ThemeProvider } from '@mui/material'
-import CssBaseline from '@mui/material/CssBaseline'
+import { Box, Container, CssBaseline, Theme } from '@mui/material'
 
 import { Background } from '../components/background'
+import { Contact } from '../components/contact/contact'
 import { HeroHeader } from '../components/hero-header/hero-header'
 import { Menu } from '../components/menu/menu'
-import { Contact } from '../components/contact/contact'
 
 import { theme as darkTheme } from '../theme/dark'
 import { theme as lightTheme } from '../theme/default'
+import MuiThemeProvider from '../theme/provider'
 
 
 const configs = {
@@ -39,7 +39,7 @@ export const HomeView: React.FC = () => {
     <Box>
       <Background />
       <Menu onLanguageChange={handleLanguageChange} onThemeToggle={handleThemeChange} />
-      
+
       <Container>
         <HeroHeader />
         <Contact />
@@ -71,9 +71,8 @@ export const HomeView: React.FC = () => {
   useEffect(installFakeLoading, [])
 
   return (
-    <ThemeProvider theme={currentThemeMode}>
-      <CssBaseline />
+    <MuiThemeProvider theme={currentThemeMode}>
       {isFakeLoading ? <Loading /> : <Home />}
-    </ThemeProvider>
+    </MuiThemeProvider>
   )
 }
