@@ -4,6 +4,10 @@
 
 :root {
   --font-size-base: 18px;
+
+  --color-primary: #D8804E;
+  --color-secondary: #AE00FF;
+  --color-accent: #2EA8FF;
 }
 
 body {

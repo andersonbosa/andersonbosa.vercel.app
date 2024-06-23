@@ -40,7 +40,7 @@
   }
 
   h1 {
-    color: #D8804E;
+    color: var(--color-primary);
     font-size: 3.2rem;
     font-weight: 900;
   }
@@ -49,7 +49,7 @@
     font-size: 2rem;
     font-weight: 700;
 
-    background: linear-gradient(90deg, #ae00ff, #2ea8ff, #ae00ff);
+    background: linear-gradient(90deg, var(--color-secondary), var(--color-accent), var(--color-secondary));
     background-size: 200% 200%;
     animation: gradientAnimation 3s linear infinite;
     background-clip: text;
