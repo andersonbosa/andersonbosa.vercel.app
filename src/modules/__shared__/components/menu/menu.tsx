@@ -67,8 +67,8 @@ export const Menu: React.FC<MenuProps> = ({ onThemeToggle, onLanguageChange }) =
     <Box onClick={handleDrawerToggle} >
       <List className={styles.mobileDrawer}>
         {navItems.map((item) => (
-          <ListItemButton key={item.id} component="a" href={`#${item.id}`} >
-            <ListItemText primary={item.label} className={styles.navItem} />
+          <ListItemButton key={item.id} component="a" href={`#${item.id}`} className={styles.navItem} >
+            <ListItemText primary={item.label} />
           </ListItemButton>
         ))}
       </List>
