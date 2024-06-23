@@ -1,13 +1,21 @@
 .menu {
-
   & .desktopMenu {
     display: flex;
     width: 100%;
     justify-content: space-between;
 
+    .logo {
+      font-weight: bolder;
+      padding: 4px;
+      align-self: center;
+      margin: 0 16px
+    }
+
     & .section1 {
+      flex: 1;
       display: flex;
-      gap: 4px;
+      gap: 16px;
+      margin: 0 16px
     }
 
     & .section2 {}

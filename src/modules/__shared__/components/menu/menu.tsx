@@ -111,6 +111,7 @@ export const Menu: React.FC<MenuProps> = ({ onThemeToggle, onLanguageChange }) =
   const DesktopMenu = () => (
     (
       <Box className={styles.desktopMenu} >
+        <Box className={styles.logo}> ANB </Box>
         <Box className={styles.section1}>
           {
             navItems.map((item) => (
