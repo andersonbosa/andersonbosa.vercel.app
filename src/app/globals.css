@@ -5,6 +5,9 @@
 :root {
   --font-size-base: 18px;
 
+  --bg-light: #ebebeb;
+  --bg-dark: #363636;
+
   --color-primary: #D8804E;
   --color-secondary: #AE00FF;
   --color-accent: #2EA8FF;

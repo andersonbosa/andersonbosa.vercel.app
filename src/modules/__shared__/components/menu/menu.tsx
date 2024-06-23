@@ -99,7 +99,6 @@ export const Menu: React.FC<MenuProps> = ({ onThemeToggle, onLanguageChange }) =
       <Drawer
         anchor='left'
         open={drawerOpen}
-
         onClose={handleDrawerToggle}
         PaperProps={{ sx: { width: '55%' } }}
         SlideProps={{ direction: 'right', appear: true }}

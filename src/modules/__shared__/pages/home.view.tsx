@@ -9,6 +9,7 @@ import CssBaseline from '@mui/material/CssBaseline'
 import { Background } from '../components/background'
 import { HeroHeader } from '../components/hero-header/hero-header'
 import { Menu } from '../components/menu/menu'
+import { Contact } from '../components/contact/contact'
 
 import { theme as darkTheme } from '../theme/dark'
 import { theme as lightTheme } from '../theme/default'
@@ -42,6 +43,7 @@ export const HomeView: React.FC = () => {
       
       <Container>
         <HeroHeader />
+        <Contact />
       </Container>
     </Box>
   )
