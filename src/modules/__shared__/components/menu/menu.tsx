@@ -131,14 +131,9 @@ export const Menu: React.FC<MenuProps> = ({ onThemeToggle, onLanguageChange }) =
   return (
     <Box className={styles.menu}>
       <AppBar
-        data-id='appbar'
-        color='transparent' enableColorOnDark
-        sx={{
-          backgroundImage: 'none',
-          boxShadow: 'none',
-          borderColor: 'rgba(117, 108, 96, 0.3)',
-          backdropFilter: 'blur(8px)',
-        }}
+        className={styles.appbar}
+        color='transparent'
+        enableColorOnDark
       >
         <Toolbar> {isMobile ? <MobileMenu /> : <DesktopMenu />} </Toolbar>
       </AppBar >
