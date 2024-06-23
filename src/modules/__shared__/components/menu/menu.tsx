@@ -19,7 +19,6 @@ import {
   useTheme
 } from '@mui/material'
 import React, { useState } from 'react'
-
 export interface MenuProps {
   onThemeToggle: () => void
   onLanguageChange: (language: string) => void
@@ -29,33 +28,17 @@ export const Menu: React.FC<MenuProps> = ({ onThemeToggle, onLanguageChange }) =
   const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
 
-  const [drawerOpen, setDrawerOpen] = useState(false)
-  // const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
-
+  const [drawerOpen, setDrawerOpen] = useState(true)
 
   const handleDrawerToggle = () => {
     setDrawerOpen(!drawerOpen)
   }
-
-  // const handleLanguageMenuClick = (event: React.MouseEvent<HTMLElement>) => {
-  //   setAnchorEl(event.currentTarget)
-  // }
-
-  // const handleMenuClose = () => {
-  //   setAnchorEl(null)
-  // }
-
-  // const handleLanguageChange = (language: string) => {
-  //   onLanguageChange(language)
-  //   handleMenuClose()
-  // }
 
   const navItems = [
     { id: 'about', label: 'About' },
     { id: 'projects', label: 'Projects' },
     { id: 'contacts', label: 'Contacts' },
   ]
-
 
   const ToggleThemeButton = () => (
     <IconButton color="inherit" onClick={onThemeToggle}>
@@ -81,11 +64,11 @@ export const Menu: React.FC<MenuProps> = ({ onThemeToggle, onLanguageChange }) =
   // )
 
   const mobileDrawer = (
-    <Box onClick={handleDrawerToggle}>
-      <List>
+    <Box onClick={handleDrawerToggle} >
+      <List className={styles.mobileDrawer}>
         {navItems.map((item) => (
-          <ListItemButton key={item.id} component="a" href={`#${item.id}`}>
-            <ListItemText primary={item.label} />
+          <ListItemButton key={item.id} component="a" href={`#${item.id}`} >
+            <ListItemText primary={item.label} className={styles.navItem} />
           </ListItemButton>
         ))}
       </List>
@@ -113,7 +96,14 @@ export const Menu: React.FC<MenuProps> = ({ onThemeToggle, onLanguageChange }) =
         </Box>
       </Box>
 
-      <Drawer anchor="left" open={drawerOpen} onClose={handleDrawerToggle} PaperProps={{ sx: { width: '65%' } }} >
+      <Drawer
+        anchor='left'
+        open={drawerOpen}
+
+        onClose={handleDrawerToggle}
+        PaperProps={{ sx: { width: '55%' } }}
+        SlideProps={{ direction: 'right', appear: true }}
+      >
         {mobileDrawer}
       </Drawer>
     </Box>
