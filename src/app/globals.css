@@ -17,11 +17,7 @@ body {
   width: 100vw;
   height: 100vh;
   font-size: var(--font-size-base);
-  /* background-color: var(--bg-color-base); */
 }
-
-/* ------------------------------------------------------------------ */
-/* Media queries */
 
 /* desktop */
 @media (min-width: 767px) {}
