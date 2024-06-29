@@ -19,6 +19,7 @@ import {
   useTheme
 } from '@mui/material'
 import React, { useState } from 'react'
+import { NAV_ITEMS } from '../../constants'
 export interface MenuProps {
   onThemeToggle: () => void
   onLanguageChange: (language: string) => void
@@ -34,11 +35,6 @@ export const Menu: React.FC<MenuProps> = ({ onThemeToggle, onLanguageChange }) =
     setDrawerOpen(!drawerOpen)
   }
 
-  const navItems = [
-    { id: 'about', label: 'About' },
-    { id: 'projects', label: 'Projects' },
-    { id: 'contacts', label: 'Contacts' },
-  ]
 
   const ToggleThemeButton = () => (
     <IconButton color="inherit" onClick={onThemeToggle}>
@@ -66,7 +62,7 @@ export const Menu: React.FC<MenuProps> = ({ onThemeToggle, onLanguageChange }) =
   const mobileDrawer = (
     <Box onClick={handleDrawerToggle} >
       <List className={styles.mobileDrawer}>
-        {navItems.map((item) => (
+        {NAV_ITEMS.map((item) => (
           <ListItemButton key={item.id} component="a" href={`#${item.id}`} className={styles.navItem} >
             <ListItemText primary={item.label} />
           </ListItemButton>
@@ -114,7 +110,7 @@ export const Menu: React.FC<MenuProps> = ({ onThemeToggle, onLanguageChange }) =
         <Box className={styles.logo}> ANB </Box>
         <Box className={styles.section1}>
           {
-            navItems.map((item) => (
+            NAV_ITEMS.map((item) => (
               <Button key={item.id} color="inherit" href={`#${item.id}`} className={styles.navItem}>
                 {item.label}
               </Button>
