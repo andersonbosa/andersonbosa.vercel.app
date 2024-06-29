@@ -1,4 +1,5 @@
-import "./globals.css"
+import './globals.css'
+import '@/modules/__shared__/theme/common.css'
 
 import type { Metadata } from "next"
 import { Roboto } from "next/font/google"

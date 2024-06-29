@@ -7,7 +7,9 @@ interface TitleProps {
 
 const Title: FunctionComponent<TitleProps> = (props) => {
   return (
-    <Typography variant='h1'>
+    <Typography
+      variant='h1'
+    >
       {props.children}
     </Typography>
   )
