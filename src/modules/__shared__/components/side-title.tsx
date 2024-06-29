@@ -12,7 +12,7 @@ export const SideTitle: FunctionComponent<SideTitleProps> = (props) => {
 
   return (
     <Typography
-      // variant='h3'
+      variant='h1'
       color={theme.palette.mode === 'dark' ? 'teal.500' : 'blue.500'}
       fontSize={{
         base: '1.75rem',
@@ -23,7 +23,7 @@ export const SideTitle: FunctionComponent<SideTitleProps> = (props) => {
         transform: 'rotate(180deg)',
         textTransform: 'uppercase',
         gap: '4px',
-        align: 'center'
+        align: 'center',
       }}
     >
       {props.children}
