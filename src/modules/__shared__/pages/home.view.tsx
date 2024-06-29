@@ -43,6 +43,7 @@ export const HomeView: React.FC = () => {
       <Container>
         <HeroHeader />
         <Contact />
+        <Box sx={{ height: '4rem' }}></Box>
       </Container>
     </Box>
   )
