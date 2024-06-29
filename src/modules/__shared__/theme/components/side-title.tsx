@@ -1,4 +1,6 @@
-import { Typography } from '@mui/material'
+'use client'
+
+import { Typography, useTheme } from '@mui/material'
 import { FunctionComponent } from 'react'
 
 interface SideTitleProps {
@@ -6,18 +8,22 @@ interface SideTitleProps {
 }
 
 export const SideTitle: FunctionComponent<SideTitleProps> = (props) => {
+  const theme = useTheme()
+
   return (
     <Typography
-      variant='h2'
+      // variant='h3'
+      color={theme.palette.mode === 'dark' ? 'teal.500' : 'blue.500'}
+      fontSize={{
+        base: '1.75rem',
+        lg: '3rem'
+      }}
       sx={{
-        fontSize: '2.1rem',
-        fontWeight: 'bold',
-        transform: 'rotate(-90deg)',
-        transformOrigin: 'left',
-        position: 'absolute',
-        top: '50%',
-        left: '-10px',
-        marginTop: '-10px',
+        writingMode: 'vertical-lr',
+        transform: 'rotate(180deg)',
+        textTransform: 'uppercase',
+        gap: '4px',
+        align: 'center'
       }}
     >
       {props.children}

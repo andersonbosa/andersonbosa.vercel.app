@@ -3,36 +3,27 @@
 import { useEffect, useState } from 'react'
 
 import Loading from '@/app/loading'
-import { Box, Container, CssBaseline, Theme } from '@mui/material'
+import { Box, Container, Theme } from '@mui/material'
 
 import { Background } from '../components/background'
 import { Contact } from '../components/contact/contact'
 import { HeroHeader } from '../components/hero-header/hero-header'
 import { Menu } from '../components/menu/menu'
 
-import { theme as darkTheme } from '../theme/dark'
-import { theme as lightTheme } from '../theme/default'
+import { Config } from '../theme/config'
 import MuiThemeProvider from '../theme/provider'
-import ProjectsView from '../components/projects/projects'
+import ProjectsView from './projects.view'
 
-
-const configs = {
-  themes: {
-    default: darkTheme,
-    light: lightTheme,
-    dark: darkTheme,
-  }
-}
 
 export const HomeView: React.FC = () => {
   const [isFakeLoading, setIsFakeLoading] = useState(false)
-  const [currentThemeMode, setCurrentThemeMode] = useState<Theme>(configs.themes.default)
+  const [currentThemeMode, setCurrentThemeMode] = useState<Theme>(Config.themes.default)
 
   const handleLanguageChange = () => { }
 
   const handleThemeChange = () => {
     setCurrentThemeMode(
-      currentThemeMode.palette.mode === 'light' ? configs.themes.dark : configs.themes.light
+      currentThemeMode.palette.mode === 'light' ? Config.themes.dark : Config.themes.light
     )
   }
 
@@ -41,7 +32,7 @@ export const HomeView: React.FC = () => {
 
     const handleColorSchemeChange = (event: MediaQueryListEvent) => {
       setCurrentThemeMode(
-        event.matches ? configs.themes.dark : configs.themes.light
+        event.matches ? Config.themes.dark : Config.themes.light
       )
     }
 
@@ -63,7 +54,7 @@ export const HomeView: React.FC = () => {
 
       <Container>
         <HeroHeader />
-        <ProjectsView />
+        <ProjectsView/>
         <Contact />
         <Box sx={{ height: '4rem' }}></Box>
       </Container>

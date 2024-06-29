@@ -7,8 +7,8 @@ export interface ISidebarProps { }
 
 export function Sidebar (props: ISidebarProps) {
   return (
-    <Box display='flex' position='absolute'>
-      <Box sx={{ width: 250, padding: 2 }}>
+    <Box display='flex' >
+      <Box sx={{ width: 250, padding: 2, }}>
         <List>
           {NAV_ITEMS.map((section) => (
             <ListItemButton key={section.id} component="a" href={`#${section.id}`} sx={{
