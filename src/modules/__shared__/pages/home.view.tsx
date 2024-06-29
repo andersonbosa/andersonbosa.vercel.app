@@ -13,6 +13,7 @@ import { Menu } from '../components/menu/menu'
 import { theme as darkTheme } from '../theme/dark'
 import { theme as lightTheme } from '../theme/default'
 import MuiThemeProvider from '../theme/provider'
+import ProjectsView from '../components/projects/projects'
 
 
 const configs = {
@@ -62,6 +63,7 @@ export const HomeView: React.FC = () => {
 
       <Container>
         <HeroHeader />
+        <ProjectsView />
         <Contact />
         <Box sx={{ height: '4rem' }}></Box>
       </Container>
