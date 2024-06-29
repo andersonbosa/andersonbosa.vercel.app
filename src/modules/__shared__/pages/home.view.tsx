@@ -47,6 +47,10 @@ export const HomeView: React.FC = () => {
     return () => { clearTimeout(timer) }
   }
 
+  const BlankSpace = () => (<Box sx={{ height: '4rem' }}></Box>)
+  
+
+
   const Home = () => (
     <Box>
       <Background />
@@ -54,11 +58,14 @@ export const HomeView: React.FC = () => {
 
       <Container>
         <HeroHeader />
+        <BlankSpace />
+        
         <ProjectsView />
-        <Divider mb='10rem' color='transparent' />
+        <BlankSpace />
+        
         <Contact />
-        <Divider mb='10rem' />
-
+        <BlankSpace />
+        
       </Container>
     </Box>
   )
