@@ -85,6 +85,14 @@ export const Menu: React.FC<MenuProps> = ({ onThemeToggle, onLanguageChange }) =
     </IconButton>
   )
 
+
+  const Logo = () => (
+    <Link href='/' color="inherit" className={styles.logo}>
+      <Button color="inherit" > ANB </Button>
+    </Link>
+  )
+
+
   const MobileMenu = () => (
     <Box className={styles.mobileMenu}>
       <Box className={styles.section1}>
@@ -110,7 +118,7 @@ export const Menu: React.FC<MenuProps> = ({ onThemeToggle, onLanguageChange }) =
   const DesktopMenu = () => (
     (
       <Box className={styles.desktopMenu} >
-        <Box className={styles.logo}> ANB </Box>
+        <Logo />
         <Box className={styles.section1}>
           {
             NAV_ITEMS.map((item) => (
