@@ -8,6 +8,7 @@ import { Box, Link, Typography, Button } from '@mui/material'
 import GitHubIcon from '@mui/icons-material/GitHub'
 import LinkedInIcon from '@mui/icons-material/LinkedIn'
 import MailIcon from '@mui/icons-material/Mail'
+import Title from '../../theme/components/title'
 
 export const Contact: React.FC<{}> = () => {
   const contacts = [
@@ -29,6 +30,7 @@ export const Contact: React.FC<{}> = () => {
     <Box id="contacts" className={styles.contact}>
       <Box className={styles.wrapper}>
         <Typography variant='h1' className={styles.title}>Contact</Typography>
+        <Title>Contact2</Title>
 
         <Box className={styles.content}>
           <Typography variant='body1' >

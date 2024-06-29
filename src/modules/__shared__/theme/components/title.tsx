@@ -5,10 +5,14 @@ interface TitleProps {
   children: React.ReactNode
 }
 
-const Title: FunctionComponent<TitleProps> = (props) => {
+export const Title: FunctionComponent<TitleProps> = (props) => {
   return (
     <Typography
       variant='h1'
+      sx={{
+        fontSize: '3rem',
+        fontWeight: 'bold',
+      }}
     >
       {props.children}
     </Typography>

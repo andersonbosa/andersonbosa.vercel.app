@@ -3,9 +3,11 @@
 import { Box } from '@mui/material'
 import { FunctionComponent } from 'react'
 
-interface ProjectsProps { }
+interface ProjectsViewProps {
 
-export const Projects: FunctionComponent<ProjectsProps> = () => {
+}
+
+export const ProjectsView: FunctionComponent<ProjectsViewProps> = () => {
   return (
     <Box>
 
@@ -14,4 +16,4 @@ export const Projects: FunctionComponent<ProjectsProps> = () => {
   )
 }
 
-export default Projects
+export default ProjectsView
