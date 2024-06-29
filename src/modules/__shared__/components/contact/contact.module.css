@@ -20,26 +20,15 @@
   }
 
   .content {
-    align-items: center;
     margin: 2.4rem 0;
+    text-align: center;
+
+    p {
+      text-align: center;
+    }
   }
 
   .helloButton {
     width: 128px;
-  }
-}
-
-/* desktop */
-@media (min-width: 767px) {}
-
-/* ipad mini */
-@media (max-width: 767px) {}
-
-/* iphone 14 pro max */
-@media (max-width: 430px) {
-  .contact {
-    .contactOptions {
-      text-align: justify;
-    }
   }
 }

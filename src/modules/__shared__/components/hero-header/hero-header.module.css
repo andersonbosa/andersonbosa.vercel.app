@@ -51,7 +51,7 @@
 
     background: linear-gradient(90deg, var(--color-secondary), var(--color-accent), var(--color-secondary));
     background-size: 200% 200%;
-    animation: gradientAnimation 3s linear infinite;
+    animation: gradientAnimation 3s ease-in-out infinite;
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
