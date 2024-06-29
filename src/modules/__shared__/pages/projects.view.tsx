@@ -51,7 +51,7 @@ export const ProjectsView: FunctionComponent<ProjectsViewProps> = () => {
 
         <Box id='projects-list'>
           <Suspense fallback={<CircularProgress color='primary' />}>
-            <RepositoryList repositories={repositories} />
+            <ProjectList repositories={repositories} />
           </Suspense>
         </Box>
       </Box>
@@ -70,11 +70,17 @@ export const ProjectsView: FunctionComponent<ProjectsViewProps> = () => {
 export default ProjectsView
 
 
-interface RepositoryListProps {
+const ProjectCard: React.FC<{}> = (props) => {
+  return (
+    <></>
+  )
+}
+
+interface ProjectListProps {
   repositories: Repository[]
 }
 
-const RepositoryList: React.FC<RepositoryListProps> = (props) => {
+const ProjectList: React.FC<ProjectListProps> = (props) => {
   return (
     <Grid container spacing={3}>
       {props.repositories.map((repo) => (
