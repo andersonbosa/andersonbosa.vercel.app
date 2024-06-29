@@ -26,7 +26,7 @@ export const Contact: React.FC<{}> = () => {
   ]
 
   return (
-    <Box className={styles.contact}>
+    <Box id="contacts" className={styles.contact}>
       <Box className={styles.wrapper}>
         <Typography variant='h1' className={styles.title}>Contact</Typography>
 
