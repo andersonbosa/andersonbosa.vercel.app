@@ -13,7 +13,7 @@ interface IMuiThemeProviderProps {
 export const MuiThemeProvider: FunctionComponent<IMuiThemeProviderProps> = (props) => {
 
   const listenThemeChangeToHandleScrollTheme = () => {
-    const className = props.theme.palette.mode === 'light' ? 'light-scrollbar' : 'dark-scrollbar'
+    const className = props.theme.palette.mode === 'light' ? 'light-theme' : 'dark-theme'
     document.body.classList.add(className)
     return () => {
       document.body.classList.remove(className)

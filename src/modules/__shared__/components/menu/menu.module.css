@@ -16,7 +16,8 @@
       font-weight: bolder;
       padding: 4px;
       align-self: center;
-      margin: 0 16px
+      margin: 0 16px;
+      cursor: pointer;
     }
 
     & .section1 {

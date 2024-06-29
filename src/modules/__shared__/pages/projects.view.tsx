@@ -10,8 +10,8 @@ interface ProjectsViewProps {
 export const ProjectsView: FunctionComponent<ProjectsViewProps> = () => {
   return (
     <Box>
-
-
+      {/* TODO side wrapper with side-title */}
+      {/* TODO main wrapper, bigger div */}
     </Box>
   )
 }

@@ -25,18 +25,15 @@ export const Contact: React.FC<{}> = () => {
       link: 'mailto:andersonbosa0@gmail.com'
     },
   ]
-
   return (
     <Box id="contacts" className={styles.contact}>
       <Box className={styles.wrapper}>
         <Title>Contact</Title>
-
         <Box className={styles.content}>
           <Typography variant='body1' >
             Feel free to contact me for consulting or an interesting discussion,
             I would love to be able to help!
           </Typography>
-
           <Box className={styles.contactOptions}>
             {
               contacts.map(
@@ -55,7 +52,6 @@ export const Contact: React.FC<{}> = () => {
             }
           </Box>
         </Box>
-
         <Box>
           <Link href='mailto:andersonbosa0@gmail.com' target='_blank' rel='noreferrer'>
             <Button className={styles.helloButton} variant='outlined' color='primary'>

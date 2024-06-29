@@ -1,5 +1,6 @@
 'use client'
 
+import React, { useState } from 'react'
 import styles from './menu.module.css'
 
 import Brightness4Icon from '@mui/icons-material/Brightness4'
@@ -11,6 +12,7 @@ import {
   Button,
   Drawer,
   IconButton,
+  Link,
   List,
   ListItemButton,
   ListItemText,
@@ -18,8 +20,9 @@ import {
   useMediaQuery,
   useTheme
 } from '@mui/material'
-import React, { useState } from 'react'
+
 import { NAV_ITEMS } from '../../constants'
+
 export interface MenuProps {
   onThemeToggle: () => void
   onLanguageChange: (language: string) => void
