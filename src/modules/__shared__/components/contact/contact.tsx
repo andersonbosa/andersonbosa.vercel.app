@@ -23,14 +23,13 @@ export const Contact: React.FC<{}> = () => {
     {
       icon: MailIcon,
       link: 'mailto:andersonbosa0@gmail.com'
-    }
+    },
   ]
 
   return (
     <Box id="contacts" className={styles.contact}>
       <Box className={styles.wrapper}>
-        <Typography variant='h1' className={styles.title}>Contact</Typography>
-        <Title>Contact2</Title>
+        <Title>Contact</Title>
 
         <Box className={styles.content}>
           <Typography variant='body1' >
@@ -42,8 +41,12 @@ export const Contact: React.FC<{}> = () => {
             {
               contacts.map(
                 (contact, index) => (
-                  <Link key={index} href={contact.link} target='_blank' rel='noreferrer'
+                  <Link
+                    key={index}
+                    href={contact.link}
                     color='primary'
+                    className={styles.option}
+                    target='_blank' rel='noreferrer'
                   >
                     <contact.icon fontSize='large' />
                   </Link>
@@ -56,7 +59,7 @@ export const Contact: React.FC<{}> = () => {
         <Box>
           <Link href='mailto:andersonbosa0@gmail.com' target='_blank' rel='noreferrer'>
             <Button className={styles.helloButton} variant='outlined' color='primary'>
-              send hi
+              say hi
             </Button>
           </Link>
         </Box>
