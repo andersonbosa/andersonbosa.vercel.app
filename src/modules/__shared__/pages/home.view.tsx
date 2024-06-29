@@ -35,19 +35,6 @@ export const HomeView: React.FC = () => {
     )
   }
 
-  const Home = () => (
-    <Box>
-      <Background />
-      <Menu onLanguageChange={handleLanguageChange} onThemeToggle={handleThemeChange} />
-
-      <Container>
-        <HeroHeader />
-        <Contact />
-        <Box sx={{ height: '4rem' }}></Box>
-      </Container>
-    </Box>
-  )
-
   const installPreferedColorScheme = () => {
     const mediaQuery = window?.matchMedia('(prefers-color-scheme: dark)')
 
@@ -63,17 +50,32 @@ export const HomeView: React.FC = () => {
     return () => { mediaQuery.removeEventListener('change', handleColorSchemeChange) }
   }
 
-  const installFakeLoading = () => {
-    const timer = setTimeout(() => { setIsFakeLoading(false) }, 1230)
-    return () => { clearTimeout(timer) }
+    const installFakeLoading = () => {
+      const timer = setTimeout(() => { setIsFakeLoading(false) }, 1230)
+      return () => { clearTimeout(timer) }
+    }
+
+    useEffect(installPreferedColorScheme, [])
+    useEffect(installFakeLoading, [])
+
+    return (
+      <MuiThemeProvider theme={currentThemeMode}>
+        {
+          isFakeLoading
+            ? <Loading />
+            : (
+              <Box>
+                <Background />
+                <Menu onLanguageChange={handleLanguageChange} onThemeToggle={handleThemeChange} />
+
+                <Container>
+                  <HeroHeader />
+                  <Contact />
+                  <Box sx={{ height: '4rem' }}></Box>
+                </Container>
+              </Box>
+            )
+        }
+      </MuiThemeProvider>
+    )
   }
-
-  useEffect(installPreferedColorScheme, [])
-  useEffect(installFakeLoading, [])
-
-  return (
-    <MuiThemeProvider theme={currentThemeMode}>
-      {isFakeLoading ? <Loading /> : <Home />}
-    </MuiThemeProvider>
-  )
-}

@@ -1,15 +1,15 @@
 'use client'
 
-import { Box, Drawer, List, ListItemButton, ListItemText } from '@mui/material'
+import { Box, List, ListItemButton, ListItemText } from '@mui/material'
 
 export interface ISidebarProps {
 }
 
 export function Sidebar (props: ISidebarProps) {
   const sections = [
-    { id: 'about-me', label: 'About me' },
-    { id: 'projects', label: 'Projects' },
-    { id: 'experiences', label: 'Experiences' },
+    // { id: 'about-me', label: 'About me' },
+    // { id: 'projects', label: 'Projects' },
+    // { id: 'experiences', label: 'Experiences' },
     { id: 'contacts', label: 'Contacts' },
   ]
   return (
