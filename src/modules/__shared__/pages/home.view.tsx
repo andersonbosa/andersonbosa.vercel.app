@@ -12,7 +12,7 @@ import { Menu } from '../components/menu/menu'
 
 import { Config } from '../theme/config'
 import MuiThemeProvider from '../theme/provider'
-import ProjectsView from './projects.view'
+import { ProjectsView } from './projects.view'
 
 
 export const HomeView: React.FC = () => {
