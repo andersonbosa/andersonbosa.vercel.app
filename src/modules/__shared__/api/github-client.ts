@@ -8,6 +8,7 @@ class GitHubClient {
     this.baseURL = 'https://api.github.com'
   }
 
+  /* TOFIX começou error 500 do nada, acho que é ratelimit */
   async getUserRepositoriesByUsername (username: string): Promise<Repository[]> {
     try {
       const response = await axios.get<Repository[]>(
@@ -15,7 +16,7 @@ class GitHubClient {
       )
       return response.data
     } catch (error) {
-      throw new Error('Error fetching user repositories')
+      throw new Error(`Error fetching user repositories: ${error}`)
     }
   }
 }

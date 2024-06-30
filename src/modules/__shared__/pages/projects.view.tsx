@@ -13,6 +13,7 @@ import SideTitle from '../components/side-title'
 
 interface ProjectsViewProps { }
 
+/* TOFIX não está carregando os componentes :erro 500 */
 export const ProjectsView: FunctionComponent<ProjectsViewProps> = () => {
   const [repositories, setRepositories] = useState<Repository[]>([])
 
