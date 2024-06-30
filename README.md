@@ -1,36 +1,35 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# https://andersonbosa.vercel.app
 
-## Getting Started
 
-First, run the development server:
+<p id="badges" align="center">
+  <a href="mailto:andersonbosa0@gmail.com">
+  <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Gmail"/>
+  </a>
+  <a title="Portifolio Badge" href="https://andersonbosa.vercel.app" target="_blank">
+  <img src="https://img.shields.io/badge/Website-orange?&logoColor=white&fontColor=black&style=for-the-badge" alt="Portifolio Badge" />
+  </a>
+  <a title="LinkedIn Badge" href="https://www.linkedin.com/in/andersonbosa" target="_blank">
+  <img src="https://img.shields.io/badge/LinkedIn-046292?style=for-the-badge&logoColor=white" alt="LinkedIn Badge" />
+  </a>
+  <a title="Dev.to Badge" href="https://dev.to/t4inha" target="_blank">
+  <img src="https://img.shields.io/badge/Dev.to-222?style=for-the-badge&logoColor=white" alt="Devto Badge" />
+  </a>
+</p>
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+<p align="center">
+  <strong>
+    You can call me Anderson, a software engineer who loves learning, sharing, hacking, and gamified stuff.
+  </strong>
+</p>
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- I'm **#OpenToWork** and available to relocate!
+- Located in Brazil :brazil:
+- Currently stepping more into Engineering Leadership and DevSecOps.
+- Software engineer since 2019 in full-stack development
+- Penetration tester with experience in the AppSec world
+- I love a freshly brewed cup of coffee! :coffee:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+<h4 align="center">
+  Take a look at <a href="https://andersonbosa.vercel.app/">my portfolio</a>!
+</h4>
