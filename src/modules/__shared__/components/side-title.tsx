@@ -27,13 +27,14 @@ export const SideTitle: FunctionComponent<SideTitleProps> = (
       <Typography
         variant='h1'
         color={theme.palette.mode === 'dark' ? 'teal.500' : 'blue.500'}
-        fontSize='3rem'
         sx={{
           writingMode: 'vertical-lr',
           transform: 'rotate(180deg)',
           textTransform: 'uppercase',
+          fontSize:'3rem',
           gap: '4px',
           align: 'center',
+          // paddingRight: '1rem',
         }}
       >
         {children}

@@ -47,7 +47,7 @@ export const HomeView: React.FC = () => {
     return () => { clearTimeout(timer) }
   }
 
-  const BlankSpace = () => (<Box sx={{ height: '49vh' }}></Box>)
+  const BlankSpace: React.FC<{ space?: string }> = ({ space }) => (<Box sx={{ height: space ?? '20vh' }}></Box>)
 
   const Home = () => (
     <Box>
