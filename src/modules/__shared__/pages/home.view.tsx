@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 
 import Loading from '@/app/loading'
-import { Box, Container, Divider, Theme } from '@mui/material'
+import { Box, Container, Theme } from '@mui/material'
 
 import { Background } from '../components/background'
 import { Contact } from '../components/contact/contact'
@@ -53,17 +53,13 @@ export const HomeView: React.FC = () => {
     <Box>
       <Background />
       <Menu onLanguageChange={handleLanguageChange} onThemeToggle={handleThemeChange} />
-
       <Container>
         <HeroHeader />
         <BlankSpace />
-
         <ProjectsView />
         <BlankSpace />
-
         <Contact />
-        <BlankSpace />
-
+        <BlankSpace space='8vh' />
       </Container>
     </Box>
   )
