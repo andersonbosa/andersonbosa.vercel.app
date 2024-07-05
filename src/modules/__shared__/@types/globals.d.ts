@@ -5,10 +5,6 @@ type Repository = {
   stargazers_count: number
   language: string
   homepage?: string
+  topics?: string[]
   html_url: string
-  // license?: {
-  //   key: string
-  //   name: string
-  //   spdx_id: string
-  // }
 }

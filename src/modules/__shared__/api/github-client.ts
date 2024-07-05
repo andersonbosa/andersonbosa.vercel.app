@@ -1,5 +1,5 @@
 import axios from 'axios'
-
+import githubClientResponseMocked from '@/../tests/mocks/github-client.response'
 
 class GitHubClient {
   private baseURL: string
@@ -8,8 +8,12 @@ class GitHubClient {
     this.baseURL = 'https://api.github.com'
   }
 
-  /* TOFIX começou error 500 do nada, acho que é ratelimit */
   async getUserRepositoriesByUsername (username: string): Promise<Repository[]> {
+    if (process.env.NODE_ENV === 'development') {
+      console.log(`${__filename}: using githubClientResponseMocked`)
+      return githubClientResponseMocked as Repository[]
+    }
+
     try {
       const response = await axios.get<Repository[]>(
         `${this.baseURL}/users/${username}/repos?per_page=1000`
