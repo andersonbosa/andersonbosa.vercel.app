@@ -62,7 +62,7 @@ export const Background = () => {
         },
         modes: {
           grab: {
-            distance: 130,
+            distance: 150,
             line_linked: {
               opacity: 0.075,
             },

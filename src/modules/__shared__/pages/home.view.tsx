@@ -9,6 +9,7 @@ import { Background } from '../components/background'
 import { Contact } from '../components/contact/contact'
 import { HeroHeader } from '../components/hero-header/hero-header'
 import { Menu } from '../components/menu/menu'
+import { CursorHighlight } from '../components/cursor-highlight'
 
 import { Config } from '../theme/config'
 import MuiThemeProvider from '../theme/provider'
@@ -52,6 +53,7 @@ export const HomeView: React.FC = () => {
   const Home = () => (
     <Box>
       <Background />
+      <CursorHighlight />
       <Menu onLanguageChange={handleLanguageChange} onThemeToggle={handleThemeChange} />
       <Container>
         <HeroHeader />
