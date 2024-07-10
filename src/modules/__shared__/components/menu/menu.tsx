@@ -128,7 +128,7 @@ export const Menu: React.FC<MenuProps> = ({ onThemeToggle, onLanguageChange }) =
             ))
           }
         </Box>
-        <Box className='section2'>
+        <Box className={styles.section2} >
           <ToggleThemeButton />
         </Box>
       </Box>

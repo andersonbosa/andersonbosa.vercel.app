@@ -31,7 +31,9 @@
       margin: 0 16px;
     }
 
-    & .section2 {}
+    & .section2 {
+      display: flex;
+    }
   }
 
   & .mobileMenu {
