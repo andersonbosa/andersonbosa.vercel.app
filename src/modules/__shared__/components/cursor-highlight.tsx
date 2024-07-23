@@ -1,7 +1,11 @@
 'use client'
 
-
 import React, { useEffect, useState } from 'react'
+
+type CursorHighlightBind = {
+  eventType: string
+  handler: (e: any) => void
+}
 
 interface CursorHighlightProps {
   size?: number
@@ -12,33 +16,34 @@ export const CursorHighlight: React.FC<CursorHighlightProps> = ({ size = 64, col
   const [position, setPosition] = useState({ x: 0, y: 0 })
   const [scale, setScale] = useState(1)
 
-
   const handleMouseMove = (e: MouseEvent) => {
-    setPosition({ x: e.clientX, y: e.clientY })
+    setPosition({ x: e?.clientX, y: e?.clientY })
   }
 
-  const handleMouseClick = () => {
+  const handleCursorClick = (_: PointerEvent) => {
     setScale(1.6)
     setTimeout(() => { setScale(1) }, 500)
   }
 
-  type Bind = { eventType: string; handler: (e: any) => void }
-  const binds: Bind[] = [
+  const binds: CursorHighlightBind[] = [
+    { eventType: 'click', handler: handleCursorClick },
     { eventType: 'mousemove', handler: handleMouseMove },
-    { eventType: 'click', handler: handleMouseClick },
   ]
 
-  useEffect(() => {
-    binds.forEach(
-      ({ eventType, handler }) => { window.addEventListener(eventType, handler) }
-    )
-
-    return () => {
+  useEffect(
+    () => {
       binds.forEach(
-        ({ eventType, handler }) => { window.removeEventListener(eventType, handler) }
+        ({ eventType, handler }) => { window.addEventListener(eventType, handler) }
       )
-    }
-  }, [])
+
+      return () => {
+        binds.forEach(
+          ({ eventType, handler }) => { window.removeEventListener(eventType, handler) }
+        )
+      }
+    },
+    []
+  )
 
   return (
     <div
