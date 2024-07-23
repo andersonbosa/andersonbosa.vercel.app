@@ -16,11 +16,11 @@ export const CursorHighlight: React.FC<CursorHighlightProps> = ({ size = 64, col
   const [position, setPosition] = useState({ x: 0, y: 0 })
   const [scale, setScale] = useState(1)
 
-  const handleMouseMove = (e: MouseEvent) => {
+  const handleMouseMove = (e: MouseEvent): void => {
     setPosition({ x: e?.clientX, y: e?.clientY })
   }
 
-  const handleCursorClick = (_: PointerEvent) => {
+  const handleCursorClick = (_: PointerEvent): void => {
     setScale(1.6)
     setTimeout(() => { setScale(1) }, 500)
   }
