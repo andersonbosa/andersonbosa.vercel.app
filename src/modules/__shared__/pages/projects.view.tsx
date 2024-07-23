@@ -8,8 +8,7 @@ import {
   CircularProgress
 } from '@mui/material'
 
-import { ProjectList } from '../components/projects/projects-list'
-import SideTitle from '../components/side-title'
+import { ProjectsWrapper } from '../components/projects/projects-wrapper'
 
 interface ProjectsViewProps { }
 
@@ -34,24 +33,9 @@ export const ProjectsView: FunctionComponent<ProjectsViewProps> = () => {
   return (
     <Suspense fallback={<CircularProgress color='primary' />}>
       <Box id='projects'>
-        <Box id='projects-wrapper' sx={{
-          display: 'flex',
-          alignItems: 'flex-start',
-          flexDirection: 'row',
-          width: '100%',
-          // gap: '2rem',
-        }}
-        >
-          <SideTitle>Projects</SideTitle>
-          <Box>
-          </Box>
-
-          <Box id='projects-list'>
-            <ProjectList repositories={repositories} />
-          </Box>
-        </Box>
-
-        <Box display="flex" justifyContent="center" marginTop={2}>
+        <ProjectsWrapper repositories={repositories} />
+        <Box marginBottom={4}></Box>
+        <Box display="flex" justifyContent="center">
           <a href='https://github.com/andersonbosa?tab=repositories' target='_blank'>
             <Button variant="outlined" color="primary">
               View More
