@@ -14,10 +14,11 @@
   width: 100%;
   display: inline-flex;
   justify-content: center;
-  pointer-events: none;
+  user-select: none;
 
   .wrapper {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -74,6 +75,45 @@
   .content4 {
     text-align: left;
   }
+
+
+  .scrollDownButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 48px;
+    height: 48px;
+
+    border-radius: 50%;
+    background-color: var(--color-primary);
+    color: var(--color-text);
+
+    cursor: pointer;
+    animation: bounce 2s infinite;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+
+    &>svg {
+      font-size: 2rem;
+    }
+  }
+
+  .scrollDownButton:hover {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
 }
 
 /* ipad mini */
@@ -83,7 +123,7 @@
     height: 100%;
     display: inline-flex;
     justify-content: center;
-    pointer-events: none;
+    user-select: none;
 
     &>div {
       max-width: 512px;
