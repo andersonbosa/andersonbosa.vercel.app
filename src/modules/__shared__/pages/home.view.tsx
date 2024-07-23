@@ -13,11 +13,14 @@ import { CursorHighlight } from '../components/cursor-highlight'
 
 import { Config } from '../theme/config'
 import MuiThemeProvider from '../theme/provider'
+
 import { ProjectsView } from './projects.view'
+
+import { isMobile } from '../@helpers/is-mobile.helper'
 
 
 export const HomeView: React.FC = () => {
-  const [isFakeLoading, setIsFakeLoading] = useState(false)
+  const [isFakeLoading, setIsFakeLoading] = useState(process.env?.NODE_ENV === 'development' ? false : true)
   const [currentThemeMode, setCurrentThemeMode] = useState<Theme>(Config.themes.default)
 
   const handleLanguageChange = () => { }
@@ -44,7 +47,7 @@ export const HomeView: React.FC = () => {
   }
 
   const installFakeLoading = () => {
-    const timer = setTimeout(() => { setIsFakeLoading(false) }, 1230)
+    const timer = setTimeout(() => { setIsFakeLoading(false) }, 321)
     return () => { clearTimeout(timer) }
   }
 
@@ -53,7 +56,7 @@ export const HomeView: React.FC = () => {
   const Home = () => (
     <Box>
       <Background />
-      <CursorHighlight />
+      { isMobile() ? <></> : <CursorHighlight /> }
       <Menu onLanguageChange={handleLanguageChange} onThemeToggle={handleThemeChange} />
       <Container>
         <HeroHeader />
