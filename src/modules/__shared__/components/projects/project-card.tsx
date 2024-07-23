@@ -9,7 +9,7 @@ const StyledCard = styled(Card)({
   backgroundColor: 'rgba(255, 255, 255, 0.0)',
   borderRadius: '0.5rem',
   backgroundImage: 'none',
-  // boxShadow: 'none',
+  boxShadow: 'none',
   borderColor: 'rgba(117, 108, 96, 1)',
   backdropFilter: 'blur(8px)',
   border: '1px solid rgba(117, 108, 96, 0.3)',
