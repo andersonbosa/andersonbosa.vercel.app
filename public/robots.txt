@@ -1,11 +1,12 @@
-Allow:
 User-agent: *
 
-Disallow:
-User-agent: *
 Disallow: /admin/
 Disallow: /scripts/
 
+Allow: /#about
+Allow: /#projects
+Allow: /#contacts
+
 Sitemap: https://andersonbosa.vercel.app/sitemap.xml
+
 Crawl-delay: 10
-Host: https://andersonbosa.vercel.app
