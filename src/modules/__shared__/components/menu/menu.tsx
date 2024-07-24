@@ -62,6 +62,8 @@ export const Menu: React.FC<MenuProps> = ({ onThemeToggle, onLanguageChange }) =
   //   </MuiMenu>
   // )
 
+  // const scrollIntoView = (selector: string): void => document.querySelector(selector)?.scrollIntoView({ behavior: 'smooth' })
+
   const mobileDrawer = (
     <Box onClick={handleDrawerToggle} >
       <List className={styles.mobileDrawer}>
@@ -85,24 +87,20 @@ export const Menu: React.FC<MenuProps> = ({ onThemeToggle, onLanguageChange }) =
     </IconButton>
   )
 
-
   const Logo = () => (
     <Link href='/' color="inherit" className={styles.logo}>
       <Button color="inherit" > ANB </Button>
     </Link>
   )
 
-
   const MobileMenu = () => (
     <Box className={styles.mobileMenu}>
       <Box className={styles.section1}>
         <DrawerToggleButton />
-
         <Box>
           <ToggleThemeButton />
         </Box>
       </Box>
-
       <Drawer
         anchor='left'
         open={drawerOpen}

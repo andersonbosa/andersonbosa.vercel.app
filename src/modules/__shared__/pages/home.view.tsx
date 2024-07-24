@@ -20,7 +20,7 @@ import { isMobile } from '../@helpers/is-mobile.helper'
 
 
 export const HomeView: React.FC = () => {
-  const [isFakeLoading, setIsFakeLoading] = useState(process.env?.NODE_ENV === 'development' ? false : true)
+  const [useFakeLoading, setUseFakeLoading] = useState<boolean>(true)
   const [currentThemeMode, setCurrentThemeMode] = useState<Theme>(Config.themes.default)
 
   const handleLanguageChange = () => { }
@@ -47,7 +47,7 @@ export const HomeView: React.FC = () => {
   }
 
   const installFakeLoading = () => {
-    const timer = setTimeout(() => { setIsFakeLoading(false) }, 321)
+    const timer = setTimeout(() => { setUseFakeLoading(false) }, 321)
     return () => { clearTimeout(timer) }
   }
 
@@ -75,7 +75,7 @@ export const HomeView: React.FC = () => {
   return (
     <MuiThemeProvider theme={currentThemeMode}>
       {
-        isFakeLoading
+        useFakeLoading
           ? <Loading />
           : <Home />
       }
