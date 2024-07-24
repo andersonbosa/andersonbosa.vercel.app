@@ -9,9 +9,9 @@
   - [ ] me conhecer?
   - [ ] entrar em contato?
   - [ ] apenas curiosidade?
-- [ ] criar componente "meus contatos"
+- [x] criar componente "meus contatos"
 - [ ] criar componente "sobre mim"
-- [ ] criar vitrine de portfólio
+- [X] criar vitrine de portfólio
   - features
     - pesquisa
     - ordenação
