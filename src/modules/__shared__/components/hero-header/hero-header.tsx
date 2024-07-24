@@ -8,11 +8,11 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 export interface IHeroHeaderProps {
 }
 
-const NEXT_SECTION_ID = '#about'
+const NEXT_SECTION_ELEMENT_ID = 'projects'
 
 export function HeroHeader (props: IHeroHeaderProps) {
   const handleScrollDown = (): void => {
-    const nextSection: HTMLElement | null = document.getElementById(NEXT_SECTION_ID)
+    const nextSection: HTMLElement | null = document.getElementById(NEXT_SECTION_ELEMENT_ID)
     if (!nextSection) {
       throw new Error('Could not find the next section')
     }

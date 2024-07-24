@@ -12,6 +12,8 @@ interface CursorHighlightProps {
   color?: string
 }
 
+const MAX_CURSOR_SCALE = 2
+
 export const CursorHighlight: React.FC<CursorHighlightProps> = ({ size = 64, color = '#fff', }) => {
   const [position, setPosition] = useState({ x: 0, y: 0 })
   const [scale, setScale] = useState(1)
@@ -21,7 +23,7 @@ export const CursorHighlight: React.FC<CursorHighlightProps> = ({ size = 64, col
   }
 
   const handleCursorClick = (_: PointerEvent): void => {
-    setScale(1.6)
+    setScale(MAX_CURSOR_SCALE)
     setTimeout(() => { setScale(1) }, 500)
   }
 
@@ -59,7 +61,7 @@ export const CursorHighlight: React.FC<CursorHighlightProps> = ({ size = 64, col
         backgroundColor: color,
         mixBlendMode: 'difference',
         pointerEvents: 'none',
-        zIndex: 9999,
+        zIndex: 999,
       }}
     />
   )

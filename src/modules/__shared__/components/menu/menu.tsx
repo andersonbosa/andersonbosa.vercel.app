@@ -88,7 +88,7 @@ export const Menu: React.FC<MenuProps> = ({ onThemeToggle, onLanguageChange }) =
   )
 
   const Logo = () => (
-    <Link href='/' color="inherit" className={styles.logo}>
+    <Link href='#' color="inherit" className={styles.logo}>
       <Button color="inherit" > ANB </Button>
     </Link>
   )

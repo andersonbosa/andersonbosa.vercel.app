@@ -38,13 +38,7 @@ export const Contact: React.FC<{}> = () => {
             {
               contacts.map(
                 (contact, index) => (
-                  <Link
-                    key={index}
-                    href={contact.link}
-                    color='primary'
-                    className={styles.option}
-                    target='_blank' rel='noreferrer'
-                  >
+                  <Link key={index} href={contact.link} sx={{ scale: '1.3' }} className={styles.option} target='_blank' rel='noreferrer'>
                     <contact.icon fontSize='large' />
                   </Link>
                 )
