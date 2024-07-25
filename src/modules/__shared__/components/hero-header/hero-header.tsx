@@ -12,11 +12,10 @@ const NEXT_SECTION_ELEMENT_ID = 'projects'
 
 export function HeroHeader (props: IHeroHeaderProps) {
   const handleScrollDown = (): void => {
-    const nextSection: HTMLElement | null = document.getElementById(NEXT_SECTION_ELEMENT_ID)
-    if (!nextSection) {
-      throw new Error('Could not find the next section')
-    }
-    nextSection.scrollIntoView({ behavior: 'smooth' })
+    window.scrollBy({
+      top: window.innerHeight,
+      behavior: 'smooth'
+    })
   }
   return (
     <Box id="hero-header" className={styles.heroHeader} >
