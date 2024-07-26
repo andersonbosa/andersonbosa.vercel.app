@@ -47,10 +47,6 @@ export const CursorHighlight: React.FC<CursorHighlightProps> = ({ size = 64, col
     []
   )
 
-  if (isMobile()) {
-    return (<></>)
-  }
-
   return (
     <div
       style={{
