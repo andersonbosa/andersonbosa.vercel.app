@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
+import { isMobile } from '../@helpers/is-mobile.helper'
 
 type CursorHighlightBind = {
   eventType: string
@@ -42,6 +43,10 @@ export const CursorHighlight: React.FC<CursorHighlightProps> = ({ size = 64, col
     },
     []
   )
+
+  if (isMobile()) {
+    return (<></>)
+  }
 
   return (
     <div
