@@ -17,6 +17,7 @@ import MuiThemeProvider from '../theme/provider'
 import { ProjectsView } from './projects.view'
 
 import { isMobile } from '../@helpers/is-mobile.helper'
+import { AboutView } from './about.view'
 
 
 export const HomeView: React.FC = () => {
@@ -60,6 +61,8 @@ export const HomeView: React.FC = () => {
       <Menu onLanguageChange={handleLanguageChange} onThemeToggle={handleThemeChange} />
       <Container>
         <HeroHeader />
+        <AboutView />
+        <BlankSpace />
         <BlankSpace />
         <ProjectsView />
         <BlankSpace />
