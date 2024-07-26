@@ -67,7 +67,7 @@ export const ProjectCard: React.FC<{ repo: Repository }> = ({ repo, ...rest }) =
                   </StyledTitle>
                 </Tooltip>
                 <StyledBadge badgeContent={repo.stargazers_count}>
-                  <StarIcon fontSize='small' color="primary" />
+                  {repo.stargazers_count > 0 && <StarIcon fontSize='small' color="primary" />}
                 </StyledBadge>
               </Box>
               <Typography variant="body2" color="text.secondary">
