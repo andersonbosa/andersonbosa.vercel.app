@@ -12,7 +12,6 @@ import { ProjectsWrapper } from '../components/projects/projects-wrapper'
 
 interface ProjectsViewProps { }
 
-/* TOFIX não está carregando os componentes :erro 500 */
 export const ProjectsView: FunctionComponent<ProjectsViewProps> = () => {
   const [repositories, setRepositories] = useState<Repository[]>([])
 
@@ -32,7 +31,7 @@ export const ProjectsView: FunctionComponent<ProjectsViewProps> = () => {
 
   return (
     <Suspense fallback={<CircularProgress color='primary' />}>
-      <Box id='projects'>
+      <Box id='projects-view'>
         <ProjectsWrapper repositories={repositories} />
         <Box marginBottom={4}></Box>
         <Box display="flex" justifyContent="center">
