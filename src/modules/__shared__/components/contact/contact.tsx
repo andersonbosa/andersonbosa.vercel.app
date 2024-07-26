@@ -10,7 +10,7 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn'
 import MailIcon from '@mui/icons-material/Mail'
 import Title from '../title'
 
-export const Contact: React.FC<{}> = () => {
+export const Contacts: React.FC<{}> = () => {
   const contacts = [
     {
       icon: GitHubIcon,

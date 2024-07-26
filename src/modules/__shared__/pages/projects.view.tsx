@@ -31,14 +31,12 @@ export const ProjectsView: FunctionComponent<ProjectsViewProps> = () => {
 
   return (
     <Suspense fallback={<CircularProgress color='primary' />}>
-      <Box id='projects-view'>
+      <Box id='projects'>
         <ProjectsWrapper repositories={repositories} />
         <Box marginBottom={4}></Box>
         <Box display="flex" justifyContent="center">
           <a href='https://github.com/andersonbosa?tab=repositories' target='_blank'>
-            <Button variant="outlined" color="primary">
-              View More
-            </Button>
+            <Button variant="outlined" color="primary"> View More </Button>
           </a>
         </Box>
       </Box>

@@ -6,10 +6,9 @@ import Loading from '@/app/loading'
 import { Box, Container, Theme } from '@mui/material'
 
 import { Background } from '../components/background'
-import { Contact } from '../components/contact/contact'
+import { CursorHighlight } from '../components/cursor-highlight'
 import { HeroHeader } from '../components/hero-header/hero-header'
 import { Menu } from '../components/menu/menu'
-import { CursorHighlight } from '../components/cursor-highlight'
 
 import { Config } from '../theme/config'
 import MuiThemeProvider from '../theme/provider'
@@ -18,6 +17,7 @@ import { ProjectsView } from './projects.view'
 
 import { isMobile } from '../@helpers/is-mobile.helper'
 import { AboutView } from './about.view'
+import { ContactsView } from './contacts.view'
 
 
 export const HomeView: React.FC = () => {
@@ -66,7 +66,7 @@ export const HomeView: React.FC = () => {
         <BlankSpace />
         <ProjectsView />
         <BlankSpace />
-        <Contact />
+        <ContactsView />
         <BlankSpace space='8vh' />
       </Container>
     </Box>
