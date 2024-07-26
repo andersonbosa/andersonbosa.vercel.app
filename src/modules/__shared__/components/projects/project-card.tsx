@@ -1,6 +1,10 @@
 'use client'
 
-import { Grid, Card, CardContent, Typography, Link, Tooltip } from '@mui/material'
+import StarIcon from '@mui/icons-material/Star'
+import OpenInNewIcon from '@mui/icons-material/OpenInNew'
+import GitHubIcon from '@mui/icons-material/GitHub'
+
+import { Badge, BadgeProps, Box, Card, CardContent, Grid, IconButton, Link, Tooltip, Typography } from '@mui/material'
 import { styled } from '@mui/material/styles'
 
 const StyledCard = styled(Card)({
@@ -21,33 +25,73 @@ const StyledCard = styled(Card)({
   },
 })
 
-const Title = styled(Typography)({
+const StyledTitle = styled(Typography)({
   whiteSpace: 'nowrap',
   overflow: 'hidden',
   textOverflow: 'ellipsis',
 })
 
+
+const StyledBadge = styled(Badge)<BadgeProps>(
+  ({ _ }) => ({
+    '& .MuiBadge-badge': {
+      // backgroundColor: theme.palette.text.primary,
+      // color: theme.palette.background.paper,
+      // color: 'primary',
+      top: 0,
+      right: 2,
+      fontSize: '0.8rem',
+      padding: '0 4px',
+    },
+  })
+)
+
 export const ProjectCard: React.FC<{ repo: Repository }> = ({ repo, ...rest }) => {
   return (
     <Grid item xs={10} md={4} sm={6} {...rest}>
       <StyledCard>
-        <CardContent>
-          <Tooltip title={repo.name} arrow>
-            <Title variant="h5" className='project-title'>
-              <Link href={repo.html_url} target="_blank" rel="noopener noreferrer">
-                {repo.name}
-              </Link>
-            </Title>
-          </Tooltip>
-          <Typography variant="body2" color="text.secondary">
-            {repo.description || 'No description'}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            Stars: {repo.stargazers_count}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            Language: {repo.language}
-          </Typography>
+        <CardContent sx={{ height: '100%' }}>
+          <Box sx={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            flexDirection: 'column',
+            height: 'inherit',
+          }}>
+            <Box>
+              <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <Tooltip title={repo.name} arrow>
+                  <StyledTitle variant="h5" className='project-title'>
+                    <Link href={repo.html_url} target="_blank">
+                      {repo.name}
+                    </Link>
+                  </StyledTitle>
+                </Tooltip>
+                <StyledBadge badgeContent={repo.stargazers_count}>
+                  <StarIcon fontSize='small' color="primary" />
+                </StyledBadge>
+              </Box>
+              <Typography variant="body2" color="text.secondary">
+                {repo.description || 'No description'}
+              </Typography>
+            </Box>
+            <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+              <Box>
+                <Typography variant="caption" color="text.secondary" sx={{ fontWeight: 'bold' }}> {repo.language} </Typography>
+              </Box>
+              <Box>
+                <Tooltip arrow title='Open project webpage'>
+                  <IconButton>
+                    <OpenInNewIcon color="primary" />
+                  </IconButton>
+                </Tooltip>
+                <Tooltip arrow title='Open project on GitHub'>
+                  <IconButton>
+                    <GitHubIcon color="primary" />
+                  </IconButton>
+                </Tooltip>
+              </Box>
+            </Box>
+          </Box>
         </CardContent>
       </StyledCard>
     </Grid>
