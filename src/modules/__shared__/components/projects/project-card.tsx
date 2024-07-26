@@ -74,7 +74,7 @@ export const ProjectCard: React.FC<{ repo: Repository }> = ({ repo, ...rest }) =
                 {repo.description || 'No description'}
               </Typography>
             </Box>
-            <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <Box>
                 <Typography variant="caption" color="text.secondary" sx={{ fontWeight: 'bold' }}> {repo.language} </Typography>
               </Box>
