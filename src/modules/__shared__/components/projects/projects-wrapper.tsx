@@ -15,7 +15,6 @@ interface ProjectsWrapperProps {
   repositories: Repository[]
 }
 
-/* TOFIX não está carregando os componentes :erro 500 */
 export const ProjectsWrapper: FunctionComponent<ProjectsWrapperProps> = () => {
   const [repositories, setRepositories] = useState<Repository[]>([])
 
