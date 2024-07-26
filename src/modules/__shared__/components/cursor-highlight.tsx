@@ -22,14 +22,10 @@ export const CursorHighlight: React.FC<CursorHighlightProps> = ({ size = 64, col
     setPosition({ x: e?.clientX, y: e?.clientY })
   }
 
-  const handleCursorClick = (_: PointerEvent): void => {
-    setScale(MAX_CURSOR_SCALE)
-    setTimeout(() => { setScale(1) }, 500)
-  }
-
   const binds: CursorHighlightBind[] = [
-    { eventType: 'click', handler: handleCursorClick },
     { eventType: 'mousemove', handler: handleMouseMove },
+    { eventType: 'mousedown', handler: () => setScale(MAX_CURSOR_SCALE) },
+    { eventType: 'mouseup', handler: () => setScale(1) }
   ]
 
   useEffect(
