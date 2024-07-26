@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from 'react'
 import { isMobile } from '../@helpers/is-mobile.helper'
-import { debounce } from '@mui/material'
 
 type CursorHighlightBind = {
   eventType: string
@@ -24,13 +23,7 @@ export const CursorHighlight: React.FC<CursorHighlightProps> = ({ size = 64, col
     setPosition({ x: e?.clientX, y: e?.clientY })
   }
 
-  const handleCursorClick = (_: PointerEvent): void => {
-    setScale(MAX_CURSOR_SCALE)
-    setTimeout(() => { setScale(1) }, 500)
-  }
-
   const binds: CursorHighlightBind[] = [
-    { eventType: 'click', handler: handleCursorClick },
     { eventType: 'mousemove', handler: handleMouseMove },
     { eventType: 'mousedown', handler: () => setScale(MAX_CURSOR_SCALE) },
     { eventType: 'mouseup', handler: () => setScale(1) }
@@ -39,12 +32,15 @@ export const CursorHighlight: React.FC<CursorHighlightProps> = ({ size = 64, col
   useEffect(
     () => {
       binds.forEach(
-        ({ eventType, handler }) => { window.addEventListener(eventType, debounce(handler)) }
+        ({ eventType, handler }) => {
+          window.addEventListener(eventType, handler)
+        }
       )
-
       return () => {
         binds.forEach(
-          ({ eventType, handler }) => { window.removeEventListener(eventType, debounce(handler)) }
+          ({ eventType, handler }) => {
+            window.removeEventListener(eventType, handler)
+          }
         )
       }
     },
