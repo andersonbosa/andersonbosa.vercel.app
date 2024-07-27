@@ -24,6 +24,7 @@ export const ProjectsWrapper: FunctionComponent<ProjectsWrapperProps> = () => {
           const repos: Repository[] = await fetch('/api/repositories').then(r => r.json())
           setRepositories(repos)
         } catch (err) {
+          console.error(err)
         }
       }
       fetchRepositories()

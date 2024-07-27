@@ -2,21 +2,21 @@
 
 import { useEffect, useState } from 'react'
 
-import Loading from '@/app/loading'
 import { Box, Container, Theme } from '@mui/material'
-
-import { Background } from '../components/background'
-import { CursorHighlight } from '../components/cursor-highlight'
-import { HeroHeader } from '../components/hero-header/hero-header'
-import { Menu } from '../components/menu/menu'
+import Loading from '@/app/loading'
 
 import { ThemeConfig } from '../theme/config'
 import MuiThemeProvider from '../theme/provider'
 
 import { ProjectsView } from './projects.view'
-
 import { AboutView } from './about.view'
 import { ContactsView } from './contacts.view'
+import { ScrollToTopButton } from '../components/scroll-to-top-button'
+
+import { Background } from '../components/background'
+import { CursorHighlight } from '../components/cursor-highlight'
+import { HeroHeader } from '../components/hero-header/hero-header'
+import { Menu } from '../components/menu/menu'
 import { useIsMobile } from '../hooks/is-mobile.hook'
 
 
@@ -34,16 +34,14 @@ export const HomeView: React.FC = () => {
   }
 
   const installPreferedColorScheme = () => {
-    const mediaQuery = window?.matchMedia('(prefers-color-scheme: dark)')
-
     const handleColorSchemeChange = (event: MediaQueryListEvent) => {
       setCurrentThemeMode(
         event.matches ? ThemeConfig.themes.dark : ThemeConfig.themes.light
       )
     }
 
+    const mediaQuery = window?.matchMedia('(prefers-color-scheme: dark)')
     handleColorSchemeChange(mediaQuery as any)
-
     mediaQuery.addEventListener('change', handleColorSchemeChange)
     return () => { mediaQuery.removeEventListener('change', handleColorSchemeChange) }
   }
@@ -53,23 +51,28 @@ export const HomeView: React.FC = () => {
     return () => { clearTimeout(timer) }
   }
 
-  const BlankSpace: React.FC<{ space?: string }> = ({ space }) => (<Box sx={{ height: space ?? '20vh' }}></Box>)
+  const BlankSpace: React.FC<{ size?: string }> = ({ size = '24vh' }) => (
+    <Box aria-label='blank-space' sx={{ height: size }}></Box>
+  )
 
   const Home = () => (
     <Box>
-      <Background />
-      {!isMobile && <CursorHighlight />}
       <Menu onLanguageChange={handleLanguageChange} onThemeToggle={handleThemeChange} />
+
       <Container>
         <HeroHeader />
-        <AboutView />
         <BlankSpace />
+        <AboutView />
         <BlankSpace />
         <ProjectsView />
         <BlankSpace />
         <ContactsView />
-        <BlankSpace space='8vh' />
+        <BlankSpace />
       </Container>
+
+      {!isMobile && <CursorHighlight />}
+      <ScrollToTopButton />
+      <Background />
     </Box>
   )
 

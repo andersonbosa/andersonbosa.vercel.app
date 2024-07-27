@@ -39,7 +39,6 @@ export const ProjectsView: FunctionComponent<ProjectsViewProps> = () => {
             <Button variant="outlined" color="primary"> View More </Button>
           </a>
         </Box>
-        <Box height='6vh'></Box>
       </Box>
     </Suspense>
   )
