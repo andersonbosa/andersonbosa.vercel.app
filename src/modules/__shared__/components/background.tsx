@@ -12,9 +12,14 @@ import {
 import Particles, { initParticlesEngine } from '@tsparticles/react'
 import { loadFull } from 'tsparticles'
 
-export const Background = () => {
-  const currentTheme = useTheme()
+interface BackgroundProps {
+  useBackgroundParticles: boolean
+}
 
+export const Background: React.FC<BackgroundProps> = ({
+  useBackgroundParticles = true
+}) => {
+  const currentTheme = useTheme()
   const [init, setInit] = useState(false)
 
   useEffect(
@@ -37,7 +42,6 @@ export const Background = () => {
    * @see {link} Find all configuration options here. - https://particles.js.org/docs/interfaces/tsParticles_Engine.Options_Interfaces_IOptions.IOptions.html
    * @see {link} You can find sample configurations here - https://github.com/tsparticles/tsparticles/tree/main/utils/configs/src
    */
-
   const options: ISourceOptions = useMemo(
     () => ({
       fpsLimit: 120,
@@ -115,26 +119,28 @@ export const Background = () => {
     [],
   )
 
-  if (init) {
-    return (
-      <Box
-        sx={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
-          zIndex: -1,
-        }}
-      >
-        <Particles
+  if (!init) {
+    return <></>
+  }
+  return (
+    <Box
+      sx={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        zIndex: -1,
+      }}
+    >
+      {
+        useBackgroundParticles
+        && <Particles
           id='tsparticles'
           particlesLoaded={particlesLoaded}
           options={options}
         />
-      </Box>
-    )
-  }
-
-  return <></>
+      }
+    </Box>
+  )
 }
