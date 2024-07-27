@@ -50,12 +50,12 @@ export const AboutView: React.FC<AboutViewProps> = () => {
   const isMobile = useIsMobile(theme)
 
   return (
-    <Box id='about' sx={{ marginTop: '2rem' }}>
+    <Box id='about'>
       <Box className='about-wrapper'
         sx={{
           display: 'flex',
           alignItems: 'flex-start',
-          width: '100%',
+          // width: '100%',
           gap: '1rem',
         }}
       >
@@ -72,7 +72,7 @@ export const AboutView: React.FC<AboutViewProps> = () => {
               display: 'flex',
               flexDirection: isMobile ? 'column' : 'row',
               alignItems: isMobile ? 'center' : 'flex-start',
-              width: '100%',
+              // width: '100%',
               gap: '1rem',
             }}
           >
@@ -87,7 +87,9 @@ export const AboutView: React.FC<AboutViewProps> = () => {
                 <Image alt='profile photo' src='https://github.com/andersonbosa.png' width={230} height={230} />
               </StyledCard>
             </Box>
-            <Box sx={{ width: '100%' }}>
+            <Box
+              // sx={{ width: '100%' }}
+            >
               <Typography variant='body1' paragraph sx={{
                 textAlign: 'justify'
               }}>
@@ -103,7 +105,10 @@ export const AboutView: React.FC<AboutViewProps> = () => {
               The technologies I have been working with recently include:
             </Typography>
             <Box>
-              <Box sx={{ display: 'flex', gap: '1rem'}}>
+              <Box sx={{
+                display: 'flex',
+                gap: '1rem'
+              }}>
                 {[
                   'Javascript',
                   'Typescript',
@@ -114,7 +119,7 @@ export const AboutView: React.FC<AboutViewProps> = () => {
                   'MariaDB',
                   'Keycloak'
                 ].map(
-                  (item, index) => (
+                  (item: string) => (
                     <StyledChip key={item} label={item} />
                   )
                 )}
@@ -123,6 +128,6 @@ export const AboutView: React.FC<AboutViewProps> = () => {
           </Box>
         </Box>
       </Box>
-    </Box >
+    </Box>
   )
 }

@@ -19,4 +19,5 @@
 
 ## backlog
 - [ ] adicionar i18n para internacionalizar a página em diferentes idiomas
-
+- [ ] renomear contacts.tsx para contaxts-wrapper.tsx
+- [ ] 
