@@ -3,7 +3,7 @@ import { Theme } from '@mui/material'
 import { theme as darkTheme } from '../theme/dark'
 import { theme as lightTheme } from '../theme/default'
 
-type ThemeConfig = {
+interface IThemeConfig {
   themes: {
     default: Theme,
     light: Theme,
@@ -11,7 +11,7 @@ type ThemeConfig = {
   }
 }
 
-export const Config: ThemeConfig = {
+export const ThemeConfig: IThemeConfig = {
   themes: {
     default: darkTheme,
     light: lightTheme,

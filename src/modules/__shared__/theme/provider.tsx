@@ -10,6 +10,7 @@ interface IMuiThemeProviderProps {
   theme: Theme
 }
 
+/* TOFIX The theme should go to a context, so the components that want to use the current theme can easily get the data. */
 export const MuiThemeProvider: FunctionComponent<IMuiThemeProviderProps> = (props) => {
 
   const listenThemeChangeToHandleScrollTheme = () => {

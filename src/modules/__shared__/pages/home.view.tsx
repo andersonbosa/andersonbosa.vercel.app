@@ -22,7 +22,7 @@ import { ContactsView } from './contacts.view'
 
 export const HomeView: React.FC = () => {
   const [useFakeLoading, setUseFakeLoading] = useState<boolean>(true)
-  const [currentThemeMode, setCurrentThemeMode] = useState<Theme>(Config.themes.default)
+  const isMobile = useIsMobile(currentThemeMode)
 
   const handleLanguageChange = () => { }
 
