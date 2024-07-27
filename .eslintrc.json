@@ -2,5 +2,8 @@
   "extends": "next/core-web-vitals",
   "env": {
     "browser": true
+  },
+  "rules": {
+    "react/no-unescaped-entities": "off"
   }
 }

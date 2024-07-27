@@ -10,25 +10,26 @@ import { CursorHighlight } from '../components/cursor-highlight'
 import { HeroHeader } from '../components/hero-header/hero-header'
 import { Menu } from '../components/menu/menu'
 
-import { Config } from '../theme/config'
+import { ThemeConfig } from '../theme/config'
 import MuiThemeProvider from '../theme/provider'
 
 import { ProjectsView } from './projects.view'
 
-import { isMobile } from '../@helpers/is-mobile.helper'
 import { AboutView } from './about.view'
 import { ContactsView } from './contacts.view'
+import { useIsMobile } from '../hooks/is-mobile.hook'
 
 
 export const HomeView: React.FC = () => {
   const [useFakeLoading, setUseFakeLoading] = useState<boolean>(true)
+  const [currentThemeMode, setCurrentThemeMode] = useState<Theme>(ThemeConfig.themes.default)
   const isMobile = useIsMobile(currentThemeMode)
 
   const handleLanguageChange = () => { }
 
   const handleThemeChange = () => {
     setCurrentThemeMode(
-      currentThemeMode.palette.mode === 'light' ? Config.themes.dark : Config.themes.light
+      currentThemeMode.palette.mode === 'light' ? ThemeConfig.themes.dark : ThemeConfig.themes.light
     )
   }
 
@@ -37,7 +38,7 @@ export const HomeView: React.FC = () => {
 
     const handleColorSchemeChange = (event: MediaQueryListEvent) => {
       setCurrentThemeMode(
-        event.matches ? Config.themes.dark : Config.themes.light
+        event.matches ? ThemeConfig.themes.dark : ThemeConfig.themes.light
       )
     }
 
