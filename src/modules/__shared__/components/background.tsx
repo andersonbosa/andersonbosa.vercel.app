@@ -13,7 +13,7 @@ import Particles, { initParticlesEngine } from '@tsparticles/react'
 import { loadFull } from 'tsparticles'
 
 interface BackgroundProps {
-  useBackgroundParticles: boolean
+  useBackgroundParticles?: boolean
 }
 
 export const Background: React.FC<BackgroundProps> = ({
