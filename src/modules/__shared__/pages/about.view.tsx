@@ -1,12 +1,11 @@
 'use client'
 
-import { Box, Typography, List, ListItem, useTheme, Card, styled } from '@mui/material'
-import SideTitle from '../components/side-title'
+import { Box, Card, Chip, styled, Typography, useTheme } from '@mui/material'
 import Image from 'next/image'
+import SideTitle from '../components/side-title'
 import { useIsMobile } from '../hooks/is-mobile.hook'
 
 interface AboutViewProps { }
-
 
 const StyledCard = styled(Card)({
   overflow: 'hidden',
@@ -23,6 +22,26 @@ const StyledCard = styled(Card)({
   '&:hover': {
     boxShadow: '0 4px 20px rgba(0, 0, 0, 0.2)',
     transform: 'translateY(-0.25rem)',
+  },
+})
+
+const StyledChip = styled(Chip)({
+  overflow: 'hidden',
+  position: 'relative',
+  backgroundColor: 'rgba(255, 255, 255, 0.0)',
+  borderRadius: '0.5rem',
+  backgroundImage: 'none',
+  boxShadow: 'none',
+  borderColor: 'rgba(117, 108, 96, 1)',
+  backdropFilter: 'blur(8px)',
+  border: '1px solid rgba(117, 108, 96, 0.3)',
+  transition: '0.2s',
+  height: '100%',
+  fontWeight: 'bold',
+  '&:hover': {
+    boxShadow: '0 4px 20px rgba(0, 0, 0, 0.2)',
+    transform: 'translateY(-0.25rem)',
+    scale: '1.1'
   },
 })
 
@@ -85,6 +104,24 @@ export const AboutView: React.FC<AboutViewProps> = () => {
             <Typography variant='body1' paragraph>
               The technologies I have been working with recently include:
             </Typography>
+            <Box>
+              <Box sx={{ display: 'flex', gap: '1rem'}}>
+                {[
+                  'Javascript',
+                  'Typescript',
+                  'PHP',
+                  'Ruby on Rails',
+                  'Jest',
+                  'Docker',
+                  'MariaDB',
+                  'Keycloak'
+                ].map(
+                  (item, index) => (
+                    <StyledChip key={item} label={item} />
+                  )
+                )}
+              </Box>
+            </Box>
           </Box>
         </Box>
       </Box>
