@@ -57,7 +57,7 @@ export const HomeView: React.FC = () => {
   const Home = () => (
     <Box>
       <Background />
-      { isMobile() ? <></> : <CursorHighlight /> }
+      {!isMobile && <CursorHighlight />}
       <Menu onLanguageChange={handleLanguageChange} onThemeToggle={handleThemeChange} />
       <Container>
         <HeroHeader />

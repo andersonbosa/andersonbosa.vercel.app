@@ -1,7 +1,6 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import { isMobile } from '../@helpers/is-mobile.helper'
 
 type CursorHighlightBind = {
   eventType: string
