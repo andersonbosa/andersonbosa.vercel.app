@@ -91,8 +91,6 @@ export const AboutView: React.FC<AboutViewProps> = () => {
               <Typography variant='body1' paragraph sx={{
                 textAlign: 'justify'
               }}>
-                Passionate about technology and hacking, software engineer since 2019, I build secure digital experiences!
-                <br /><br />
                 My journey began as a full-stack developer, where I gained experience in various technologies such as Python, NodeJS, Vue, React, Docker and many others. With experience in several areas of SLDC, such as frontend, backend, systems administration, and security, I am committed to continuously applying all my knowledge to solve real-world problems. My experience includes software development, application security, project management, agile practices and a great toolkit of soft skills. I'm committed to helping teams build high-level software that delivers more than functional requirements and offers a complete digital experience.
                 <br /><br />
                 I'm always open to connecting with people who share similar interests or exploring collaboration opportunities in the field of web development and security.
