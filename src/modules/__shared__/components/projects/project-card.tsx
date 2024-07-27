@@ -33,7 +33,7 @@ const StyledTitle = styled(Typography)({
 
 
 const StyledBadge = styled(Badge)<BadgeProps>(
-  ({ _ }) => ({
+  ({ }) => ({
     '& .MuiBadge-badge': {
       // backgroundColor: theme.palette.text.primary,
       // color: theme.palette.background.paper,

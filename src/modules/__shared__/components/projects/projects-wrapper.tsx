@@ -17,7 +17,6 @@ interface ProjectsWrapperProps {
 
 export const ProjectsWrapper: FunctionComponent<ProjectsWrapperProps> = () => {
   const [repositories, setRepositories] = useState<Repository[]>([])
-
   useEffect(
     () => {
       const fetchRepositories = async () => {
@@ -27,11 +26,9 @@ export const ProjectsWrapper: FunctionComponent<ProjectsWrapperProps> = () => {
         } catch (err) {
         }
       }
-
       fetchRepositories()
     }, []
   )
-
   return (
     <Suspense fallback={<CircularProgress color='primary' />}>
       <Box className={styles.projectsWrapper}>
@@ -43,5 +40,4 @@ export const ProjectsWrapper: FunctionComponent<ProjectsWrapperProps> = () => {
     </Suspense>
   )
 }
-
 
