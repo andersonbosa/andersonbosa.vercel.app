@@ -9,11 +9,9 @@ import { useIsMobile } from '../../hooks/is-mobile.hook'
 export interface IHeroHeaderProps { }
 
 export function HeroHeader (_: IHeroHeaderProps) {
-  const theme = useTheme()
-  const isMobile = useIsMobile(theme)
   const handleScrollDown = (): void => {
     window.scrollBy({
-      top: isMobile ? window.innerHeight / 2 : window.innerHeight,
+      top: window.innerHeight,
       behavior: 'smooth'
     })
   }
