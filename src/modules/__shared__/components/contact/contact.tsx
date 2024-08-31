@@ -29,6 +29,7 @@ export const Contacts: React.FC<{}> = () => {
     <Box id="contacts" className={styles.contact}>
       <Box className={styles.wrapper}>
         <Title>Contact</Title>
+        <br/>
         <Box className={styles.content}>
           <Typography variant='body1' >
             Feel free to contact me for consulting or an interesting discussion,
@@ -45,13 +46,13 @@ export const Contacts: React.FC<{}> = () => {
               )
             }
           </Box>
-        </Box>
-        <Box>
-          <Link href='mailto:andersonbosa0@gmail.com' target='_blank' rel='noreferrer'>
-            <Button className={styles.helloButton} variant='outlined' color='primary'>
-              say hi
-            </Button>
-          </Link>
+          <Box>
+            <Link href='mailto:andersonbosa0@gmail.com' target='_blank' rel='noreferrer'>
+              <Button className={styles.helloButton} variant='outlined' color='primary'>
+                say hi
+              </Button>
+            </Link>
+          </Box>
         </Box>
       </Box>
     </Box>

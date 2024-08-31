@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 
-import { Box, Container, Theme } from '@mui/material'
+import { Box, Container, Theme, Typography } from '@mui/material'
 import Loading from '@/app/loading'
 
 import { ThemeConfig } from '../theme/config'
@@ -55,6 +55,18 @@ export const HomeView: React.FC = () => {
     <Box aria-label='blank-space' sx={{ height: size }}></Box>
   )
 
+  const Footer: React.FC = () => {
+    return (
+      <footer>
+        <Container maxWidth="lg" >
+          <Typography variant="body2" color="text.secondary" align="center" pb={6}>
+            {'Created by Anderson Bosa.'}
+          </Typography>
+        </Container>
+      </footer>
+    )
+  }
+
   const Home = () => (
     <Box>
       <Menu onLanguageChange={handleLanguageChange} onThemeToggle={handleThemeChange} />
@@ -68,6 +80,7 @@ export const HomeView: React.FC = () => {
         <BlankSpace />
         <ContactsView />
         <BlankSpace />
+        <Footer />
       </Container>
 
       {!isMobile && <CursorHighlight />}
