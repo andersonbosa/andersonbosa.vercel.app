@@ -2,6 +2,7 @@
 
 import { Box, Typography, useTheme } from '@mui/material'
 import { FunctionComponent } from 'react'
+import { useIsMobile } from '../hooks/is-mobile.hook'
 
 interface SideTitleProps {
   children: React.ReactNode
@@ -11,6 +12,7 @@ export const SideTitle: FunctionComponent<SideTitleProps> = (
   { children, ...rest }
 ) => {
   const theme = useTheme()
+  const isMobile = useIsMobile(theme)
 
   return (
     <Box
@@ -20,21 +22,20 @@ export const SideTitle: FunctionComponent<SideTitleProps> = (
         paddingBottom: '1rem',
         top: '5rem',
         height: '100%',
-        // width: '100%',
       }}
       {...rest}
     >
       <Typography
         variant='h1'
+        component='div'
         color={theme.palette.mode === 'dark' ? 'teal.500' : 'blue.500'}
         sx={{
           writingMode: 'vertical-lr',
           transform: 'rotate(180deg)',
           textTransform: 'uppercase',
-          fontSize:'3rem',
+          fontSize: isMobile ? '1.2rem' : '3rem',
           gap: '4px',
           align: 'center',
-          // paddingRight: '1rem',
         }}
       >
         {children}
