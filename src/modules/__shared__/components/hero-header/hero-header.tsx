@@ -2,18 +2,18 @@
 
 import styles from './hero-header.module.css'
 
-import { Box, IconButton } from '@mui/material'
+import { Box, IconButton, useTheme } from '@mui/material'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
+import { useIsMobile } from '../../hooks/is-mobile.hook'
 
-export interface IHeroHeaderProps {
-}
+export interface IHeroHeaderProps { }
 
-const NEXT_SECTION_ELEMENT_ID = 'projects'
-
-export function HeroHeader (props: IHeroHeaderProps) {
+export function HeroHeader (_: IHeroHeaderProps) {
+  const theme = useTheme()
+  const isMobile = useIsMobile(theme)
   const handleScrollDown = (): void => {
     window.scrollBy({
-      top: window.innerHeight,
+      top: isMobile ? window.innerHeight / 2 : window.innerHeight,
       behavior: 'smooth'
     })
   }
