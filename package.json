@@ -7,7 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "prepare": "husky"
+    "prepare": "husky",
+    "release:patch": "node release.mjs patch",
+    "release:minor": "node release.mjs minor",
+    "release:major": "node release.mjs major"
   },
   "dependencies": {
     "@emotion/react": "^11.11.4",
