@@ -4,7 +4,7 @@
     box-shadow: none;
     border-color: rgba(117, 108, 96, 1);
     backdrop-filter: blur(8px);
-    border-bottom: 1px solid rgba(117, 108, 96, 0.3)
+    border-bottom: 1px solid rgba(117, 108, 96, 0.3);
   }
 
   .logo {
