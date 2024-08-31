@@ -50,12 +50,14 @@ export const AboutView: React.FC<AboutViewProps> = () => {
   const isMobile = useIsMobile(theme)
 
   return (
-    <Box id='about'>
+    <Box id='about' sx={{
+      width: '100%',
+      maxWidth: 'calc(100vw - 100px)',
+    }}>
       <Box className='about-wrapper'
         sx={{
           display: 'flex',
           alignItems: 'flex-start',
-          // width: '100%',
           gap: '1rem',
         }}
       >
@@ -64,7 +66,8 @@ export const AboutView: React.FC<AboutViewProps> = () => {
           sx={{
             display: 'flex',
             alignItems: 'flex-start',
-            flexDirection: 'column'
+            flexDirection: 'column',
+            width: '100%',
           }}
         >
           <Box
@@ -72,7 +75,6 @@ export const AboutView: React.FC<AboutViewProps> = () => {
               display: 'flex',
               flexDirection: isMobile ? 'column' : 'row',
               alignItems: isMobile ? 'center' : 'flex-start',
-              // width: '100%',
               gap: '1rem',
             }}
           >
@@ -87,9 +89,9 @@ export const AboutView: React.FC<AboutViewProps> = () => {
                 <Image alt='profile photo' src='https://github.com/andersonbosa.png' width={230} height={230} />
               </StyledCard>
             </Box>
-            <Box
-              // sx={{ width: '100%' }}
             <Box>
+              <Typography variant='body1' paragraph sx={{
+                textAlign: 'justify'
               }}>
                 My journey began as a full-stack developer, where I gained experience in various technologies such as Python, NodeJS, Vue, React, Docker and many others. With experience in several areas of SLDC, such as frontend, backend, systems administration, and security, I am committed to continuously applying all my knowledge to solve real-world problems. My experience includes software development, application security, project management, agile practices and a great toolkit of soft skills. I'm committed to helping teams build high-level software that delivers more than functional requirements and offers a complete digital experience.
                 <br /><br />
@@ -105,7 +107,11 @@ export const AboutView: React.FC<AboutViewProps> = () => {
             <Box>
               <Box sx={{
                 display: 'flex',
-                gap: '1rem'
+                gap: '1rem',
+                flexWrap: 'wrap',
+                alignContent: 'stretch',
+                alignItems: 'stretch',
+                justifyContent: 'flex-start',
               }}>
                 {[
                   'Javascript',
@@ -118,7 +124,10 @@ export const AboutView: React.FC<AboutViewProps> = () => {
                   'Keycloak'
                 ].map(
                   (item: string) => (
-                    <StyledChip key={item} label={item} />
+                    <StyledChip key={item} label={item} sx={{
+                      flexBasis: 'fit-content',
+                      flexGrow: 1,
+                    }} />
                   )
                 )}
               </Box>
