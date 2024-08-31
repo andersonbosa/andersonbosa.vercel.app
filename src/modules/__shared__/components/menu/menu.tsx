@@ -97,15 +97,15 @@ export const Menu: React.FC<MenuProps> = ({ onThemeToggle, onLanguageChange }) =
     <Box className={styles.mobileMenu}>
       <Box className={styles.section1}>
         <DrawerToggleButton />
-        <Box>
+        {/* <Box>
           <ToggleThemeButton />
-        </Box>
+        </Box> */}
       </Box>
       <Drawer
         anchor='left'
         open={drawerOpen}
         onClose={handleDrawerToggle}
-        PaperProps={{ sx: { width: '55%' } }}
+        PaperProps={{ sx: { width: '90vw' } }}
         SlideProps={{ direction: 'right', appear: true }}
       >
         {mobileDrawer}
@@ -134,15 +134,19 @@ export const Menu: React.FC<MenuProps> = ({ onThemeToggle, onLanguageChange }) =
   )
 
   return (
-    <Box className={styles.menu}>
-      <AppBar
-        className={styles.appbar}
-        color='transparent'
-        enableColorOnDark
-      >
-        <Toolbar> {isMobile ? <MobileMenu /> : <DesktopMenu />} </Toolbar>
-      </AppBar >
-    </Box >
+    <React.Fragment>
+      <Box className={styles.menu} sx={{ flexGrow: 1 }}>
+        <AppBar
+          className={styles.appbar}
+          color='transparent'
+          enableColorOnDark
+          position='fixed'
+        >
+          <Toolbar> {isMobile ? <MobileMenu /> : <DesktopMenu />} </Toolbar>
+        </AppBar >
+        <Toolbar />
+      </Box>
+    </React.Fragment>
   )
 }
 
