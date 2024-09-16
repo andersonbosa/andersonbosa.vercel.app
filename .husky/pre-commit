@@ -1,5 +1,0 @@
-#!/usr/bin/env sh
-. "$(dirname "$0")/_/husky.sh"
-
-# TOFIX temporally disable husky
-# npx lint-staged

@@ -7,10 +7,13 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "prepare": "husky",
+    "prepare": " ",
     "release:patch": "node release.mjs patch",
     "release:minor": "node release.mjs minor",
     "release:major": "node release.mjs major"
+  },
+  "engines": {
+    "node": ">=20"
   },
   "dependencies": {
     "@emotion/react": "^11.11.4",
@@ -31,7 +34,6 @@
     "@types/react-dom": "^18",
     "eslint": "^8",
     "eslint-config-next": "14.2.3",
-    "husky": "^9.0.11",
     "lint-staged": "^15.2.7",
     "postcss": "^8.4.38",
     "postcss-nesting": "^12.1.5",
