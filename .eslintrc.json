@@ -1,7 +1,9 @@
 {
   "extends": "next/core-web-vitals",
+  "env": {
+    "browser": true
+  },
   "rules": {
-    "quotes": ["error", "single"],
-    "semi": ["error", "never"]
+    "react/no-unescaped-entities": "off"
   }
 }

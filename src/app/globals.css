@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  cursor: none;
+}
+
+* { 
+  user-select: none;
+}
+
+/* desktop */
+@media (max-width: 1200px) {}
+
+/* tablet */
+@media (max-width: 991px) {}
+
+/* ipad mini */
+@media (max-width: 767px) {}
+
+/* iphone se */
+@media (max-width: 375px) {}
