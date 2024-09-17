@@ -10,6 +10,7 @@ const fontImported = Roboto({ subsets: ['latin'], weight: ['100', '300', '400', 
 export const metadata: Metadata = {
   title: 'Anderson Bosa',
   description: 'I build secure digital experiences! Passionate about technology and hacking, software engineer since 2019',
+  creator: 'Anderson Bosa < https://github.com/andersonbosa >'
 }
 
 export default function RootLayout (
@@ -17,9 +18,6 @@ export default function RootLayout (
 ) {
   return (
     <html lang="en_US">
-      <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </Head>
       <body className={fontImported.className}>
         {children}
       </body>
