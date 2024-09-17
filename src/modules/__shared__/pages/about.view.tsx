@@ -41,7 +41,7 @@ const StyledChip = styled(Chip)({
   '&:hover': {
     boxShadow: '0 4px 20px rgba(0, 0, 0, 0.2)',
     transform: 'translateY(-0.25rem)',
-    scale: '1.1'
+    scale: '1.05'
   },
 })
 
@@ -52,7 +52,8 @@ export const AboutView: React.FC<AboutViewProps> = () => {
   return (
     <Box id='about' sx={{
       width: '100%',
-      maxWidth: 'calc(100vw - 100px)',
+      maxWidth: 'calc(100vw)',
+      paddingRight: '1.8rem'
     }}>
       <Box className='about-wrapper'
         sx={{
