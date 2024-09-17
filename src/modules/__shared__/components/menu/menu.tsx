@@ -6,6 +6,7 @@ import styles from './menu.module.css'
 import Brightness4Icon from '@mui/icons-material/Brightness4'
 import Brightness7Icon from '@mui/icons-material/Brightness7'
 import MenuIcon from '@mui/icons-material/Menu'
+import { CloseOutlined } from '@mui/icons-material'
 import {
   AppBar,
   Box,
@@ -72,6 +73,19 @@ export const Menu: React.FC<MenuProps> = ({ onThemeToggle, onLanguageChange }) =
 
   const mobileDrawer = (
     <Box onClick={handleDrawerToggle} >
+      <Box sx={{
+      display: 'flex',
+      justifyContent: 'flex-end',
+      marginTop: '12px',
+      marginRight: '12px',
+    }}>
+        <IconButton
+          color="inherit"
+          onClick={handleDrawerToggle}
+        >
+          <CloseOutlined />
+        </IconButton>
+      </Box>
       <List className={styles.mobileDrawer}>
         {NAV_ITEMS.map((item) => (
           <ListItemButton key={item.id} component="a" href={`#${item.id}`} className={styles.navItem} >
@@ -111,7 +125,7 @@ export const Menu: React.FC<MenuProps> = ({ onThemeToggle, onLanguageChange }) =
         anchor='left'
         open={drawerOpen}
         onClose={handleDrawerToggle}
-        PaperProps={{ sx: { width: '90vw' } }}
+        PaperProps={{ sx: { width: '70vw' } }}
         SlideProps={{ direction: 'right', appear: true }}
       >
         {mobileDrawer}
