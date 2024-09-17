@@ -59,8 +59,8 @@ export const Background: React.FC<BackgroundProps> = ({
             mode: 'grab',
             parallax: {
               enable: true,
-              smooth: 10,
-              force: 50,
+              smooth: 50,
+              force: 10,
             },
           },
         },

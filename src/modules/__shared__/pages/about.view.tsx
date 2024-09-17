@@ -102,7 +102,7 @@ export const AboutView: React.FC<AboutViewProps> = () => {
           </Box>
 
           <Box className='about-badges'>
-            <Typography variant='body1' paragraph>
+            <Typography variant='body1' paragraph mt={2}>
               The technologies I have been working with recently include:
             </Typography>
             <Box>
@@ -122,7 +122,8 @@ export const AboutView: React.FC<AboutViewProps> = () => {
                   'Jest',
                   'Docker',
                   'MariaDB',
-                  'Keycloak'
+                  'Keycloak',
+                  'RabbitMQ'
                 ].map(
                   (item: string) => (
                     <StyledChip key={item} label={item} sx={{
