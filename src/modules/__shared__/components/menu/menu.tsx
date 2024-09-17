@@ -40,9 +40,14 @@ export const Menu: React.FC<MenuProps> = ({ onThemeToggle, onLanguageChange }) =
 
 
   const ToggleThemeButton = () => (
-    <IconButton color="inherit" onClick={onThemeToggle}>
-      {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
-    </IconButton>
+    <Box sx={{
+      display: 'flex',
+      alignItems: 'center'
+    }}>
+      <IconButton color="inherit" onClick={onThemeToggle}>
+        {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+      </IconButton>
+    </Box>
   )
 
   // const PickLanguageButton = () => (
