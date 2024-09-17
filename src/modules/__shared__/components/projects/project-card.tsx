@@ -47,6 +47,7 @@ const StyledBadge = styled(Badge)<BadgeProps>(
 )
 
 export const ProjectCard: React.FC<{ repo: Repository }> = ({ repo, ...rest }) => {
+  console.log(repo)
   return (
     <Grid item xs={10} md={4} sm={6} {...rest}>
       <StyledCard>
@@ -66,28 +67,39 @@ export const ProjectCard: React.FC<{ repo: Repository }> = ({ repo, ...rest }) =
                     </Link>
                   </StyledTitle>
                 </Tooltip>
-                <StyledBadge badgeContent={repo.stargazers_count}>
-                  {repo.stargazers_count > 0 && <StarIcon fontSize='small' color="primary" />}
-                </StyledBadge>
+                <Tooltip title='Star this repository on GitHub' arrow>
+                  <Link href={repo.html_url} target="_blank" color='inherit'>
+                    <StyledBadge badgeContent={repo.stargazers_count}>
+                      {repo.stargazers_count > 0 && <StarIcon fontSize='small' color="primary" />}
+                    </StyledBadge>
+                  </Link>
+                </Tooltip>
               </Box>
-              <Typography variant="body2" color="text.secondary">
-                {repo.description || 'No description'}
+
+              <Typography variant="body2" color="text.secondary" mt={1}>
+                {repo.description || '...'}
               </Typography>
             </Box>
+
             <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <Box>
                 <Typography variant="caption" color="text.secondary" sx={{ fontWeight: 'bold' }}> {repo.language} </Typography>
               </Box>
+
               <Box>
                 <Tooltip arrow title='Open project webpage'>
-                  <IconButton>
-                    <OpenInNewIcon color="primary" />
-                  </IconButton>
+                  <Link href={repo.homepage} target="_blank" color='inherit'>
+                    <IconButton>
+                      <OpenInNewIcon color="primary" />
+                    </IconButton>
+                  </Link>
                 </Tooltip>
                 <Tooltip arrow title='Open project on GitHub'>
-                  <IconButton>
-                    <GitHubIcon color="primary" />
-                  </IconButton>
+                  <Link href={repo.html_url} target="_blank" color='inherit'>
+                    <IconButton>
+                      <GitHubIcon color="primary" />
+                    </IconButton>
+                  </Link>
                 </Tooltip>
               </Box>
             </Box>
