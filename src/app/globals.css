@@ -2,9 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-/* html {
-  cursor: none !important;
-} */
+body {
+  cursor: none;
+}
 
 * { 
   user-select: none;
