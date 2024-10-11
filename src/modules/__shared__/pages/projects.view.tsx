@@ -9,6 +9,7 @@ import {
 } from '@mui/material'
 
 import { ProjectsWrapper } from '../components/projects/projects-wrapper'
+import { BlankSpace } from '../components/blank-space'
 
 interface ProjectsViewProps { }
 
@@ -32,6 +33,7 @@ export const ProjectsView: FunctionComponent<ProjectsViewProps> = () => {
   return (
     <Suspense fallback={<CircularProgress color='primary' />}>
       <Box id='projects'>
+        <BlankSpace />
         <ProjectsWrapper repositories={repositories} />
         <Box marginBottom={4}></Box>
         <Box display="flex" justifyContent="center">

@@ -2,9 +2,8 @@
 
 import styles from './hero-header.module.css'
 
-import { Box, IconButton, useTheme } from '@mui/material'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
-import { useIsMobile } from '../../hooks/is-mobile.hook'
+import { Box, IconButton } from '@mui/material'
 
 export interface IHeroHeaderProps { }
 

@@ -2,16 +2,17 @@
 
 import { useEffect, useState } from 'react'
 
-import { Box, Container, Theme, Typography } from '@mui/material'
 import Loading from '@/app/loading'
+import { Box, Container, Theme, Typography } from '@mui/material'
 
 import { ThemeConfig } from '../theme/config'
 import MuiThemeProvider from '../theme/provider'
 
-import { ProjectsView } from './projects.view'
+import { ScrollToTopButton } from '../components/scroll-to-top-button'
 import { AboutView } from './about.view'
 import { ContactsView } from './contacts.view'
-import { ScrollToTopButton } from '../components/scroll-to-top-button'
+import { ProjectsView } from './projects.view'
+import { ExperiencesView } from './experiences.view'
 
 import { Background } from '../components/background'
 import { CursorHighlight } from '../components/cursor-highlight'
@@ -51,10 +52,6 @@ export const HomeView: React.FC = () => {
     return () => { clearTimeout(timer) }
   }
 
-  const BlankSpace: React.FC<{ size?: string }> = ({ size = '24vh' }) => (
-    <Box aria-label='blank-space' sx={{ height: size }}></Box>
-  )
-
   const Footer: React.FC = () => {
     return (
       <footer>
@@ -73,13 +70,10 @@ export const HomeView: React.FC = () => {
 
       <Container>
         <HeroHeader />
-        <BlankSpace />
         <AboutView />
-        <BlankSpace />
+        <ExperiencesView />
         <ProjectsView />
-        <BlankSpace />
         <ContactsView />
-        <BlankSpace />
         <Footer />
       </Container>
 

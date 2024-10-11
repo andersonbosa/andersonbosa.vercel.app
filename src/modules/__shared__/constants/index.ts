@@ -6,6 +6,7 @@ interface INavItem {
 
 export const NAV_ITEMS: INavItem[] = [
   { id: 'about', label: 'About', href: '#about' },
+  { id: 'experiences', label: 'Experiences', href: '#experiences' },
   { id: 'projects', label: 'Projects', href: '#projects', },
   { id: 'contacts', label: 'Contact', href: '#contacts', },
 ]

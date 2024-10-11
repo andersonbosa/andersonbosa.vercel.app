@@ -4,6 +4,7 @@ import { Box, Card, Chip, styled, Typography, useTheme } from '@mui/material'
 import Image from 'next/image'
 import SideTitle from '../components/side-title'
 import { useIsMobile } from '../hooks/is-mobile.hook'
+import { BlankSpace } from '../components/blank-space'
 
 interface AboutViewProps { }
 
@@ -55,6 +56,7 @@ export const AboutView: React.FC<AboutViewProps> = () => {
       maxWidth: 'calc(100vw)',
       paddingRight: '1.8rem'
     }}>
+      <BlankSpace />
       <Box className='about-wrapper'
         sx={{
           display: 'flex',
@@ -137,6 +139,7 @@ export const AboutView: React.FC<AboutViewProps> = () => {
           </Box>
         </Box>
       </Box>
+      <BlankSpace size='5vh' />
     </Box>
   )
 }
