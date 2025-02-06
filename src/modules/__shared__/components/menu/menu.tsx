@@ -24,6 +24,7 @@ import {
 
 
 import { NAV_ITEMS } from '../../constants'
+import { useScrollToTarget } from '../../utils/scroll-to-section.util'
 
 export interface MenuProps {
   onThemeToggle: () => void
@@ -33,6 +34,8 @@ export interface MenuProps {
 export const Menu: React.FC<MenuProps> = ({ onThemeToggle, onLanguageChange }) => {
   const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
+
+  const scrollToTarget = useScrollToTarget()
 
   const [drawerOpen, setDrawerOpen] = useState(false)
 
@@ -74,11 +77,11 @@ export const Menu: React.FC<MenuProps> = ({ onThemeToggle, onLanguageChange }) =
   const mobileDrawer = (
     <Box onClick={handleDrawerToggle} >
       <Box sx={{
-      display: 'flex',
-      justifyContent: 'flex-end',
-      marginTop: '12px',
-      marginRight: '12px',
-    }}>
+        display: 'flex',
+        justifyContent: 'flex-end',
+        marginTop: '12px',
+        marginRight: '12px',
+      }}>
         <IconButton
           color="inherit"
           onClick={handleDrawerToggle}
@@ -88,7 +91,7 @@ export const Menu: React.FC<MenuProps> = ({ onThemeToggle, onLanguageChange }) =
       </Box>
       <List className={styles.mobileDrawer}>
         {NAV_ITEMS.map((item) => (
-          <ListItemButton key={item.id} component="a" href={`#${item.id}`} className={styles.navItem} >
+          <ListItemButton key={item.id} component="a" className={styles.navItem} onClick={() => scrollToTarget(`#${item.id}`)}>
             <ListItemText primary={item.label} />
           </ListItemButton>
         ))}
@@ -140,7 +143,7 @@ export const Menu: React.FC<MenuProps> = ({ onThemeToggle, onLanguageChange }) =
         <Box className={styles.section1}>
           {
             NAV_ITEMS.map((item) => (
-              <Button key={item.id} color="inherit" href={`#${item.id}`} className={styles.navItem}>
+              <Button key={item.id} color="inherit" className={styles.navItem} onClick={() => scrollToTarget(`#${item.id}`)}>
                 {item.label}
               </Button>
             ))

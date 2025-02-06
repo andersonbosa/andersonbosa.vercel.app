@@ -25,7 +25,9 @@ export const HomeView: React.FC = () => {
   const [currentThemeMode, setCurrentThemeMode] = useState<Theme>(ThemeConfig.themes.default)
   const isMobile = useIsMobile(currentThemeMode)
 
-  const handleLanguageChange = () => { }
+  const handleLanguageChange = () => { 
+    // TODO add i18n
+  }
 
   const handleThemeChange = () => {
     setCurrentThemeMode(
