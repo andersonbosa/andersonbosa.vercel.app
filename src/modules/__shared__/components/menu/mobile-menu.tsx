@@ -3,7 +3,6 @@ import React from 'react'
 import { DrawerToggleButton } from './drawer-toggle-button'
 import styles from './menu.module.css'
 import { MobileDrawer } from './mobile-drawer'
-import { ToggleThemeButton } from './toggle-theme-button'
 
 interface MobileMenuProps {
     drawerOpen: boolean
@@ -20,7 +19,8 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
         <Box className={styles.mobileMenu}>
             <Box className={styles.section1}>
                 <DrawerToggleButton onDrawerToggle={onDrawerToggle} />
-                <ToggleThemeButton onThemeToggle={onThemeToggle} />
+                {/* // TODO TOFIX quando aperta tudo some 🥺 */}
+                {/* <ToggleThemeButton onThemeToggle={onThemeToggle} /> */}
             </Box>
             <MobileDrawer open={drawerOpen} onClose={onDrawerToggle} />
         </Box>

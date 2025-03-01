@@ -25,13 +25,15 @@ export const MainLayout: React.FC<MainLayoutProps> = ({
     const isMobile = useIsMobile(theme)
 
     return (
-        <Box sx={{ position: 'relative', minHeight: '100vh' }}>
-            <Menu onThemeToggle={onThemeToggle} onLanguageChange={onLanguageChange} />
-            <Container>{children}</Container>
-            <Footer />
-            {!isMobile && <CursorHighlight />}
-            <ScrollToTopButton />
-            <Background />
-        </Box>
+        <>
+            <Box sx={{ position: 'relative', minHeight: '100vh' }}>
+                <Menu onThemeToggle={onThemeToggle} onLanguageChange={onLanguageChange} />
+                <Container>{children}</Container>
+                <Footer />
+                {!isMobile && <CursorHighlight />}
+                <ScrollToTopButton />
+                <Background />
+            </Box>
+        </>
     )
 }
