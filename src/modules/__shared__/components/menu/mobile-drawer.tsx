@@ -2,6 +2,7 @@ import { CloseOutlined } from '@mui/icons-material'
 import { Box, Drawer, IconButton, List, ListItemButton, ListItemText } from '@mui/material'
 import React from 'react'
 import { NAV_ITEMS } from '../../constants'
+import { Logo } from './logo'
 import styles from './menu.module.css'
 
 interface MobileDrawerProps {
@@ -31,7 +32,11 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({ open, onClose }) => 
                         <CloseOutlined />
                     </IconButton>
                 </Box>
-                <List className={styles.mobileDrawer}>
+                <List>
+                    <Box>
+                        <Logo />
+                    </Box>
+
                     {NAV_ITEMS.map((item) => (
                         <ListItemButton
                             key={item.id}

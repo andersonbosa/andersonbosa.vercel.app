@@ -1,9 +1,9 @@
 import { Box } from '@mui/material'
 import React from 'react'
-import styles from './menu.module.css'
-import { ToggleThemeButton } from './toggle-theme-button'
 import { DrawerToggleButton } from './drawer-toggle-button'
+import styles from './menu.module.css'
 import { MobileDrawer } from './mobile-drawer'
+import { ToggleThemeButton } from './toggle-theme-button'
 
 interface MobileMenuProps {
     drawerOpen: boolean

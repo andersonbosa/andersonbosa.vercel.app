@@ -1,8 +1,8 @@
 import { Box, Button } from '@mui/material'
 import React from 'react'
 import { NAV_ITEMS } from '../../constants'
-import styles from './menu.module.css'
 import { Logo } from './logo'
+import styles from './menu.module.css'
 import { ToggleThemeButton } from './toggle-theme-button'
 
 interface DesktopMenuProps {

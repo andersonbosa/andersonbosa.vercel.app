@@ -1,3 +1,15 @@
+.logo {
+  margin: 0 16px;
+  cursor: pointer;
+  align-self: center;
+
+  button {
+    font-weight: bolder;
+    font-size: 1.4rem;
+    padding: 4px;
+  }
+}
+
 .menu {
   & .appbar {
     background-image: none;
@@ -5,18 +17,6 @@
     border-color: rgba(117, 108, 96, 1);
     backdrop-filter: blur(8px);
     border-bottom: 1px solid rgba(117, 108, 96, 0.3);
-  }
-
-  .logo {
-    margin: 0 16px;
-    cursor: pointer;
-    align-self: center;
-
-    button {
-      font-weight: bolder;
-      font-size: 1.4rem;
-      padding: 4px;
-    }
   }
 
   & .desktopMenu {
