@@ -2,18 +2,19 @@
 
 import { useEffect, useState } from 'react'
 
-import { Box, Container, Theme, Typography } from '@mui/material'
 import Loading from '@/app/loading'
+import { Box, Container, Theme, Typography } from '@mui/material'
 
 import { ThemeConfig } from '../theme/config'
 import MuiThemeProvider from '../theme/provider'
 
-import { ProjectsView } from './projects.view'
+import { ScrollToTopButton } from '../components/scroll-to-top-button'
 import { AboutView } from './about.view'
 import { ContactsView } from './contacts.view'
-import { ScrollToTopButton } from '../components/scroll-to-top-button'
+import { ProjectsView } from './projects.view'
 
 import { Background } from '../components/background'
+import { BlankSpace } from '../components/blank-space'
 import { CursorHighlight } from '../components/cursor-highlight'
 import { HeroHeader } from '../components/hero-header/hero-header'
 import { Menu } from '../components/menu/menu'
@@ -25,7 +26,7 @@ export const HomeView: React.FC = () => {
   const [currentThemeMode, setCurrentThemeMode] = useState<Theme>(ThemeConfig.themes.default)
   const isMobile = useIsMobile(currentThemeMode)
 
-  const handleLanguageChange = () => { 
+  const handleLanguageChange = () => {
     // TODO add i18n
   }
 
@@ -53,14 +54,12 @@ export const HomeView: React.FC = () => {
     return () => { clearTimeout(timer) }
   }
 
-  const BlankSpace: React.FC<{ size?: string }> = ({ size = '24vh' }) => (
-    <Box aria-label='blank-space' sx={{ height: size }}></Box>
-  )
 
   const Footer: React.FC = () => {
     return (
       <footer>
         <Container maxWidth="lg" >
+          <BlankSpace />
           <Typography variant="body2" color="text.secondary" align="center" pb={6}>
             {'Created by Anderson Bosa.'}
           </Typography>
@@ -75,13 +74,9 @@ export const HomeView: React.FC = () => {
 
       <Container>
         <HeroHeader />
-        <BlankSpace />
         <AboutView />
-        <BlankSpace />
         <ProjectsView />
-        <BlankSpace />
         <ContactsView />
-        <BlankSpace />
         <Footer />
       </Container>
 
