@@ -1,5 +1,5 @@
-import { HomeView } from '@/modules/__shared__/pages/home.view'
+import { HomePage } from '@/modules/__shared__/pages/home.page'
 
-export default async function Page () {
-  return <HomeView />
+export default async function Page() {
+  return <HomePage />
 }
