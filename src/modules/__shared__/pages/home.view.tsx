@@ -1,32 +1,20 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-
 import Loading from '@/app/loading'
-import { Box, Container, Theme, Typography } from '@mui/material'
-
+import React, { useEffect, useState } from 'react'
+import { HeroHeader } from '../components/hero-header/hero-header'
+import { MainLayout } from '../components/layouts/main-layout'
+import { AboutSection } from '../components/sections/about.section'
+import { ContactsSection } from '../components/sections/contacts.section'
+import { ProjectsSection } from '../components/sections/projects.section'
 import { ThemeConfig } from '../theme/config'
 import MuiThemeProvider from '../theme/provider'
 
-import { ScrollToTopButton } from '../components/scroll-to-top-button'
-import { AboutView } from './about.view'
-import { ContactsView } from './contacts.view'
-import { ProjectsView } from './projects.view'
-
-import { Background } from '../components/background'
-import { BlankSpace } from '../components/blank-space'
-import { CursorHighlight } from '../components/cursor-highlight'
-import { HeroHeader } from '../components/hero-header/hero-header'
-import { Menu } from '../components/menu/menu'
-import { useIsMobile } from '../hooks/is-mobile.hook'
-
-
 export const HomeView: React.FC = () => {
   const [useFakeLoading, setUseFakeLoading] = useState<boolean>(true)
-  const [currentThemeMode, setCurrentThemeMode] = useState<Theme>(ThemeConfig.themes.default)
-  const isMobile = useIsMobile(currentThemeMode)
+  const [currentThemeMode, setCurrentThemeMode] = useState(ThemeConfig.themes.default)
 
-  const handleLanguageChange = () => {
+  const handleLanguageChange = (language: string) => {
     // TODO add i18n
   }
 
@@ -36,66 +24,49 @@ export const HomeView: React.FC = () => {
     )
   }
 
-  const installPreferedColorScheme = () => {
+  const installPreferredColorScheme = () => {
     const handleColorSchemeChange = (event: MediaQueryListEvent) => {
-      setCurrentThemeMode(
-        event.matches ? ThemeConfig.themes.dark : ThemeConfig.themes.light
-      )
+      setCurrentThemeMode(event.matches ? ThemeConfig.themes.dark : ThemeConfig.themes.light)
     }
 
-    const mediaQuery = window?.matchMedia('(prefers-color-scheme: dark)')
-    handleColorSchemeChange(mediaQuery as any)
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
+    handleColorSchemeChange({ matches: mediaQuery.matches } as MediaQueryListEvent)
     mediaQuery.addEventListener('change', handleColorSchemeChange)
-    return () => { mediaQuery.removeEventListener('change', handleColorSchemeChange) }
+    return () => mediaQuery.removeEventListener('change', handleColorSchemeChange)
   }
 
   const installFakeLoading = () => {
-    const timer = setTimeout(() => { setUseFakeLoading(false) }, 321)
-    return () => { clearTimeout(timer) }
+    const timer = setTimeout(() => setUseFakeLoading(false), 321)
+    return () => clearTimeout(timer)
   }
 
-
-  const Footer: React.FC = () => {
-    return (
-      <footer>
-        <Container maxWidth="lg" >
-          <BlankSpace />
-          <Typography variant="body2" color="text.secondary" align="center" pb={6}>
-            {'Created by Anderson Bosa.'}
-          </Typography>
-        </Container>
-      </footer>
-    )
-  }
-
-  const Home = () => (
-    <Box>
-      <Menu onLanguageChange={handleLanguageChange} onThemeToggle={handleThemeChange} />
-
-      <Container>
-        <HeroHeader />
-        <AboutView />
-        <ProjectsView />
-        <ContactsView />
-        <Footer />
-      </Container>
-
-      {!isMobile && <CursorHighlight />}
-      <ScrollToTopButton />
-      <Background />
-    </Box>
-  )
-
-  useEffect(installPreferedColorScheme, [])
+  useEffect(installPreferredColorScheme, [])
   useEffect(installFakeLoading, [])
+
+  const HomeContent = () => (
+    <>
+      <HeroHeader />
+      <AboutSection />
+      <ProjectsSection />
+      <ContactsSection />
+    </>
+  )
 
   return (
     <MuiThemeProvider theme={currentThemeMode}>
-      {
-        useFakeLoading
-          ? <Loading />
-          : <Home />
-      }
+      {useFakeLoading ? (
+        <Loading />
+      ) : (
+        <MainLayout
+          theme={currentThemeMode}
+          onThemeToggle={handleThemeChange}
+          onLanguageChange={handleLanguageChange}
+        >
+          <HomeContent />
+        </MainLayout>
+      )}
     </MuiThemeProvider>
   )
 }
+
+export default HomeView

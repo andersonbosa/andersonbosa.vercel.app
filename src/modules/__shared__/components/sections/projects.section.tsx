@@ -7,13 +7,13 @@ import {
   Button,
   CircularProgress
 } from '@mui/material'
+import { BlankSpace } from '../blank-space'
+import { ProjectsWrapper } from '../projects/projects-wrapper'
 
-import { BlankSpace } from '../components/blank-space'
-import { ProjectsWrapper } from '../components/projects/projects-wrapper'
 
-interface ProjectsViewProps { }
+interface ProjectsSectionProps { }
 
-export const ProjectsView: FunctionComponent<ProjectsViewProps> = () => {
+export const ProjectsSection: FunctionComponent<ProjectsSectionProps> = () => {
   const [repositories, setRepositories] = useState<Repository[]>([])
 
   useEffect(

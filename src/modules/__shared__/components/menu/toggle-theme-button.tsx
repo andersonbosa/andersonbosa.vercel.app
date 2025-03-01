@@ -1,0 +1,20 @@
+import Brightness4Icon from '@mui/icons-material/Brightness4'
+import Brightness7Icon from '@mui/icons-material/Brightness7'
+import { Box, IconButton, useTheme } from '@mui/material'
+import React from 'react'
+
+interface ToggleThemeButtonProps {
+    onThemeToggle: () => void
+}
+
+export const ToggleThemeButton: React.FC<ToggleThemeButtonProps> = ({ onThemeToggle }) => {
+    const theme = useTheme()
+
+    return (
+        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+            <IconButton color="inherit" onClick={onThemeToggle}>
+                {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+            </IconButton>
+        </Box>
+    )
+}
