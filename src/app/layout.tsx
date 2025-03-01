@@ -1,6 +1,7 @@
 import '@/modules/__shared__/theme/common.css'
 import './globals.css'
 
+import { PostsProvider } from '@/modules/__shared__/contexts/post.context'
 import type { Metadata } from "next"
 import { Roboto } from "next/font/google"
 import { meta } from './constants'
@@ -19,7 +20,9 @@ export default function RootLayout(
   return (
     <html lang='en'>
       <body className={fontImported.className}>
-        {children}
+        <PostsProvider>
+          {children}
+        </PostsProvider>
       </body>
     </html>
   )
