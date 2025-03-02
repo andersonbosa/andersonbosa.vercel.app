@@ -1,6 +1,11 @@
+import { withContentlayer } from 'next-contentlayer2'
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+
+  swcMinify: true,
+
   images: {
     remotePatterns: [
       {
@@ -9,8 +14,20 @@ const nextConfig = {
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'dev.to',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'static.cloudflareinsights.com',
+        port: '',
+        pathname: '/**',
+      },
     ],
   }
 }
 
-export default nextConfig
+export default withContentlayer(nextConfig)

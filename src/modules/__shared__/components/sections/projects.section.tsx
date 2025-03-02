@@ -7,12 +7,13 @@ import {
   Button,
   CircularProgress
 } from '@mui/material'
+import { BlankSpace } from '../blank-space'
+import { ProjectsWrapper } from '../projects/projects-wrapper'
 
-import { ProjectsWrapper } from '../components/projects/projects-wrapper'
 
-interface ProjectsViewProps { }
+interface ProjectsSectionProps { }
 
-export const ProjectsView: FunctionComponent<ProjectsViewProps> = () => {
+export const ProjectsSection: FunctionComponent<ProjectsSectionProps> = () => {
   const [repositories, setRepositories] = useState<Repository[]>([])
 
   useEffect(
@@ -32,6 +33,7 @@ export const ProjectsView: FunctionComponent<ProjectsViewProps> = () => {
   return (
     <Suspense fallback={<CircularProgress color='primary' />}>
       <Box id='projects'>
+        <BlankSpace />
         <ProjectsWrapper repositories={repositories} />
         <Box marginBottom={4}></Box>
         <Box display="flex" justifyContent="center">

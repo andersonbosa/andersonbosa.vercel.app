@@ -1,25 +1,30 @@
-import './globals.css'
 import '@/modules/__shared__/theme/common.css'
+import './globals.css'
 
+import { PostsProvider } from '@/modules/__shared__/contexts/post.context'
 import type { Metadata } from "next"
-import Head from 'next/head'
 import { Roboto } from "next/font/google"
+import Script from 'next/script'
+import { meta } from './constants'
 
 const fontImported = Roboto({ subsets: ['latin'], weight: ['100', '300', '400', '500', '700', '900'] })
-
 export const metadata: Metadata = {
-  title: 'Anderson Bosa',
-  description: 'I build secure digital experiences! Passionate about technology and hacking, software engineer since 2019',
-  creator: 'Anderson Bosa < https://github.com/andersonbosa >'
+  title: meta.title,
+  description: meta.description,
+  creator: meta.creator,
 }
 
-export default function RootLayout (
+export default function RootLayout(
   { children, }: Readonly<{ children: React.ReactNode }>
 ) {
   return (
-    <html lang="en_US">
+    <html lang='en'>
       <body className={fontImported.className}>
-        {children}
+        <PostsProvider>
+          {children}
+        </PostsProvider>
+        <Script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "fec50b3155ad4217becd9afc2811da6f"}'>
+        </Script>
       </body>
     </html>
   )

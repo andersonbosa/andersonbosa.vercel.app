@@ -2,10 +2,11 @@
 
 import { Box, Card, Chip, styled, Typography, useTheme } from '@mui/material'
 import Image from 'next/image'
-import SideTitle from '../components/side-title'
-import { useIsMobile } from '../hooks/is-mobile.hook'
+import { useIsMobile } from '../../hooks/is-mobile.hook'
+import { BlankSpace } from '../blank-space'
+import SideTitle from '../side-title'
 
-interface AboutViewProps { }
+interface AboutSectionProps { }
 
 const StyledCard = styled(Card)({
   overflow: 'hidden',
@@ -45,7 +46,7 @@ const StyledChip = styled(Chip)({
   },
 })
 
-export const AboutView: React.FC<AboutViewProps> = () => {
+export const AboutSection: React.FC<AboutSectionProps> = () => {
   const theme = useTheme()
   const isMobile = useIsMobile(theme)
 
@@ -55,6 +56,7 @@ export const AboutView: React.FC<AboutViewProps> = () => {
       maxWidth: 'calc(100vw)',
       paddingRight: '1.8rem'
     }}>
+      <BlankSpace />
       <Box className='about-wrapper'
         sx={{
           display: 'flex',

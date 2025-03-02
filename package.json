@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:content": "contentlayer2 build",
     "start": "next start",
     "lint": "next lint",
     "prepare": " ",
@@ -22,8 +23,11 @@
     "@mui/material": "^5.15.18",
     "@tsparticles/react": "^3.0.0",
     "axios": "^1.7.2",
+    "contentlayer2": "^0.5.4",
+    "date-fns": "^4.1.0",
     "framer-motion": "^11.2.6",
     "next": "^14.2.4",
+    "next-contentlayer2": "^0.5.4",
     "react": "^18",
     "react-dom": "^18",
     "tsparticles": "^3.4.0"

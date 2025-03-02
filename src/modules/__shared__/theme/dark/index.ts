@@ -1,4 +1,5 @@
 import { ThemeOptions, createTheme } from '@mui/material/styles'
+import { typography } from '../typography'
 
 export const themeOptions: ThemeOptions = {
   palette: {
@@ -14,6 +15,17 @@ export const themeOptions: ThemeOptions = {
     },
     text: {
       primary: '#ebebeb',
+    },
+  },
+
+  typography,
+  components: {
+    MuiTypography: {
+      styleOverrides: {
+        root: {
+          color: 'inherit',
+        },
+      },
     },
   },
 }

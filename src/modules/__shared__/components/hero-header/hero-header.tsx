@@ -1,14 +1,14 @@
 'use client'
 
+import { meta } from '@/app/constants'
 import styles from './hero-header.module.css'
 
-import { Box, IconButton, useTheme } from '@mui/material'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
-import { useIsMobile } from '../../hooks/is-mobile.hook'
+import { Box, IconButton } from '@mui/material'
 
 export interface IHeroHeaderProps { }
 
-export function HeroHeader (_: IHeroHeaderProps) {
+export function HeroHeader(_: IHeroHeaderProps) {
   const handleScrollDown = (): void => {
     window.scrollBy({
       top: window.innerHeight,
@@ -24,9 +24,7 @@ export function HeroHeader (_: IHeroHeaderProps) {
             <span className={styles.iam}> i&apos;m </span>
             <h1>Anderson Bosa.</h1>
           </Box>
-          <Box className={styles.content3}> <h3>I build secure digital experiences!</h3></Box>
-          <p className={styles.content4}> Passionate about technology and hacking, software engineer
-            since 2019.</p>
+          <Box className={styles.content3}> <h3>{meta.subtitle}</h3></Box>
         </Box>
         <Box marginBottom={6}></Box>
         <IconButton className={styles.scrollDownButton} onClick={handleScrollDown}>
