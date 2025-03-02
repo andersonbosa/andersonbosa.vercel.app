@@ -18,7 +18,7 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'dev.to',
         port: '',
-        pathname: '/api/**',
+        pathname: '/**',
       },
       {
         protocol: 'https',

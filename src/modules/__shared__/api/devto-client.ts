@@ -1,21 +1,21 @@
-import { DevToPost } from '@/modules/blog/lib/devto'
+import responseMock from '@/../tests/mocks/devto-client.response'
+import { DevtoArticle } from '@/modules/blog/@types/blog'
 import axios from 'axios'
 
 class DevToClient {
-  private baseURL: string
 
   constructor() {
-    this.baseURL = 'https://dev.to/api'
   }
 
-  async getMyPosts(): Promise<DevToPost[]> {
-    if (process.env.NODE_ENV === 'development') {
-      return []
-    }
-
+  async getMyPosts(): Promise<DevtoArticle[]> {
     try {
-      const response = await axios.get<DevToPost[]>(
-        `${this.baseURL}/articles/me`,
+      if (process.env.NODE_ENV === 'development') {
+        console.log(`${__filename}: using mocks`)
+        return responseMock as any[] as DevtoArticle[]
+      }
+
+      const response = await axios.get<DevtoArticle[]>(
+        `https://dev.to/api/articles/me`,
         {
           headers: {
             'api-key': process.env.DEVTO_APIKEY

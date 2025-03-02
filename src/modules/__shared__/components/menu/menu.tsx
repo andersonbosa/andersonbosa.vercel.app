@@ -1,9 +1,9 @@
 'use client'
 
+import { AppBar, Box, Toolbar, useMediaQuery, useTheme } from '@mui/material'
 import React, { useState } from 'react'
-import styles from './menu.module.css'
-import { useMediaQuery, useTheme, AppBar, Toolbar, Box } from '@mui/material'
 import { DesktopMenu } from './desktop-menu'
+import styles from './menu.module.css'
 import { MobileMenu } from './mobile-menu'
 
 export interface MenuProps {

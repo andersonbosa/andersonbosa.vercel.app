@@ -1,9 +1,9 @@
 'use client'
 
+import { formatedDate } from '@/modules/__shared__/@helpers/date.helper'
 import { useIsMobile } from '@/modules/__shared__/hooks/is-mobile.hook'
 import { Box, Divider, Paper, Typography, useTheme } from '@mui/material'
 import { Post } from 'contentlayer/generated'
-import { format, parseISO } from 'date-fns'
 import { getMDXComponent } from 'next-contentlayer2/hooks'
 
 interface PostCardProps {
@@ -36,7 +36,7 @@ export function PostCard({ post }: PostCardProps) {
                         {post.title}
                     </Typography>
                     <Typography variant="caption" color="text.secondary">
-                        {format(parseISO(post.date), 'dd/MM/yyyy',)} | {post.tags.join(', ')}
+                        {formatedDate(post.date)} | {post.tags.join(', ')}
                     </Typography>
                 </Box>
 

@@ -1,5 +1,6 @@
 'use client'
 
+import { formatedDate } from '@/modules/__shared__/@helpers/date.helper'
 import { BlankSpace } from '@/modules/__shared__/components/blank-space'
 import { GenericCard } from '@/modules/__shared__/components/generic-card'
 import { MainLayout } from '@/modules/__shared__/components/layouts/main-layout'
@@ -15,28 +16,25 @@ export const BlogPage: React.FC = () => {
     // const [searchTerm, setSearchTerm] = useState<string>('')
 
     const allTags = Array.from(new Set(posts.flatMap((post) => post.tags)))
+        .filter(tag => tag !== '')
+
     const filteredPosts = posts.filter((post) => {
-        // const matchesTag = !selectedTag || post.tags.includes(selectedTag)
-        // const matchesSearch = !searchTerm ||
-        //     post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        //     (post.content && post.content.toLowerCase().includes(searchTerm.toLowerCase())) ||
-        //     (post.description && post.description.toLowerCase().includes(searchTerm.toLowerCase()))
-        // return matchesTag && matchesSearch
-        return posts
+        const matchesTag = !selectedTag || post.tags.includes(selectedTag)
+        return post.published && matchesTag
     })
 
     const PostLists = () => (
         filteredPosts.map((post) => (
-            <GenericCard key={post.slug} sx={{ maxWidth: '600px', mx: 'auto', mb: 2 }}>
+            <GenericCard key={post.slug} sx={{ maxWidth: '600px', mx: 'auto', mb: 2, cursor: 'pointer' }}>
                 <Box>
                     <Link href={`/blog/${post.slug}`}>
-                        <BlogH2 sx={{ fontSize: 24, cursor: 'pointer', '&:hover': { textDecoration: 'underline' } }}>
+                        <BlogH2 sx={{ fontSize: 24, '&:hover': { textDecoration: 'underline' } }}>
                             {post.title}
                         </BlogH2>
                     </Link>
                     <BlogText>{post.description || 'Clique para ler mais'}</BlogText>
                     <Typography variant="caption" color="text.secondary">
-                        {new Date(post.date).toLocaleDateString()} | {post?.tags}
+                        {formatedDate(post.date)} | {post?.tags.join(', ')}
                     </Typography>
                 </Box>
             </GenericCard>
@@ -58,18 +56,26 @@ export const BlogPage: React.FC = () => {
                 /> */}
 
                 <BlankSpace size='32px' />
+
                 <Box mb={2}>
                     <Typography variant="subtitle1">Filtrar por tags</Typography>
-                    {allTags.map((tag) => (
-                        <Chip
-                            key={tag}
-                            label={tag}
-                            onClick={() => setSelectedTag(tag === selectedTag ? null : tag)}
-                            color={selectedTag === tag ? 'primary' : 'default'}
-                            sx={{ mr: 1, mt: 1 }}
-                        />
-                    ))}
+                    <Box>
+                        {allTags
+                            .slice(0, 25)
+                            .sort((a, b) => a.localeCompare(b))
+                            .map((tag) => (
+                                <Chip
+                                    key={tag}
+                                    label={tag}
+                                    onClick={() => setSelectedTag(tag === selectedTag ? null : tag)}
+                                    color={selectedTag === tag ? 'primary' : 'default'}
+                                    sx={{ mr: 1, mt: 1 }}
+                                />
+                            ))
+                        }
+                    </Box>
                 </Box>
+
                 <BlankSpace size='32px' />
 
                 {postsLoading

@@ -13,6 +13,7 @@ function DevToPostToBlogPostEntity(p: DevtoArticle): BlogPostEntity {
     return {
         slug: p.slug,
         title: p.title,
+        published: p.published,
         date: p.published_at,
         tags: p.tag_list.toString().split(','),
         description: p.description,
@@ -21,10 +22,16 @@ function DevToPostToBlogPostEntity(p: DevtoArticle): BlogPostEntity {
     }
 }
 
+const denyPostIdList: Number[] = [
+    635618,
+    2299493
+]
+
 export async function getAllPosts(): Promise<BlogPostEntity[]> {
     const internalPosts: BlogPostEntity[] = allPosts.map((post) => ({
         slug: post.slug,
         title: post.title,
+        published: post.published,
         date: post.date,
         tags: post.tags,
         content: post.body.code,
@@ -32,7 +39,9 @@ export async function getAllPosts(): Promise<BlogPostEntity[]> {
 
     const externalPosts = await fetchDevToPosts()
 
-    const mappedExternalPosts: BlogPostEntity[] = externalPosts.map(DevToPostToBlogPostEntity)
+    const mappedExternalPosts: BlogPostEntity[] = externalPosts
+        .filter((post) => !denyPostIdList.includes(post.id))
+        .map(DevToPostToBlogPostEntity)
 
     return [
         ...internalPosts,
