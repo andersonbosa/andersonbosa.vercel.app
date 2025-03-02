@@ -4,7 +4,7 @@ import { BlankSpace } from '@/modules/__shared__/components/blank-space'
 import { GenericCard } from '@/modules/__shared__/components/generic-card'
 import { MainLayout } from '@/modules/__shared__/components/layouts/main-layout'
 import { usePosts } from '@/modules/__shared__/contexts/post.context'
-import { BlogH1, BlogH2, BlogText } from '@/modules/blog/components/ui/typography'
+import { BlogH2, BlogText } from '@/modules/blog/components/ui/typography'
 import { Box, Chip, Link, Typography } from '@mui/material'
 import React, { useState } from 'react'
 
@@ -30,7 +30,7 @@ export const BlogPage: React.FC = () => {
             <GenericCard key={post.slug} sx={{ maxWidth: '600px', mx: 'auto', mb: 2 }}>
                 <Box>
                     <Link href={`/blog/${post.slug}`}>
-                        <BlogH2 sx={{ cursor: 'pointer', '&:hover': { textDecoration: 'underline' } }}>
+                        <BlogH2 sx={{ fontSize: 24, cursor: 'pointer', '&:hover': { textDecoration: 'underline' } }}>
                             {post.title}
                         </BlogH2>
                     </Link>
@@ -46,7 +46,7 @@ export const BlogPage: React.FC = () => {
     return (
         <MainLayout>
             <Box py={4}>
-                <BlogH1>Blog</BlogH1>
+                {/* <BlogH1>Blog</BlogH1> */}
 
                 {/* <TextField
                     label="Pesquisar posts"
@@ -59,7 +59,7 @@ export const BlogPage: React.FC = () => {
 
                 <BlankSpace size='32px' />
                 <Box mb={2}>
-                    {/* <Typography variant="subtitle1">Filtrar por tags:</Typography> */}
+                    <Typography variant="subtitle1">Filtrar por tags</Typography>
                     {allTags.map((tag) => (
                         <Chip
                             key={tag}

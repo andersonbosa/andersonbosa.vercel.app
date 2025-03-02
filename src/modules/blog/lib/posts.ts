@@ -1,18 +1,20 @@
-import { BlogPostEntity, DevToPost } from '@/modules/blog/@types/blog'
+import { BlogPostEntity, DevtoArticle } from '@/modules/blog/@types/blog'
+import axios from 'axios'
 import { allPosts } from 'contentlayer/generated'
+import { compareAsc } from 'node_modules/date-fns/compareAsc.cjs'
 
 
-async function fetchDevToPosts(): Promise<DevToPost[]> {
-    const response = await fetch('/api/devto')
-    return response.json()
+async function fetchDevToPosts(): Promise<DevtoArticle[]> {
+    const response = await axios.get('/api/posts')
+    return response.data
 }
 
-function DevToPostToBlogPostEntity(p: DevToPost): BlogPostEntity {
+function DevToPostToBlogPostEntity(p: DevtoArticle): BlogPostEntity {
     return {
         slug: p.slug,
         title: p.title,
         date: p.published_at,
-        tags: p.tags.toString().split(','),
+        tags: p.tag_list.toString().split(','),
         description: p.description,
         url: p.url,
         content: p.body_markdown,
@@ -28,11 +30,12 @@ export async function getAllPosts(): Promise<BlogPostEntity[]> {
         content: post.body.code,
     }))
 
-    // const externalPosts = await fetchDevToPosts()
-    // const mappedExternalPosts: BlogPostEntity[] = externalPosts.map(DevToPostToBlogPostEntity)
+    const externalPosts = await fetchDevToPosts()
+
+    const mappedExternalPosts: BlogPostEntity[] = externalPosts.map(DevToPostToBlogPostEntity)
 
     return [
         ...internalPosts,
-        // ...mappedExternalPosts
-    ].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+        ...mappedExternalPosts
+    ].sort((a, b) => compareAsc(new Date(b.date), new Date(a.date)))
 }
