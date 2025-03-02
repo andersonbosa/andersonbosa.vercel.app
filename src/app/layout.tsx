@@ -8,7 +8,6 @@ import Script from 'next/script'
 import { meta } from './constants'
 
 const fontImported = Roboto({ subsets: ['latin'], weight: ['100', '300', '400', '500', '700', '900'] })
-
 export const metadata: Metadata = {
   title: meta.title,
   description: meta.description,

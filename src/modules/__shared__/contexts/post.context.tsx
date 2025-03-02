@@ -3,7 +3,7 @@
 import { getAllPosts } from '@/modules/blog/lib/posts'
 import { compareDesc } from 'date-fns'
 import React, { createContext, useContext, useEffect, useState } from 'react'
-import { BlogPostEntity } from '../@types/blog'
+import { BlogPostEntity } from '../../blog/@types/blog'
 
 interface PostsContextType {
     posts: BlogPostEntity[]
@@ -21,10 +21,9 @@ export const PostsProvider: React.FC<{ children: React.ReactNode }> = ({ childre
             try {
                 const allPosts = await getAllPosts()
                 allPosts.sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)))
-
                 setPosts(allPosts)
             } catch (error) {
-                console.error('Erro ao carregar posts:', error)
+                console.error(error)
             } finally {
                 setLoading(false)
             }

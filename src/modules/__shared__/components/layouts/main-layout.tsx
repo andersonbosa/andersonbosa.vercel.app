@@ -1,6 +1,8 @@
 'use client'
 
 import { Box, Container } from '@mui/material'
+import { setDefaultOptions } from 'date-fns'
+import { ptBR } from 'date-fns/locale'
 import React from 'react'
 import { useIsMobile } from '../../hooks/is-mobile.hook'
 import { useThemeLoading } from '../../hooks/use-theme-loading'
@@ -22,6 +24,7 @@ export const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
     const handleLanguageChange = (language: string) => {
         // TODO add i18n
     }
+    setDefaultOptions({ locale: ptBR })
     return (
         <>
             <MuiThemeProvider theme={currentThemeMode}>

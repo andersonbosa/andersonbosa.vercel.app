@@ -1,5 +1,6 @@
+import { BlankSpace } from '@/modules/__shared__/components/blank-space'
 import { MainLayout } from '@/modules/__shared__/components/layouts/main-layout'
-import { PostCard } from '@/modules/__shared__/components/post/post-card'
+import { PostCard } from '@/modules/blog/components/post/post-card'
 import { allPosts } from 'contentlayer/generated'
 import { notFound } from 'next/navigation'
 
@@ -22,5 +23,11 @@ export default function Page({ params }: PostPageProps) {
         notFound()
     }
 
-    return (<MainLayout><PostCard post={post} /></MainLayout>)
+    return (
+        <MainLayout>
+            <BlankSpace size='32px' />
+            <PostCard post={post} />
+            <BlankSpace size='32px' />
+        </MainLayout>
+    )
 }

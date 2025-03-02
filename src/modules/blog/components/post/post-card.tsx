@@ -1,7 +1,7 @@
-// modules/__shared__/components/post/PostCard.tsx
 'use client'
 
-import { Box, Divider, Paper, Typography } from '@mui/material'
+import { useIsMobile } from '@/modules/__shared__/hooks/is-mobile.hook'
+import { Box, Divider, Paper, Typography, useTheme } from '@mui/material'
 import { Post } from 'contentlayer/generated'
 import { format, parseISO } from 'date-fns'
 import { getMDXComponent } from 'next-contentlayer2/hooks'
@@ -11,11 +11,12 @@ interface PostCardProps {
 }
 
 export function PostCard({ post }: PostCardProps) {
-    const MDXContent = getMDXComponent(post.body.code)
+    const isMobile = useIsMobile(useTheme())
 
+    const MDXContent = getMDXComponent(post.body.code)
     return (
         <Paper
-            elevation={2}
+            elevation={5}
             sx={{
                 py: 4,
                 px: 3,
@@ -26,7 +27,6 @@ export function PostCard({ post }: PostCardProps) {
             }}
         >
             <article>
-                {/* Cabeçalho */}
                 <Box sx={{ mb: 4, textAlign: 'center' }}>
                     <Typography
                         variant="h4"
@@ -36,9 +36,11 @@ export function PostCard({ post }: PostCardProps) {
                         {post.title}
                     </Typography>
                     <Typography variant="caption" color="text.secondary">
-                        {format(parseISO(post.date), 'LLLL d, yyyy')} | {post.tags.join(', ')}
+                        {format(parseISO(post.date), 'dd/MM/yyyy',)} | {post.tags.join(', ')}
                     </Typography>
                 </Box>
+
+                <Divider sx={{ my: 4 }} />
 
                 <Box
                     sx={{

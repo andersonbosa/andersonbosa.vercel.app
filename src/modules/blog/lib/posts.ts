@@ -1,4 +1,4 @@
-import { BlogPostEntity, DevToPost } from '@/modules/__shared__/@types/blog'
+import { BlogPostEntity, DevToPost } from '@/modules/blog/@types/blog'
 import { allPosts } from 'contentlayer/generated'
 
 
