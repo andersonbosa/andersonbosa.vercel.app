@@ -35,7 +35,6 @@ export const BlogPage: React.FC = () => {
         filteredPosts.map((post) => (
             <GenericCard key={post.slug} sx={{ maxWidth: '600px', mx: 'auto', mb: 2, cursor: 'pointer' }}>
                 <Box>
-                    {console.log(post)}
                     <Link href={getPostUrl(post)}>
                         <BlogH2 sx={{ fontSize: 24, '&:hover': { textDecoration: 'underline' } }}>
                             {post.title}
