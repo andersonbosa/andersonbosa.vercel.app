@@ -23,8 +23,7 @@ export default function RootLayout(
         <PostsProvider>
           {children}
         </PostsProvider>
-        <Script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "fec50b3155ad4217becd9afc2811da6f"}'>
-        </Script>
+        <Script id='cloudflare' defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "fec50b3155ad4217becd9afc2811da6f"}'> </Script>
       </body>
     </html>
   )
