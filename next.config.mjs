@@ -20,6 +20,12 @@ const nextConfig = {
         port: '',
         pathname: '/api/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'static.cloudflareinsights.com',
+        port: '',
+        pathname: '/**',
+      },
     ],
   }
 }

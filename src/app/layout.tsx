@@ -4,6 +4,7 @@ import './globals.css'
 import { PostsProvider } from '@/modules/__shared__/contexts/post.context'
 import type { Metadata } from "next"
 import { Roboto } from "next/font/google"
+import Script from 'next/script'
 import { meta } from './constants'
 
 const fontImported = Roboto({ subsets: ['latin'], weight: ['100', '300', '400', '500', '700', '900'] })
@@ -23,6 +24,8 @@ export default function RootLayout(
         <PostsProvider>
           {children}
         </PostsProvider>
+        <Script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "fec50b3155ad4217becd9afc2811da6f"}'>
+        </Script>
       </body>
     </html>
   )

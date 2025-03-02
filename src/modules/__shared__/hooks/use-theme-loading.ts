@@ -7,6 +7,7 @@ const FAKE_LOADING_DURATION = 123
 const VISIT_THRESHOLD = 60 * 60 * 1000
 
 export const useThemeLoading = () => {
+    // SUGGESTION remover esse comportamento, nao acho mais legal rsrs
     // TODO FIX está sempre usando valor padrão, ignorando a lógica do installFakeLoading
     const [useFakeLoading, setUseFakeLoading] = useState(false)
     const [currentThemeMode, setCurrentThemeMode] = useState<Theme>(ThemeConfig.themes.default)

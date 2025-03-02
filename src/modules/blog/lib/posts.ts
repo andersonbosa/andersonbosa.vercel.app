@@ -1,31 +1,38 @@
-import { BlogPost } from '@/modules/__shared__/@types/blog'
+import { BlogPostEntity, DevToPost } from '@/modules/__shared__/@types/blog'
 import { allPosts } from 'contentlayer/generated'
-import { fetchDevToPosts } from './devto'
 
-export async function getAllPosts(): Promise<BlogPost[]> {
-    const internalPosts: BlogPost[] = allPosts.map((post) => ({
+
+async function fetchDevToPosts(): Promise<DevToPost[]> {
+    const response = await fetch('/api/devto')
+    return response.json()
+}
+
+function DevToPostToBlogPostEntity(p: DevToPost): BlogPostEntity {
+    return {
+        slug: p.slug,
+        title: p.title,
+        date: p.published_at,
+        tags: p.tags.toString().split(','),
+        description: p.description,
+        url: p.url,
+        content: p.body_markdown,
+    }
+}
+
+export async function getAllPosts(): Promise<BlogPostEntity[]> {
+    const internalPosts: BlogPostEntity[] = allPosts.map((post) => ({
         slug: post.slug,
         title: post.title,
         date: post.date,
         tags: post.tags,
-        category: post.category as 'vida',
         content: post.body.code,
     }))
 
-    const externalPosts = await fetchDevToPosts(String(process.env.DEVTO_USERNAME))
+    // const externalPosts = await fetchDevToPosts()
+    // const mappedExternalPosts: BlogPostEntity[] = externalPosts.map(DevToPostToBlogPostEntity)
 
-    const mappedExternalPosts: BlogPost[] = externalPosts.map((post) => ({
-        slug: post.slug,
-        title: post.title,
-        date: post.published_at,
-        tags: post.tags,
-        category: 'tecnologia',
-        description: post.description,
-        url: post.url,
-    }))
-
-    return [...internalPosts, ...mappedExternalPosts]
-        .sort(
-            (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-        )
+    return [
+        ...internalPosts,
+        // ...mappedExternalPosts
+    ].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 }

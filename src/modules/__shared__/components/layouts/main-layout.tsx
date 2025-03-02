@@ -1,8 +1,11 @@
 'use client'
 
-import { Box, Container, Theme } from '@mui/material'
+import { Box, Container } from '@mui/material'
 import React from 'react'
 import { useIsMobile } from '../../hooks/is-mobile.hook'
+import { useThemeLoading } from '../../hooks/use-theme-loading'
+import { theme } from '../../theme/dark'
+import MuiThemeProvider from '../../theme/provider'
 import { Background } from '../background'
 import { CursorHighlight } from '../cursor-highlight'
 import { Menu } from '../menu/menu'
@@ -11,29 +14,26 @@ import { Footer } from './footer'
 
 interface MainLayoutProps {
     children: React.ReactNode
-    theme: Theme
-    onThemeToggle: () => void
-    onLanguageChange: (language: string) => void
 }
 
-export const MainLayout: React.FC<MainLayoutProps> = ({
-    children,
-    theme,
-    onThemeToggle,
-    onLanguageChange,
-}) => {
+export const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
+    const { currentThemeMode, handleThemeChange } = useThemeLoading()
     const isMobile = useIsMobile(theme)
-
+    const handleLanguageChange = (language: string) => {
+        // TODO add i18n
+    }
     return (
         <>
-            <Box sx={{ position: 'relative', minHeight: '100vh' }}>
-                <Menu onThemeToggle={onThemeToggle} onLanguageChange={onLanguageChange} />
-                <Container>{children}</Container>
-                <Footer />
-                {!isMobile && <CursorHighlight />}
-                <ScrollToTopButton />
-                <Background />
-            </Box>
+            <MuiThemeProvider theme={currentThemeMode}>
+                <Box sx={{ position: 'relative', minHeight: '100vh' }}>
+                    <Menu onThemeToggle={handleThemeChange} onLanguageChange={() => { }} />
+                    <Container>{children}</Container>
+                    <Footer />
+                    {!isMobile && <CursorHighlight />}
+                    <ScrollToTopButton />
+                    <Background />
+                </Box>
+            </MuiThemeProvider >
         </>
     )
 }
