@@ -8,6 +8,7 @@ import { usePosts } from '@/modules/__shared__/contexts/post.context'
 import { BlogH2, BlogText } from '@/modules/blog/components/ui/typography'
 import { Box, Chip, Link, Typography } from '@mui/material'
 import React, { useState } from 'react'
+import { BlogPostEntity } from '../@types/blog'
 
 export const BlogPage: React.FC = () => {
     const { posts, loading: postsLoading } = usePosts()
@@ -23,11 +24,19 @@ export const BlogPage: React.FC = () => {
         return post.published && matchesTag
     })
 
+
+    function getPostUrl(post: BlogPostEntity): string | undefined {
+        if (post.url) return post.url
+
+        return `/blog/${post.slug}`
+    }
+
     const PostLists = () => (
         filteredPosts.map((post) => (
             <GenericCard key={post.slug} sx={{ maxWidth: '600px', mx: 'auto', mb: 2, cursor: 'pointer' }}>
                 <Box>
-                    <Link href={`/blog/${post.slug}`}>
+                    {console.log(post)}
+                    <Link href={getPostUrl(post)}>
                         <BlogH2 sx={{ fontSize: 24, '&:hover': { textDecoration: 'underline' } }}>
                             {post.title}
                         </BlogH2>
