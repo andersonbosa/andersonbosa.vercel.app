@@ -6,7 +6,7 @@ Disallow: /scripts/
 Allow: /#about
 Allow: /#projects
 Allow: /#contacts
-Allow: /#blog
+Allow: /blog
 
 Sitemap: https://andersonbosa.vercel.app/sitemap.xml
 
