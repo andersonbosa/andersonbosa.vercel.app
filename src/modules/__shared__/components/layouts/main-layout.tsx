@@ -4,7 +4,7 @@ import { Box, Container } from '@mui/material'
 import { setDefaultOptions } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
 import React from 'react'
-import { useTheme } from '../../contexts/theme.context'
+import { useMuiTheme } from '../../contexts/theme.context'
 import { useIsMobile } from '../../hooks/is-mobile.hook'
 import { Background } from '../background'
 import { CursorHighlight } from '../cursor-highlight'
@@ -17,7 +17,7 @@ interface MainLayoutProps {
 }
 
 export const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
-    const { theme, toggleTheme } = useTheme()
+    const { theme, toggleTheme } = useMuiTheme()
     const isMobile = useIsMobile(theme)
     setDefaultOptions({ locale: ptBR })
     return (
