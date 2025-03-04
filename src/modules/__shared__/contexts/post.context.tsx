@@ -1,12 +1,11 @@
-// src/contexts/post.context.tsx
 'use client'
 
-import { ApiDataResponse } from '@/globals.d.ts'
-import { UnifiedPost } from '@/types/post'
+import { PostEntity } from '@/modules/blog/@types/blog'
 import React, { createContext, useContext, useEffect, useState } from 'react'
+import { ApiDataResponse } from '../@types/globals'
 
 interface PostContextType {
-    posts: UnifiedPost[]
+    posts: PostEntity[]
     loading: boolean
     total: number
     page: number
@@ -20,7 +19,7 @@ interface PostContextType {
 const PostContext = createContext<PostContextType | undefined>(undefined)
 
 export const PostProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-    const [posts, setPosts] = useState<UnifiedPost[]>([])
+    const [posts, setPosts] = useState<PostEntity[]>([])
     const [loading, setLoading] = useState(true)
     const [searchTerm, setSearchTerm] = useState('')
     const [page, setPage] = useState(1)
@@ -35,7 +34,7 @@ export const PostProvider: React.FC<{ children: React.ReactNode }> = ({ children
                 const url = `/api/posts?search=${encodeURIComponent(searchTerm)}&page=${page}&per_page=${perPage}`
                 const response = await fetch(url)
                 if (!response.ok) throw new Error('Failed to fetch posts')
-                const apiResponse: ApiDataResponse<UnifiedPost[]> = await response.json()
+                const apiResponse: ApiDataResponse<PostEntity[]> = await response.json()
                 setPosts(apiResponse.data)
                 setTotal(apiResponse.metadata.total)
                 setTotalPages(apiResponse.metadata.totalPages)

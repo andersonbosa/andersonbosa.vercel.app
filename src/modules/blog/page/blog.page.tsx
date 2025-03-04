@@ -7,7 +7,7 @@ import { usePosts } from '@/modules/__shared__/contexts/post.context'
 import { Box } from '@mui/material'
 import { useRouter, useSearchParams } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
-import { UnifiedPost } from '../@types/blog'
+import { PostEntity } from '../@types/blog'
 import { PostsList } from '../components/post/posts-list'
 
 export const BlogPage: React.FC = () => {
@@ -58,21 +58,21 @@ export const BlogPage: React.FC = () => {
         router.push(`?${params.toString()}`)
     }
 
-    const renderPosts = (filteredPosts: UnifiedPost[]) => (
+    const renderPosts = (filteredPosts: PostEntity[]) => (
         <PostsList posts={filteredPosts} />
     )
 
     return (
         <MainLayout>
             <Box py={4}>
-                <DataSearch<UnifiedPost>
+                <DataSearch<PostEntity>
                     items={posts}
                     allTags={allTags}
                     selectedTags={selectedTags}
                     searchTerm={searchTerm}
-                    totalPages={totalPages}
                     page={page}
-                    loading={loading}
+                    totalPages={totalPages}
+                    isItemsLoading={loading}
                     onSearch={handleSearch}
                     onPageChange={setPage}
                     onTagToggle={handleTagToggle}

@@ -1,5 +1,6 @@
-import axios from 'axios'
 import githubClientResponseMocked from '@/../tests/mocks/github-client.response'
+import axios from 'axios'
+import { Repository } from '../@types/globals'
 
 class GitHubClient {
   private baseURL: string
@@ -8,7 +9,7 @@ class GitHubClient {
     this.baseURL = 'https://api.github.com'
   }
 
-  async getUserRepositoriesByUsername (username: string): Promise<Repository[]> {
+  async getUserRepositoriesByUsername(username: string): Promise<Repository[]> {
     if (process.env.NODE_ENV === 'development') {
       console.log(`${__filename}: using githubClientResponseMocked`)
       return githubClientResponseMocked as Repository[]

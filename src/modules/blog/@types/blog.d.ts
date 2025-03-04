@@ -1,5 +1,5 @@
 
-export interface UnifiedPost {
+export interface PostEntity {
     slug: string
     title: string
     published: boolean

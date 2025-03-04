@@ -2,6 +2,7 @@
 
 import { Grid, } from '@mui/material'
 
+import { Repository } from '../../@types/globals'
 import { useIsMobile } from '../../hooks/is-mobile.hook'
 import { ProjectCard } from './project-card'
 

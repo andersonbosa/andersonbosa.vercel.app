@@ -1,11 +1,12 @@
 'use client'
 
-import StarIcon from '@mui/icons-material/Star'
-import OpenInNewIcon from '@mui/icons-material/OpenInNew'
 import GitHubIcon from '@mui/icons-material/GitHub'
+import OpenInNewIcon from '@mui/icons-material/OpenInNew'
+import StarIcon from '@mui/icons-material/Star'
 
 import { Badge, BadgeProps, Box, Card, CardContent, Grid, IconButton, Link, Tooltip, Typography } from '@mui/material'
 import { styled } from '@mui/material/styles'
+import { Repository } from '../../@types/globals'
 
 const StyledCard = styled(Card)({
   overflow: 'hidden',

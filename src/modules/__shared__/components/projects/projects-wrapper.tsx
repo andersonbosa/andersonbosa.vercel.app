@@ -8,6 +8,7 @@ import {
   Box,
   CircularProgress
 } from '@mui/material'
+import { Repository } from '../../@types/globals'
 import SideTitle from '../side-title'
 import { ProjectList } from './projects-list'
 

@@ -7,6 +7,7 @@ import {
   Button,
   CircularProgress
 } from '@mui/material'
+import { Repository } from '../../@types/globals'
 import { BlankSpace } from '../blank-space'
 import { ProjectsWrapper } from '../projects/projects-wrapper'
 

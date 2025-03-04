@@ -1,11 +1,11 @@
 import { formatedDate } from "@/modules/__shared__/@helpers/date.helper"
 import { GenericCard } from "@/modules/__shared__/components/generic-card"
 import { Box, Link, Tooltip, Typography } from "@mui/material"
-import { UnifiedPost } from "../../@types/blog"
+import { PostEntity } from "../../@types/blog"
 import { BlogH2, BlogText } from "../ui/typography"
 
 interface PostsListsProps {
-    posts: UnifiedPost[]
+    posts: PostEntity[]
 }
 
 export const PostsList: React.FC<PostsListsProps> = ({ posts }) => {
