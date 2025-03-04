@@ -4,7 +4,7 @@ import { BlankSpace } from '@/modules/__shared__/components/blank-space'
 import { MainLayout } from '@/modules/__shared__/components/layouts/main-layout'
 import { usePosts } from '@/modules/__shared__/contexts/post.context'
 import { BlogText } from '@/modules/blog/components/ui/typography'
-import { Box } from '@mui/material'
+import { Box, Grid } from '@mui/material'
 import React, { useState } from 'react'
 import { PostsList } from '../components/post/posts-list'
 import { TagsFilter } from '../components/tags-filter'
@@ -51,39 +51,33 @@ export const BlogPage: React.FC = () => {
                 /> */}
 
                 <BlankSpace size='32px' />
+                {/* <Box>
+                    <form>
+                        <TextField
+                            label='Search your favorite content'
+                            fullWidth
+                        />
+                    </form>
+                </Box>
+                <BlankSpace size='64px' /> */}
 
-                <TagsFilter
-                    tags={allTags}
-                    selectedTags={selectedTags}
-                    onTagToggle={handleTabToggle}
-                />
-
-                {/* <Box mb={2}>
-                    <Typography variant="subtitle1">Filter by tags</Typography>
-                    <Box>
-                        {allTags
-                            .slice(0, 25)
-                            .sort((a, b) => a.localeCompare(b))
-                            .map((tag) => (
-                                <Chip
-                                    key={tag}
-                                    label={tag}
-                                    onClick={() => setSelectedTag(tag === selectedTag ? null : tag)}
-                                    color={selectedTag === tag ? 'primary' : 'default'}
-                                    sx={{ mr: 1, mt: 1 }}
-                                />
-                            ))
+                <Grid container spacing={0} >
+                    <Grid item xs={12} md={8}>
+                        {postsLoading
+                            ? (<BlogText>Loading posts...</BlogText>)
+                            : filteredPosts.length === 0
+                                ? (<BlogText>Posts not found.</BlogText>) : <PostsList posts={filteredPosts} />
                         }
-                    </Box>
-                </Box> */}
+                    </Grid>
+                    <Grid item xs={12} md={4}>
+                        <TagsFilter
+                            tags={allTags}
+                            selectedTags={selectedTags}
+                            onTagToggle={handleTabToggle}
+                        />
+                    </Grid>
+                </Grid>
 
-                <BlankSpace size='32px' />
-
-                {postsLoading
-                    ? (<BlogText>Loading posts...</BlogText>)
-                    : filteredPosts.length === 0
-                        ? (<BlogText>Posts not found.</BlogText>) : <PostsList posts={filteredPosts} />
-                }
                 <BlankSpace size='32px' />
             </Box>
         </MainLayout>
