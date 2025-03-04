@@ -3,15 +3,18 @@
 @tailwind utilities;
 
 * { 
-  user-select: none;
+  /* user-select: none; */
   max-width: 100% ;
   box-sizing: border-box ;
 }
 
-html,body {
-  cursor: none;
+html, body {
+  /* cursor: none; */
   margin: 0;
   padding: 0;
+}
+
+body {
   overflow-x: hidden;
 }
 
