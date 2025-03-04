@@ -65,11 +65,9 @@ export const DataSearch = <T,>({
                 handleSearchSubmit={handleSearchSubmit}
                 setSearchInput={setSearchInput}
             />
-            <Grid container spacing={0}>
+
+            <Grid container spacing={isMobile ? 0 : 4} m={0}>
                 <Grid item xs={12} md={8}>
-
-                    <BlankSpace size="32px" />
-
                     {isItemsLoading ? (
                         <p>Loading...</p>
                     ) : filteredItems.length === 0 ? (

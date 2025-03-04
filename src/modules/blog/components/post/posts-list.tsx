@@ -12,7 +12,7 @@ export const PostsList: React.FC<PostsListsProps> = ({ posts }) => {
     return (
         <ul>
             {posts.map((post) => (
-                <GenericCard key={post.slug} sx={{ maxWidth: '600px', mx: 'auto', mb: 2, cursor: 'pointer' }}>
+                <GenericCard key={post.slug} sx={{ maxWidth: '600px', mx: 'auto', mb: 4, cursor: 'pointer' }}>
                     <Tooltip arrow={true} title={post.source === 'external' ? 'Published on https://dev.to' : 'Internal publish'}>
                         <Box>
                             <Link href={post.url || `/posts/${post.slug}`}>
