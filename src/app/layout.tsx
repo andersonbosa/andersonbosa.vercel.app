@@ -1,7 +1,7 @@
 import '@/modules/__shared__/theme/common.css'
 import './globals.css'
 
-import { PostsProvider } from '@/modules/__shared__/contexts/post.context'
+import { ContextProvider } from '@/modules/__shared__/contexts/context.providers'
 import type { Metadata } from "next"
 import { Roboto } from "next/font/google"
 import Script from 'next/script'
@@ -20,9 +20,9 @@ export default function RootLayout(
   return (
     <html lang='en'>
       <body className={fontImported.className}>
-        <PostsProvider>
+        <ContextProvider>
           {children}
-        </PostsProvider>
+        </ContextProvider>
         <Script id='cloudflare' defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "fec50b3155ad4217becd9afc2811da6f"}'> </Script>
       </body>
     </html>
