@@ -35,11 +35,11 @@ export const Post = defineDocumentType(() => ({
     computedFields: {
         slug: {
             type: 'string',
-            resolve: (post) => post._raw.flattenedPath.replace('/posts', ''),
+            resolve: (post) => post._raw.flattenedPath//.replace('/posts', ''),
         },
         url: {
             type: 'string',
-            resolve: (post) => `/posts/${post._raw.flattenedPath}`,
+            resolve: (post) => `/blog/${post._raw.flattenedPath}`,
         },
     },
 }))
