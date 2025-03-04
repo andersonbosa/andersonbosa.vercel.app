@@ -2,6 +2,16 @@ import { ThemeOptions, createTheme } from '@mui/material/styles'
 import { typography } from '../typography'
 
 export const themeOptions: ThemeOptions = {
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 600,
+      md: 900,
+      lg: 1200,
+      xl: 1536,
+    },
+  },
+
   palette: {
     mode: 'dark',
     primary: {
@@ -30,4 +40,4 @@ export const themeOptions: ThemeOptions = {
   },
 }
 
-export const theme = createTheme(themeOptions)
+export const darkTheme = createTheme(themeOptions)
