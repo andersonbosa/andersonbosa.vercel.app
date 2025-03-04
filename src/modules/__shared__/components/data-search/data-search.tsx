@@ -2,9 +2,12 @@
 
 import { BlankSpace } from '@/modules/__shared__/components/blank-space'
 import { TagsFilter } from '@/modules/blog/components/tags-filter'
-import { Box, Button, Grid, Pagination, TextField, useMediaQuery } from '@mui/material'
+import { Box, Grid, Pagination, useMediaQuery } from '@mui/material'
 import { useTheme } from '@mui/material/styles'
 import React, { useEffect, useState } from 'react'
+import DataSearchBar from './data-search-bar'
+
+
 
 interface DataSearchProps<T> {
     items: T[]
@@ -56,20 +59,12 @@ export const DataSearch = <T,>({
 
     return (
         <Box>
-            <form onSubmit={handleSearchSubmit}>
-                <Box display="flex" gap={2} mb={3}>
-                    <TextField
-                        label="Pesquisar"
-                        variant="outlined"
-                        fullWidth
-                        value={searchInput}
-                        onChange={e => setSearchInput(e.target.value)}
-                    />
-                    <Button type="submit" variant="contained">
-                        Buscar
-                    </Button>
-                </Box>
-            </form>
+            <DataSearchBar
+                key='data-search-bar'
+                searchInput={searchInput}
+                handleSearchSubmit={handleSearchSubmit}
+                setSearchInput={setSearchInput}
+            />
             <Grid container spacing={0}>
                 <Grid item xs={12} md={8}>
 

@@ -26,6 +26,7 @@ export const Menu: React.FC<MenuProps> = ({ }) => {
         enableColorOnDark
         position="fixed"
       >
+        {/* TODO idea: add "main" search bar to search in all possible places ☢️☢️☢️☢️☢️☢️☢️ */}
         <Toolbar>
           {isMobile ? (
             <MobileMenu

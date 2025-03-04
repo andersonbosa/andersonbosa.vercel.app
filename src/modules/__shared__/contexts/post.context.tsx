@@ -24,7 +24,7 @@ export const PostProvider: React.FC<{ children: React.ReactNode }> = ({ children
     const [searchTerm, setSearchTerm] = useState('')
     const [page, setPage] = useState(1)
     const [total, setTotal] = useState(0)
-    const [perPage] = useState(10)
+    const [perPage] = useState(8)
     const [totalPages, setTotalPages] = useState(0)
 
     useEffect(() => {
