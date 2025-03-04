@@ -40,7 +40,7 @@ export const BlogPage: React.FC = () => {
                             {post.title}
                         </BlogH2>
                     </Link>
-                    <BlogText>{post.description || 'Clique para ler mais'}</BlogText>
+                    <BlogText>{post.description || 'Read More'}</BlogText>
                     <Typography variant="caption" color="text.secondary">
                         {formatedDate(post.date)} | {post?.tags.join(', ')}
                     </Typography>
@@ -66,7 +66,7 @@ export const BlogPage: React.FC = () => {
                 <BlankSpace size='32px' />
 
                 <Box mb={2}>
-                    <Typography variant="subtitle1">Filtrar por tags</Typography>
+                    <Typography variant="subtitle1">Filter by tags</Typography>
                     <Box>
                         {allTags
                             .slice(0, 25)
@@ -87,9 +87,9 @@ export const BlogPage: React.FC = () => {
                 <BlankSpace size='32px' />
 
                 {postsLoading
-                    ? (<BlogText>Carregando posts...</BlogText>)
+                    ? (<BlogText>Loading posts...</BlogText>)
                     : filteredPosts.length === 0
-                        ? (<BlogText>Nenhum post encontrado.</BlogText>) : <PostLists />
+                        ? (<BlogText>Posts not found.</BlogText>) : <PostLists />
                 }
                 <BlankSpace size='32px' />
             </Box>
