@@ -2,7 +2,6 @@
 
 import { AppBar, Box, Toolbar } from '@mui/material'
 import React, { useState } from 'react'
-import { useCustomTheme } from '../../contexts/theme.context'
 import { useIsMobile } from '../../hooks/is-mobile.hook'
 import { DesktopMenu } from './desktop-menu'
 import styles from './menu.module.css'
@@ -13,8 +12,9 @@ export interface MenuProps {
   onLanguageChange: (language: string) => void
 }
 
-export const Menu: React.FC<MenuProps> = ({ onThemeToggle, onLanguageChange }) => {
-  const { theme } = useCustomTheme()
+export const Menu: React.FC<MenuProps> = (
+  { onThemeToggle, onLanguageChange }
+) => {
   const isMobile = useIsMobile()
 
   const [drawerOpen, setDrawerOpen] = useState(false)
@@ -39,7 +39,9 @@ export const Menu: React.FC<MenuProps> = ({ onThemeToggle, onLanguageChange }) =
               onThemeToggle={onThemeToggle}
             />
           ) : (
-            <DesktopMenu onThemeToggle={onThemeToggle} />
+            <DesktopMenu
+            // onThemeToggle={onThemeToggle}
+            />
           )}
         </Toolbar>
       </AppBar>

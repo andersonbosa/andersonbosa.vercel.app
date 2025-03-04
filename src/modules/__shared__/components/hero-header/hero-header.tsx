@@ -1,10 +1,10 @@
 'use client'
 
-import { meta } from '@/app/constants'
 import styles from './hero-header.module.css'
 
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 import { Box, IconButton } from '@mui/material'
+import { meta } from '../../constants'
 
 export interface IHeroHeaderProps { }
 

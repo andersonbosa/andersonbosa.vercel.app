@@ -1,10 +1,10 @@
 import '@/modules/__shared__/theme/common.css'
 import './globals.css'
 
+import { meta } from '@/modules/__shared__/constants'
 import type { Metadata } from "next"
 import { Roboto } from "next/font/google"
 import Script from 'next/script'
-import { meta } from './constants'
 import { ProvidersClientSide } from './providers-client-side'
 import { ProvidersServerSide } from './providers-server-side'
 

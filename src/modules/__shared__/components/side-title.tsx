@@ -29,7 +29,7 @@ export const SideTitle: FunctionComponent<SideTitleProps> = (
       <Typography
         variant='h1'
         component='div'
-        color={theme.palette.mode === 'dark' ? 'teal.500' : 'blue.500'}
+        // color={theme.palette.mode === 'dark' ? 'teal.500' : 'blue.500'}
         sx={{
           writingMode: 'vertical-lr',
           transform: 'rotate(180deg)',

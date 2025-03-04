@@ -1,7 +1,7 @@
-import { ThemeOptions, createTheme } from '@mui/material/styles'
+import { createTheme } from '@mui/material/styles'
 import { typography } from '../typography'
 
-export const themeOptions: ThemeOptions = {
+export const lightTheme = createTheme({
   breakpoints: {
     values: {
       xs: 0,
@@ -48,6 +48,4 @@ export const themeOptions: ThemeOptions = {
       },
     },
   },
-}
-
-export const lightTheme = createTheme(themeOptions)
+})

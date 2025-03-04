@@ -17,7 +17,7 @@ interface MainLayoutProps {
 }
 
 export const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
-    const { theme, toggleTheme } = useCustomTheme()
+    const { toggleTheme } = useCustomTheme()
     const isMobile = useIsMobile()
     setDefaultOptions({ locale: ptBR })
     return (

@@ -6,10 +6,10 @@ import styles from './menu.module.css'
 import { ToggleThemeButton } from './toggle-theme-button'
 
 interface DesktopMenuProps {
-  onThemeToggle: () => void
+  // onThemeToggle: () => void
 }
 
-export const DesktopMenu: React.FC<DesktopMenuProps> = ({ onThemeToggle }) => {
+export const DesktopMenu: React.FC<DesktopMenuProps> = () => {
   return (
     <Box className={styles.desktopMenu}>
       <Logo />
@@ -26,7 +26,7 @@ export const DesktopMenu: React.FC<DesktopMenuProps> = ({ onThemeToggle }) => {
         ))}
       </Box>
       <Box className={styles.section2}>
-        <ToggleThemeButton onThemeToggle={onThemeToggle} />
+        <ToggleThemeButton />
       </Box>
     </Box>
   )

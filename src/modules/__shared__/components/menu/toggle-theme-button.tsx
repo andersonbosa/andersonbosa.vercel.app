@@ -5,15 +5,21 @@ import React from 'react'
 import { useCustomTheme } from '../../contexts/theme.context'
 
 interface ToggleThemeButtonProps {
-    onThemeToggle: () => void
+    // onThemeToggle: () => void
 }
 
-export const ToggleThemeButton: React.FC<ToggleThemeButtonProps> = ({ onThemeToggle }) => {
-    const { theme } = useCustomTheme()
+export const ToggleThemeButton: React.FC<ToggleThemeButtonProps> = (
+    // { theme, onThemeToggle }
+) => {
+    const { theme, toggleTheme } = useCustomTheme()
     return (
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
-            <IconButton color="inherit" onClick={onThemeToggle}>
-                {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+            <IconButton color="inherit" onClick={toggleTheme}>
+                {
+                    theme.palette.mode === 'dark'
+                        ? <Brightness7Icon />
+                        : <Brightness4Icon />
+                }
             </IconButton>
         </Box>
     )
