@@ -10,10 +10,7 @@ export interface IHeroHeaderProps { }
 
 export function HeroHeader(_: IHeroHeaderProps) {
   const handleScrollDown = (): void => {
-    window.scrollBy({
-      top: window.innerHeight,
-      behavior: 'smooth'
-    })
+    document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' })
   }
   return (
     <Box id="hero-header" className={styles.heroHeader} >
