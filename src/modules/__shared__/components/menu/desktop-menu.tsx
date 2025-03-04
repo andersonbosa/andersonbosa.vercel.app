@@ -6,10 +6,9 @@ import styles from './menu.module.css'
 import { ToggleThemeButton } from './toggle-theme-button'
 
 interface DesktopMenuProps {
-  // onThemeToggle: () => void
 }
 
-export const DesktopMenu: React.FC<DesktopMenuProps> = () => {
+export const DesktopMenu: React.FC<DesktopMenuProps> = ({ }) => {
   return (
     <Box className={styles.desktopMenu}>
       <Logo />

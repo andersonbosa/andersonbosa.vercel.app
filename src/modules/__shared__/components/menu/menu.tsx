@@ -8,15 +8,10 @@ import styles from './menu.module.css'
 import { MobileMenu } from './mobile-menu'
 
 export interface MenuProps {
-  onThemeToggle: () => void
-  onLanguageChange: (language: string) => void
 }
 
-export const Menu: React.FC<MenuProps> = (
-  { onThemeToggle, onLanguageChange }
-) => {
+export const Menu: React.FC<MenuProps> = ({ }) => {
   const isMobile = useIsMobile()
-
   const [drawerOpen, setDrawerOpen] = useState(false)
 
   const handleDrawerToggle = () => {
@@ -36,12 +31,9 @@ export const Menu: React.FC<MenuProps> = (
             <MobileMenu
               drawerOpen={drawerOpen}
               onDrawerToggle={handleDrawerToggle}
-              onThemeToggle={onThemeToggle}
             />
           ) : (
-            <DesktopMenu
-            // onThemeToggle={onThemeToggle}
-            />
+            <DesktopMenu />
           )}
         </Toolbar>
       </AppBar>
