@@ -70,7 +70,7 @@ export const DataSearch = <T,>({
                     </Button>
                 </Box>
             </form>
-            <Grid container spacing={4}>
+            <Grid container spacing={0}>
                 <Grid item xs={12} md={8}>
 
                     <BlankSpace size="32px" />
