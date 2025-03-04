@@ -117,7 +117,7 @@ export const Background: React.FC<BackgroundProps> = ({
         },
       },
     }),
-    [],
+    [theme],
   )
 
   if (!init) {
