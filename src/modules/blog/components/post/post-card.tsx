@@ -1,8 +1,7 @@
 'use client'
 
 import { formatedDate } from '@/modules/__shared__/@helpers/date.helper'
-import { useIsMobile } from '@/modules/__shared__/hooks/is-mobile.hook'
-import { Box, Divider, Paper, Typography, useTheme } from '@mui/material'
+import { Box, Divider, Paper, Typography, } from '@mui/material'
 import { Post } from 'contentlayer/generated'
 import { getMDXComponent } from 'next-contentlayer2/hooks'
 
@@ -11,8 +10,6 @@ interface PostCardProps {
 }
 
 export function PostCard({ post }: PostCardProps) {
-    const isMobile = useIsMobile(useTheme())
-
     const MDXContent = getMDXComponent(post.body.code)
     return (
         <Paper

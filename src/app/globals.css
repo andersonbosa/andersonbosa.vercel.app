@@ -2,13 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-* { 
+* {
   user-select: none;
-  max-width: 100% ;
-  box-sizing: border-box ;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
+  transition: background-color 0.3s ease;
+
   /* cursor: none; */
   margin: 0;
   padding: 0;

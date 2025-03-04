@@ -1,7 +1,11 @@
-import { Theme, useMediaQuery } from '@mui/material'
+'use client'
 
-export const useIsMobile = (t: Theme) => {
-  const isMobile = useMediaQuery(t.breakpoints.down('md'))
+import { useMediaQuery } from '@mui/material'
+import { useCustomTheme } from '../contexts/theme.context'
+
+export const useIsMobile = () => {
+  const { theme } = useCustomTheme()
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'))
   return isMobile
 }
 

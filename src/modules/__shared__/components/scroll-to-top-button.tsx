@@ -1,9 +1,9 @@
 'use client'
 
-import { Box, Button, useTheme, useScrollTrigger } from '@mui/material'
-import { FunctionComponent } from 'react'
 import { ArrowUpward } from '@mui/icons-material'
+import { Box, Button, useScrollTrigger } from '@mui/material'
 import { motion } from 'framer-motion'
+import { FunctionComponent } from 'react'
 
 interface ScrollToTopButtonProps {
 

@@ -1,7 +1,8 @@
 'use client'
 
-import { Box, Typography, useTheme } from '@mui/material'
+import { Box, Typography, } from '@mui/material'
 import { FunctionComponent } from 'react'
+import { useCustomTheme } from '../contexts/theme.context'
 import { useIsMobile } from '../hooks/is-mobile.hook'
 
 interface SideTitleProps {
@@ -11,8 +12,8 @@ interface SideTitleProps {
 export const SideTitle: FunctionComponent<SideTitleProps> = (
   { children, ...rest }
 ) => {
-  const theme = useTheme()
-  const isMobile = useIsMobile(theme)
+  const { theme } = useCustomTheme()
+  const isMobile = useIsMobile()
 
   return (
     <Box

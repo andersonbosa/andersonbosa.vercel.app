@@ -1,6 +1,6 @@
 'use client'
 
-import { Box, useTheme } from '@mui/material'
+import { Box } from '@mui/material'
 import { useEffect, useMemo, useState } from 'react'
 
 import {
@@ -11,6 +11,7 @@ import {
 } from '@tsparticles/engine'
 import Particles, { initParticlesEngine } from '@tsparticles/react'
 import { loadFull } from 'tsparticles'
+import { useCustomTheme } from '../contexts/theme.context'
 
 interface BackgroundProps {
   useBackgroundParticles?: boolean
@@ -19,7 +20,7 @@ interface BackgroundProps {
 export const Background: React.FC<BackgroundProps> = ({
   useBackgroundParticles = true
 }) => {
-  const currentTheme = useTheme()
+  const { theme } = useCustomTheme()
   const [init, setInit] = useState(false)
 
   useEffect(
@@ -47,7 +48,7 @@ export const Background: React.FC<BackgroundProps> = ({
       fpsLimit: 120,
       detectRetina: true,
       background: {
-        color: currentTheme.palette.mode === 'dark' ? darkBackgroundColor : lightBackgroundColor,
+        color: theme.palette.mode === 'dark' ? darkBackgroundColor : lightBackgroundColor,
       },
       fullScreen: {
         enable: true,

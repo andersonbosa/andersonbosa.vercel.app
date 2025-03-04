@@ -1,7 +1,8 @@
 'use client'
 
-import { AppBar, Box, Toolbar, useTheme } from '@mui/material'
+import { AppBar, Box, Toolbar } from '@mui/material'
 import React, { useState } from 'react'
+import { useCustomTheme } from '../../contexts/theme.context'
 import { useIsMobile } from '../../hooks/is-mobile.hook'
 import { DesktopMenu } from './desktop-menu'
 import styles from './menu.module.css'
@@ -13,8 +14,8 @@ export interface MenuProps {
 }
 
 export const Menu: React.FC<MenuProps> = ({ onThemeToggle, onLanguageChange }) => {
-  const theme = useTheme()
-  const isMobile = useIsMobile(theme)
+  const { theme } = useCustomTheme()
+  const isMobile = useIsMobile()
 
   const [drawerOpen, setDrawerOpen] = useState(false)
 

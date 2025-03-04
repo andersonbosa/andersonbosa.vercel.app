@@ -52,10 +52,10 @@ export const ThemeContextProvider = ({ children }: { children: React.ReactNode }
     )
 }
 
-export const useMuiTheme = () => {
+export const useCustomTheme = () => {
     const context = useContext(ThemeContext)
     if (!context) {
-        throw new Error('useTheme must be used within a ThemeContextProvider')
+        throw new Error('useCustomTheme must be used within a ThemeContextProvider')
     }
     return context
 }

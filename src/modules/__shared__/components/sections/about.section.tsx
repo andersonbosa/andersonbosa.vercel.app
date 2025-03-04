@@ -1,6 +1,6 @@
 'use client'
 
-import { Box, Card, Chip, styled, Typography, useTheme } from '@mui/material'
+import { Box, Card, Chip, styled, Typography, } from '@mui/material'
 import Image from 'next/image'
 import { useIsMobile } from '../../hooks/is-mobile.hook'
 import { BlankSpace } from '../blank-space'
@@ -47,8 +47,7 @@ const StyledChip = styled(Chip)({
 })
 
 export const AboutSection: React.FC<AboutSectionProps> = () => {
-  const theme = useTheme()
-  const isMobile = useIsMobile(theme)
+  const isMobile = useIsMobile()
 
   return (
     <Box id='about' sx={{
