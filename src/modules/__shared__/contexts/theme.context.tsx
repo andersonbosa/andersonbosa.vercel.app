@@ -13,6 +13,7 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined)
 
 export const ThemeContextProvider = ({ children }: { children: React.ReactNode }) => {
+    // TODO: preserve on localstorage the prefered
     const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)')
     const [theme, setTheme] = useState<Theme>(prefersDarkMode ? darkTheme : lightTheme)
 

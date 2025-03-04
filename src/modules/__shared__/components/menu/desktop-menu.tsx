@@ -1,4 +1,5 @@
 import { Box, Button } from '@mui/material'
+import Link from 'next/link'
 import React from 'react'
 import { NAV_ITEMS } from '../../constants'
 import { Logo } from './logo'
@@ -18,9 +19,10 @@ export const DesktopMenu: React.FC<DesktopMenuProps> = ({ }) => {
             key={item.id}
             color="inherit"
             className={styles.navItem}
-            href={item.href}
           >
-            {item.label}
+            <Link href={item.href}>
+              {item.label}
+            </Link>
           </Button>
         ))}
       </Box>
