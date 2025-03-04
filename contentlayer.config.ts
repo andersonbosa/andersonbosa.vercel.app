@@ -1,3 +1,4 @@
+
 import { defineDocumentType, makeSource } from 'contentlayer2/source-files'
 
 const POSTS_ROOT = 'src/content/posts'

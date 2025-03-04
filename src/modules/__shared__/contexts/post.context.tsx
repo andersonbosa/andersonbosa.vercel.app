@@ -1,48 +1,74 @@
+// src/contexts/post.context.tsx
 'use client'
 
-import { getAllPosts } from '@/modules/blog/lib/posts'
-import { compareDesc } from 'date-fns'
+import { ApiDataResponse } from '@/globals.d.ts'
+import { UnifiedPost } from '@/types/post'
 import React, { createContext, useContext, useEffect, useState } from 'react'
-import { BlogPostEntity } from '../../blog/@types/blog'
 
-interface PostsContextType {
-    posts: BlogPostEntity[]
+interface PostContextType {
+    posts: UnifiedPost[]
     loading: boolean
+    total: number
+    page: number
+    perPage: number
+    totalPages: number
+    searchTerm: string
+    setSearchTerm: (term: string) => void
+    setPage: (page: number) => void
 }
 
-const PostsContext = createContext<PostsContextType | undefined>(undefined)
+const PostContext = createContext<PostContextType | undefined>(undefined)
 
-export const PostsProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-    const [posts, setPosts] = useState<BlogPostEntity[]>([])
+export const PostProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+    const [posts, setPosts] = useState<UnifiedPost[]>([])
     const [loading, setLoading] = useState(true)
+    const [searchTerm, setSearchTerm] = useState('')
+    const [page, setPage] = useState(1)
+    const [total, setTotal] = useState(0)
+    const [perPage] = useState(10)
+    const [totalPages, setTotalPages] = useState(0)
 
     useEffect(() => {
-        async function loadPosts() {
+        const fetchPosts = async () => {
+            setLoading(true)
             try {
-                const allPosts = await getAllPosts()
-                allPosts.sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)))
-                setPosts(allPosts)
+                const url = `/api/posts?search=${encodeURIComponent(searchTerm)}&page=${page}&per_page=${perPage}`
+                const response = await fetch(url)
+                if (!response.ok) throw new Error('Failed to fetch posts')
+                const apiResponse: ApiDataResponse<UnifiedPost[]> = await response.json()
+                setPosts(apiResponse.data)
+                setTotal(apiResponse.metadata.total)
+                setTotalPages(apiResponse.metadata.totalPages)
             } catch (error) {
-                console.error(error)
+                console.error('Error fetching posts:', error)
+                setPosts([])
+                setTotal(0)
+                setTotalPages(0)
             } finally {
                 setLoading(false)
             }
         }
-        loadPosts()
-    }, [])
 
-    return (
-        <PostsContext.Provider value={{ posts, loading }}>
-            {children}
-        </PostsContext.Provider>
-    )
+        fetchPosts()
+    }, [searchTerm, page, perPage])
+
+    const value: PostContextType = {
+        posts,
+        loading,
+        total,
+        page,
+        perPage,
+        totalPages,
+        searchTerm,
+        setSearchTerm,
+        setPage,
+    }
+
+    return <PostContext.Provider value={value}>{children}</PostContext.Provider>
 }
 
 export const usePosts = () => {
-    const context = useContext(PostsContext)
-    if (!context) {
-        throw new Error('usePosts deve ser usado dentro de um PostsProvider')
-    }
-
+    const context = useContext(PostContext)
+    if (!context) throw new Error('usePosts must be used within a PostProvider')
     return context
 }

@@ -1,5 +1,5 @@
 
-export interface BlogPostEntity {
+export interface UnifiedPost {
     slug: string
     title: string
     published: boolean
@@ -8,8 +8,8 @@ export interface BlogPostEntity {
     content?: string // Para posts internos (MDX)
     description?: string // Para posts externos (dev.to)
     url?: string // Para posts externos (link para dev.to)
+    source: 'internal' | 'external'
 }
-
 export interface DevtoArticle {
     type_of: string
     id: number

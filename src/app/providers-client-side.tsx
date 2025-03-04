@@ -1,5 +1,6 @@
 'use client'
 
+import { PostProvider } from "@/modules/__shared__/contexts/post.context"
 import { ThemeContextProvider } from "@/modules/__shared__/contexts/theme.context"
 import { MuiThemeProvider } from "@/modules/__shared__/theme/provider"
 
@@ -10,7 +11,9 @@ export const ProvidersClientSide = (
         <>
             <ThemeContextProvider>
                 <MuiThemeProvider>
-                    {children}
+                    <PostProvider>
+                        {children}
+                    </PostProvider>
                 </MuiThemeProvider>
             </ThemeContextProvider>
         </>

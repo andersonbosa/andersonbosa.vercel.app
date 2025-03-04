@@ -1,4 +1,4 @@
-import { BlogPostEntity, DevtoArticle } from '@/modules/blog/@types/blog'
+import { DevtoArticle, UnifiedPost } from '@/modules/blog/@types/blog'
 import axios from 'axios'
 import { allPosts } from 'contentlayer/generated'
 import { compareAsc } from 'node_modules/date-fns/compareAsc.cjs'
@@ -9,7 +9,7 @@ async function fetchDevToPosts(): Promise<DevtoArticle[]> {
     return response.data
 }
 
-function DevToPostToBlogPostEntity(p: DevtoArticle): BlogPostEntity {
+function DevToPostToBlogPostEntity(p: DevtoArticle): UnifiedPost {
     return {
         slug: p.slug,
         title: p.title,
@@ -27,8 +27,8 @@ const denyPostIdList: Number[] = [
     2299493
 ]
 
-export async function getAllPosts(): Promise<BlogPostEntity[]> {
-    const internalPosts: BlogPostEntity[] = allPosts.map((post) => ({
+export async function getAllPosts(): Promise<UnifiedPost[]> {
+    const internalPosts: UnifiedPost[] = allPosts.map((post) => ({
         slug: post.slug,
         title: post.title,
         published: post.published,
@@ -39,7 +39,7 @@ export async function getAllPosts(): Promise<BlogPostEntity[]> {
 
     const externalPosts = await fetchDevToPosts()
 
-    const mappedExternalPosts: BlogPostEntity[] = externalPosts
+    const mappedExternalPosts: UnifiedPost[] = externalPosts
         .filter((post) => !denyPostIdList.includes(post.id))
         .map(DevToPostToBlogPostEntity)
 

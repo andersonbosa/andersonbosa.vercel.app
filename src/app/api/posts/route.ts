@@ -1,37 +1,62 @@
-import { client } from '@/modules/__shared__/api/devto-client'
-import { DevtoArticle } from '@/modules/blog/@types/blog'
-import { compareAsc } from 'date-fns'
+import { ApiDataResponse } from '@/modules/__shared__/@types/globals';
+import { client } from '@/modules/__shared__/api/devto-client';
+import { UnifiedPost } from '@/modules/blog/@types/blog';
+import { allPosts } from 'contentlayer/generated'; // Posts internos gerados pelo Contentlayer
+import { compareAsc } from 'date-fns';
 
 export async function GET(request: Request) {
-  const posts: DevtoArticle[] = await client.getMyPosts()
-
   const { searchParams } = new URL(request.url)
-  const searchTerm = searchParams.get('search')?.toLowerCase() || ''
+  const search = searchParams.get('search')?.toLowerCase() || ''
   const page = parseInt(searchParams.get('page') || '1')
-  const perPage = parseInt(searchParams.get('per_page') || '8')
+  const perPage = parseInt(searchParams.get('per_page') || '10')
 
-  const filteredPosts = posts
-    .filter(
-      p => !searchTerm
-        || p.title.toLowerCase().includes(searchTerm)
-        || p.description.toLowerCase().includes(searchTerm)
+  const internalPosts: UnifiedPost[] = allPosts.map(post => ({
+    slug: post.slug,
+    title: post.title,
+    published: post.published,
+    date: post.date,
+    tags: post.tags,
+    content: post.body.raw,
+    url: post.url,
+    source: 'internal' as const,
+  }))
+
+  const externalPostsRaw = await client.getMyPosts()
+  const externalPosts: UnifiedPost[] = externalPostsRaw.map(post => ({
+    slug: post.slug,
+    title: post.title,
+    published: post.published,
+    date: post.published_at,
+    tags: post.tag_list,
+    description: post.description,
+    url: post.url,
+    source: 'external' as const,
+  }))
+
+  const allUnifiedPosts = [...internalPosts, ...externalPosts]
+    .filter(post =>
+      post.published &&
+      (!search ||
+        post.title.toLowerCase().includes(search) ||
+        (post.content?.toLowerCase().includes(search)) ||
+        (post.description?.toLowerCase().includes(search))
+      )
     )
-    .sort((a, b) => compareAsc(new Date(b.published_at), new Date(a.published_at)))
+    .sort((a, b) => compareAsc(new Date(b.date), new Date(a.date)))
 
-  console.log(filteredPosts)
-
-  // TODO refactor this pagination that is so perrformatic
-  const total = filteredPosts.length
+  const total = allUnifiedPosts.length
   const startIndex = (page - 1) * perPage
-  const paginatedPosts = filteredPosts.slice(startIndex, startIndex + perPage)
+  const paginatedPosts = allUnifiedPosts.slice(startIndex, startIndex + perPage)
 
-  return Response.json({
+  const response: ApiDataResponse<UnifiedPost[]> = {
     data: paginatedPosts,
     metadata: {
+      total,
       page,
       perPage,
-      total,
-      totalPages: Math.ceil(total / perPage),
+      totalPages: Math.ceil(total / perPage)
     }
-  })
+  }
+
+  return Response.json(response)
 }

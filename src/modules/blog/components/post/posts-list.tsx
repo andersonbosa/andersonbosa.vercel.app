@@ -1,15 +1,15 @@
 import { formatedDate } from "@/modules/__shared__/@helpers/date.helper"
 import { GenericCard } from "@/modules/__shared__/components/generic-card"
 import { Box, Link, Typography } from "@mui/material"
-import { BlogPostEntity } from "../../@types/blog"
+import { UnifiedPost } from "../../@types/blog"
 import { BlogH2, BlogText } from "../ui/typography"
 
 interface PostsListsProps {
-    posts: BlogPostEntity[]
+    posts: UnifiedPost[]
 }
 
 export const PostsList: React.FC<PostsListsProps> = ({ posts }) => {
-    function getPostUrl(post: BlogPostEntity): string | undefined {
+    function getPostUrl(post: UnifiedPost): string | undefined {
         if (post.url) return post.url
         return `/blog/${post.slug}`
     }
