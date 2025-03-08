@@ -15,7 +15,7 @@ export const TagsFilter: React.FC<TagsFilterProps> = ({ tags, selectedTags, onTa
     return (
         <Box>
             <Typography variant="subtitle1">Filter by tags</Typography>
-            <Box display='flex' flexDirection='row' flexWrap='wrap' justifyContent='space-between' >
+            <Box display='flex' flexDirection='row' flexWrap='wrap'  >
                 {tags.map((tag) => (
                     <Chip
                         key={tag}

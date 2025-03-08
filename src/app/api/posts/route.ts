@@ -27,7 +27,7 @@ export async function GET(request: Request) {
     title: post.title,
     published: post.published,
     date: post.published_at,
-    tags: post.tag_list,
+    tags: ['dev.to'],//post.tag_list,
     description: post.description,
     url: post.url,
     source: 'external' as const,

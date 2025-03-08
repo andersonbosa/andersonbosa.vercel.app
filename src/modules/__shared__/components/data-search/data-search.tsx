@@ -1,5 +1,3 @@
-// src/components/data-search.tsx
-
 import { BlankSpace } from '@/modules/__shared__/components/blank-space'
 import { TagsFilter } from '@/modules/blog/components/tags-filter'
 import { Box, Grid, Pagination, useMediaQuery } from '@mui/material'
@@ -59,12 +57,6 @@ export const DataSearch = <T,>({
 
     return (
         <Box>
-            <DataSearchBar
-                key='data-search-bar'
-                searchInput={searchInput}
-                handleSearchSubmit={handleSearchSubmit}
-                setSearchInput={setSearchInput}
-            />
 
             <Grid container spacing={isMobile ? 0 : 4} m={0}>
                 <Grid item xs={12} md={8}>
@@ -73,7 +65,17 @@ export const DataSearch = <T,>({
                     ) : filteredItems.length === 0 ? (
                         <p>No items found.</p>
                     ) : (
-                        renderItems(filteredItems)
+                        <>
+                            <Box mb={4}>
+                                <DataSearchBar
+                                    key='data-search-bar'
+                                    searchInput={searchInput}
+                                    handleSearchSubmit={handleSearchSubmit}
+                                    setSearchInput={setSearchInput}
+                                />
+                            </Box>
+                            {renderItems(filteredItems)}
+                        </>
                     )}
 
                     {totalPages > 1 && (
