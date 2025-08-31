@@ -122,7 +122,7 @@ export default function Home() {
           <div className="space-y-16">
             <div className="flex items-end justify-between">
               <h2 className="text-4xl font-light">Selected Work</h2>
-              <div className="text-sm text-muted-foreground font-mono">2019 — 2025</div>
+              <div className="text-sm text-muted-foreground font-mono">2019 — {new Date().getFullYear()}</div>
             </div>
 
             <div className="space-y-12">
