@@ -28,7 +28,7 @@ jobs:
           severity: "CRITICAL"
 
       - name: Upload results
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v6
         with:
           name: results.sarif
           path: results.sarif
