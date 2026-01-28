@@ -3,7 +3,7 @@
   "version": "2025-08-30",
   "private": true,
   "engines": {
-    "node": ">=25.x"
+    "node": "24.x"
   },
   "scripts": {
     "build": "next build",
