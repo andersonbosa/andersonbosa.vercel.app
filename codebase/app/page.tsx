@@ -2,17 +2,22 @@
 
 import Link from "next/link"
 import { useEffect, useRef, useState } from "react"
+import { useIsMobile } from "@/hooks/use-mobile"
 
 export default function Home() {
   const [isDark, setIsDark] = useState(true)
   const [activeSection, setActiveSection] = useState("")
   const sectionsRef = useRef<(HTMLElement | null)[]>([])
+  const isMobile = useIsMobile()
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark", isDark)
   }, [isDark])
 
   useEffect(() => {
+    // Skip animation observer on mobile - show content directly
+    if (isMobile) return
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -30,7 +35,7 @@ export default function Home() {
     })
 
     return () => observer.disconnect()
-  }, [])
+  }, [isMobile])
 
   const toggleTheme = () => {
     setIsDark(!isDark)
@@ -56,7 +61,7 @@ export default function Home() {
         <header
           id="intro"
           ref={(el: any) => (sectionsRef.current[0] = el)}
-          className="min-h-screen flex items-center opacity-0"
+          className={`min-h-screen flex items-center ${isMobile ? "" : "opacity-0"}`}
         >
           <div className="grid lg:grid-cols-5 gap-16 w-full">
             <div className="lg:col-span-3 space-y-8">
@@ -118,7 +123,7 @@ export default function Home() {
           </div>
         </header>
 
-        <section id="work" ref={(el: any) => (sectionsRef.current[1] = el)} className="min-h-screen py-32 opacity-0">
+        <section id="work" ref={(el: any) => (sectionsRef.current[1] = el)} className={`min-h-screen py-32 ${isMobile ? "" : "opacity-0"}`}>
           <div className="space-y-16">
             <div className="flex items-end justify-between">
               <h2 className="text-4xl font-light">Selected Work</h2>
@@ -163,7 +168,7 @@ export default function Home() {
 
 
         {POSTS.length > 0 && (
-          <section id="thoughts" ref={(el: any) => (sectionsRef.current[2] = el)} className="min-h-screen py-32 opacity-0">
+          <section id="thoughts" ref={(el: any) => (sectionsRef.current[2] = el)} className={`min-h-screen py-32 ${isMobile ? "" : "opacity-0"}`}>
             <div className="space-y-16">
               <h2 className="text-4xl font-light">Recent Thoughts</h2>
 
@@ -209,7 +214,7 @@ export default function Home() {
           </section>
         )}
 
-        <section id="connect" ref={(el: any) => (sectionsRef.current[3] = el)} className="py-32 opacity-0">
+        <section id="connect" ref={(el: any) => (sectionsRef.current[3] = el)} className={`py-32 ${isMobile ? "" : "opacity-0"}`}>
           <div className="grid lg:grid-cols-2 gap-16">
             <div className="space-y-8">
               <h2 className="text-4xl font-light">Let's Connect</h2>
